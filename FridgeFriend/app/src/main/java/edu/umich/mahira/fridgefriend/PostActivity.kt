@@ -124,10 +124,13 @@ class PostActivity : AppCompatActivity() {
                 Log.d("TakePicture", "failed")
             }
         }
-        Log.d("OpenCam", "success")
 
         view.addImage.setOnClickListener {
-            println("I work")
+            imageUri = mediaStoreAlloc("image/jpeg")
+            forTakePicture.launch(imageUri)
+        }
+
+        view.receiptButton.setOnClickListener {
             imageUri = mediaStoreAlloc("image/jpeg")
             forTakePicture.launch(imageUri)
         }
