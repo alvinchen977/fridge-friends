@@ -91,7 +91,6 @@ class PostActivity : AppCompatActivity() {
             }
         }.launch(arrayOf(
             Manifest.permission.CAMERA,
-            Manifest.permission.RECORD_AUDIO,
             Manifest.permission.READ_EXTERNAL_STORAGE))
 
         forCropResult =
@@ -133,6 +132,7 @@ class PostActivity : AppCompatActivity() {
         view.receiptButton.setOnClickListener {
             imageUri = mediaStoreAlloc("image/jpeg")
             forTakePicture.launch(imageUri)
+            //convert to pdf
         }
 
     }
