@@ -1,2 +1,2 @@
-IP: ec2-18-118-131-242.us-east-2.compute.amazonaws.com
-DNS: 18.118.131.242
+DNS: ec2-18-118-131-242.us-east-2.compute.amazonaws.com
+IP: 18.118.131.242
