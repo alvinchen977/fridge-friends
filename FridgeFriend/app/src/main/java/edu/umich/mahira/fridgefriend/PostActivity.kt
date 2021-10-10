@@ -14,6 +14,13 @@ import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import edu.umich.mahira.fridgefriend.databinding.ActivityPostBinding
+import android.graphics.BitmapFactory
+
+import android.graphics.pdf.PdfDocument
+import android.graphics.pdf.PdfDocument.PageInfo
+import okhttp3.internal.wait
+import java.io.FileOutputStream
+
 
 class PostActivity : AppCompatActivity() {
 
@@ -22,6 +29,7 @@ class PostActivity : AppCompatActivity() {
     private lateinit var view: ActivityPostBinding
 
     private var imageUri: Uri? = null
+
 
     private fun doCrop(intent: Intent?) {
         intent ?: run {
@@ -46,6 +54,30 @@ class PostActivity : AppCompatActivity() {
             else
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
             values)
+    }
+
+    // Convert to pdf Function
+    private fun convertToPdf(pathToPicture: String){
+        val bitmap = BitmapFactory.decodeFile(pathToPicture)
+        val name = pathToPicture.substringAfterLast("/").substringBeforeLast(".jpeg")
+        val pdfDocument = PdfDocument()
+
+        val myPageInfo = PageInfo.Builder(960, 1280, 1).create()
+        val page = pdfDocument.startPage(myPageInfo)
+
+        val float1 = 0
+        val float2 = 0
+
+        page.canvas.drawBitmap(bitmap,float1.toFloat(),float2.toFloat(), null)
+        pdfDocument.finishPage(page)
+
+
+        var directory = Environment.DIRECTORY_DOCUMENTS
+        var pdfFile = "$directory/$name.pdf"
+
+
+        pdfDocument.writeTo( FileOutputStream(pdfFile))
+        pdfDocument.close()
     }
 
     private fun initCropIntent(): Intent? {
@@ -116,6 +148,7 @@ class PostActivity : AppCompatActivity() {
             return
         }
 
+        // Take the food picture
         val forTakePicture = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
                 doCrop(cropIntent)
@@ -123,16 +156,26 @@ class PostActivity : AppCompatActivity() {
                 Log.d("TakePicture", "failed")
             }
         }
-
+        // Take the Receipt picture
+        val forReceiptTakePicture = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+            if (success) {
+                doCrop(cropIntent)
+                val uriPathHelper = URIPathHelper()
+                val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
+                convertToPdf(filePath.toString())
+            } else {
+                Log.d("TakePicture", "failed")
+            }
+        }
+        // Food picture
         view.addImage.setOnClickListener {
             imageUri = mediaStoreAlloc("image/jpeg")
             forTakePicture.launch(imageUri)
         }
-
+        // Receipt Picture
         view.receiptButton.setOnClickListener {
             imageUri = mediaStoreAlloc("image/jpeg")
-            forTakePicture.launch(imageUri)
-            //convert to pdf
+            forReceiptTakePicture.launch(imageUri)
         }
 
     }
