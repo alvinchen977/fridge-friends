@@ -5,6 +5,7 @@ import android.content.ComponentName
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,7 +19,10 @@ import android.graphics.BitmapFactory
 
 import android.graphics.pdf.PdfDocument
 import android.graphics.pdf.PdfDocument.PageInfo
+import android.util.Base64
 import okhttp3.internal.wait
+import java.io.ByteArrayOutputStream
+import java.io.File
 import java.io.FileOutputStream
 
 
@@ -152,6 +156,16 @@ class PostActivity : AppCompatActivity() {
         val forTakePicture = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
                 doCrop(cropIntent)
+                if (imageUri != null) {
+                    val uriPathHelper = URIPathHelper()
+                    val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
+                    val imageFile = File (filePath!!)
+                    val bm = BitmapFactory.decodeFile(imageFile.toString())
+                    val bOut = ByteArrayOutputStream()
+                    bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
+                    val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
+                    println(base64Image)
+                }
             } else {
                 Log.d("TakePicture", "failed")
             }
