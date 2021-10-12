@@ -20,7 +20,12 @@ import android.graphics.BitmapFactory
 import android.graphics.pdf.PdfDocument
 import android.graphics.pdf.PdfDocument.PageInfo
 import android.util.Base64
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley.newRequestQueue
 import okhttp3.internal.wait
+import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -31,6 +36,9 @@ class PostActivity : AppCompatActivity() {
     private lateinit var forCropResult: ActivityResultLauncher<Intent>
 
     private lateinit var view: ActivityPostBinding
+
+    private val serverUrl = "https://18.118.131.242"
+    private lateinit var queue: RequestQueue
 
     private var imageUri: Uri? = null
 
@@ -165,6 +173,21 @@ class PostActivity : AppCompatActivity() {
                     bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
                     val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
                     println(base64Image)
+                    val jsonObj = mapOf(
+                        "image" to base64Image
+                    )
+                    val postRequest = JsonObjectRequest(
+                        Request.Method.POST,
+                        "$serverUrl/postGrocery/", JSONObject(jsonObj),
+                        { Log.d("postImage", "image posted!") },
+                        { error -> Log.e("postImage", error.localizedMessage ?: "JsonObjectRequest error") }
+                    )
+
+                    if (!this::queue.isInitialized) {
+                        queue = newRequestQueue(applicationContext)
+                    }
+                    queue.add(postRequest)
+
                 }
             } else {
                 Log.d("TakePicture", "failed")
@@ -188,7 +211,7 @@ class PostActivity : AppCompatActivity() {
         }
         // Receipt Picture
         view.receiptButton.setOnClickListener {
-            imageUri = mediaStoreAlloc("image/jpeg")
+            imageUri = mediaStoreAlloc("pdf")
             forReceiptTakePicture.launch(imageUri)
         }
 
