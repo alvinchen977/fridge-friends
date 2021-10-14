@@ -24,6 +24,7 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley.newRequestQueue
+import edu.umich.mahira.fridgefriend.GroceryItemStore.postGrocery
 import okhttp3.internal.wait
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
@@ -173,21 +174,8 @@ class PostActivity : AppCompatActivity() {
                     bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
                     val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
                     println(base64Image)
-                    val jsonObj = mapOf(
-                        "image" to base64Image
-                    )
-                    val postRequest = JsonObjectRequest(
-                        Request.Method.POST,
-                        "$serverUrl/postGrocery/", JSONObject(jsonObj),
-                        { Log.d("postImage", "image posted!") },
-                        { error -> Log.e("postImage", error.localizedMessage ?: "JsonObjectRequest error") }
-                    )
-
-                    if (!this::queue.isInitialized) {
-                        queue = newRequestQueue(applicationContext)
-                    }
-                    queue.add(postRequest)
-
+                    val image = GroceryItem(image = base64Image)
+                    postGrocery(applicationContext, image)
                 }
             } else {
                 Log.d("TakePicture", "failed")
