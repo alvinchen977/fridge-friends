@@ -166,7 +166,7 @@ class PostActivity : AppCompatActivity() {
         // Take the food picture
         val forTakePicture = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
-                doCrop(cropIntent)
+//                doCrop(cropIntent)
                 if (imageUri != null) {
                     val uriPathHelper = URIPathHelper()
                     val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
@@ -186,7 +186,7 @@ class PostActivity : AppCompatActivity() {
         // Take the Receipt picture
         val forReceiptTakePicture = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
-                doCrop(cropIntent)
+//                doCrop(cropIntent)
                 val uriPathHelper = URIPathHelper()
                 val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
                 convertToPdf(filePath.toString())
