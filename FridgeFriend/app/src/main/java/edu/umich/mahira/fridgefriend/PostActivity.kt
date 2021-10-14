@@ -24,6 +24,7 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley.newRequestQueue
+
 import edu.umich.mahira.fridgefriend.GroceryItemStore.postGrocery
 import okhttp3.internal.wait
 import org.json.JSONObject
@@ -71,8 +72,12 @@ class PostActivity : AppCompatActivity() {
 
     // Convert to pdf Function
     private fun convertToPdf(pathToPicture: String){
+        val name = pathToPicture.substringAfterLast("/").substringBeforeLast(".jpg")
+        var directory1 = pathToPicture.substringBeforeLast("/")
+        var directory = directory1.substringBeforeLast("/")
+        var pdfFile = "$directory/Documents/$name.pdf"
+
         val bitmap = BitmapFactory.decodeFile(pathToPicture)
-        val name = pathToPicture.substringAfterLast("/").substringBeforeLast(".jpeg")
         val pdfDocument = PdfDocument()
 
         val myPageInfo = PageInfo.Builder(960, 1280, 1).create()
@@ -84,12 +89,9 @@ class PostActivity : AppCompatActivity() {
         page.canvas.drawBitmap(bitmap,float1.toFloat(),float2.toFloat(), null)
         pdfDocument.finishPage(page)
 
+        val myPDFFile = File(pdfFile)
 
-        var directory = Environment.DIRECTORY_DOCUMENTS
-        var pdfFile = "$directory/$name.pdf"
-
-
-        pdfDocument.writeTo( FileOutputStream(pdfFile))
+        pdfDocument.writeTo(FileOutputStream(myPDFFile));
         pdfDocument.close()
     }
 
@@ -199,7 +201,7 @@ class PostActivity : AppCompatActivity() {
         }
         // Receipt Picture
         view.receiptButton.setOnClickListener {
-            imageUri = mediaStoreAlloc("pdf")
+            imageUri = mediaStoreAlloc("image/jpeg")
             forReceiptTakePicture.launch(imageUri)
         }
 
