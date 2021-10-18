@@ -20,16 +20,13 @@ import android.graphics.BitmapFactory
 import android.graphics.pdf.PdfDocument
 import android.graphics.pdf.PdfDocument.PageInfo
 import android.util.Base64
-import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley.newRequestQueue
 
 import edu.umich.mahira.fridgefriend.GroceryItemStore.postGrocery
-import okhttp3.internal.wait
-import org.json.JSONObject
+import edu.umich.mahira.fridgefriend.GroceryItemStore.postReceipt
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.FileInputStream
 import java.io.FileOutputStream
 
 
@@ -44,6 +41,17 @@ class PostActivity : AppCompatActivity() {
 
     private var imageUri: Uri? = null
 
+    fun getBase64FromPath(path: String?): String? {
+        var base64: String? = ""
+        val file = File(path)
+        val buffer = ByteArray(file.length().toInt() + 100)
+        val length: Int = FileInputStream(file).read(buffer)
+        base64 = Base64.encodeToString(
+            buffer, 0, length,
+            Base64.DEFAULT
+        )
+        return base64
+    }
 
     private fun doCrop(intent: Intent?) {
         intent ?: run {
@@ -175,7 +183,6 @@ class PostActivity : AppCompatActivity() {
                     val bOut = ByteArrayOutputStream()
                     bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
                     val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
-                    println(base64Image)
                     val image = GroceryItem(image = base64Image)
                     postGrocery(applicationContext, image)
                 }
@@ -190,6 +197,16 @@ class PostActivity : AppCompatActivity() {
                 val uriPathHelper = URIPathHelper()
                 val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
                 convertToPdf(filePath.toString())
+
+                val name = filePath.toString().substringAfterLast("/").substringBeforeLast(".jpg")
+                var directory1 = filePath.toString().substringBeforeLast("/")
+                var directory = directory1.substringBeforeLast("/")
+                var pdfFile = "$directory/Documents/$name.pdf"
+
+                val base64Image = getBase64FromPath(pdfFile)
+                val image = ReceiptItem(pdf = base64Image)
+
+                postReceipt(applicationContext, image)
             } else {
                 Log.d("TakePicture", "failed")
             }
