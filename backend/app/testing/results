@@ -1,0 +1,1094 @@
+{
+  "responses": [
+    {
+      "labelAnnotations": [
+        {
+          "mid": "/m/09q2t",
+          "description": "Brown",
+          "score": 0.98046786,
+          "topicality": 0.98046786
+        },
+        {
+          "mid": "/m/01yrx",
+          "description": "Cat",
+          "score": 0.9577805,
+          "topicality": 0.9577805
+        },
+        {
+          "mid": "/m/0307l",
+          "description": "Felidae",
+          "score": 0.88951474,
+          "topicality": 0.88951474
+        },
+        {
+          "mid": "/m/01lrl",
+          "description": "Carnivore",
+          "score": 0.8854874,
+          "topicality": 0.8854874
+        },
+        {
+          "mid": "/m/07k6w8",
+          "description": "Small to medium-sized cats",
+          "score": 0.87679493,
+          "topicality": 0.87679493
+        },
+        {
+          "mid": "/m/01l7qd",
+          "description": "Whiskers",
+          "score": 0.8494279,
+          "topicality": 0.8494279
+        },
+        {
+          "mid": "/m/0276krm",
+          "description": "Fawn",
+          "score": 0.81589663,
+          "topicality": 0.81589663
+        },
+        {
+          "mid": "/m/0fbf1m",
+          "description": "Terrestrial animal",
+          "score": 0.805313,
+          "topicality": 0.805313
+        },
+        {
+          "mid": "/m/06z_nw",
+          "description": "Tail",
+          "score": 0.74303496,
+          "topicality": 0.74303496
+        },
+        {
+          "mid": "/m/05mqq3",
+          "description": "Snout",
+          "score": 0.7387182,
+          "topicality": 0.7387182
+        },
+        {
+          "mid": "/m/01280g",
+          "description": "Wildlife",
+          "score": 0.6371071,
+          "topicality": 0.6371071
+        },
+        {
+          "mid": "/m/0cnmr",
+          "description": "Fur",
+          "score": 0.5405553,
+          "topicality": 0.5405553
+        }
+      ],
+      "safeSearchAnnotation": {
+        "adult": "VERY_UNLIKELY",
+        "spoof": "UNLIKELY",
+        "medical": "VERY_UNLIKELY",
+        "violence": "VERY_UNLIKELY",
+        "racy": "VERY_UNLIKELY"
+      },
+      "imagePropertiesAnnotation": {
+        "dominantColors": {
+          "colors": [
+            {
+              "color": {
+                "red": 98,
+                "green": 73,
+                "blue": 47
+              },
+              "score": 0.23744027,
+              "pixelFraction": 0.068825394
+            },
+            {
+              "color": {
+                "red": 152,
+                "green": 109,
+                "blue": 65
+              },
+              "score": 0.20709433,
+              "pixelFraction": 0.050539684
+            },
+            {
+              "color": {
+                "red": 227,
+                "green": 225,
+                "blue": 224
+              },
+              "score": 0.002172441,
+              "pixelFraction": 0.4831746
+            },
+            {
+              "color": {
+                "red": 74,
+                "green": 54,
+                "blue": 34
+              },
+              "score": 0.17812188,
+              "pixelFraction": 0.0791746
+            },
+            {
+              "color": {
+                "red": 119,
+                "green": 80,
+                "blue": 41
+              },
+              "score": 0.107377656,
+              "pixelFraction": 0.022095239
+            },
+            {
+              "color": {
+                "red": 189,
+                "green": 141,
+                "blue": 95
+              },
+              "score": 0.08681101,
+              "pixelFraction": 0.02215873
+            },
+            {
+              "color": {
+                "red": 110,
+                "green": 77,
+                "blue": 48
+              },
+              "score": 0.04119191,
+              "pixelFraction": 0.0139047615
+            },
+            {
+              "color": {
+                "red": 143,
+                "green": 105,
+                "blue": 74
+              },
+              "score": 0.026767384,
+              "pixelFraction": 0.011428571
+            },
+            {
+              "color": {
+                "red": 79,
+                "green": 51,
+                "blue": 28
+              },
+              "score": 0.024563685,
+              "pixelFraction": 0.0069841268
+            },
+            {
+              "color": {
+                "red": 139,
+                "green": 110,
+                "blue": 79
+              },
+              "score": 0.023711365,
+              "pixelFraction": 0.014095238
+            }
+          ]
+        }
+      },
+      "cropHintsAnnotation": {
+        "cropHints": [
+          {
+            "boundingPoly": {
+              "vertices": [
+                {
+                  "y": 214
+                },
+                {
+                  "x": 999,
+                  "y": 214
+                },
+                {
+                  "x": 999,
+                  "y": 965
+                },
+                {
+                  "y": 965
+                }
+              ]
+            },
+            "confidence": 0.34375,
+            "importanceFraction": 0.8874028
+          }
+        ]
+      },
+      "webDetection": {
+        "webEntities": [
+          {
+            "entityId": "/m/09747c",
+            "score": 1.8146371,
+            "description": "Abyssinian"
+          },
+          {
+            "entityId": "/m/0gzxy",
+            "score": 1.159059,
+            "description": "Bengal cat"
+          },
+          {
+            "entityId": "/m/02zjz9",
+            "score": 1.0093216,
+            "description": "Oriental Shorthair"
+          },
+          {
+            "entityId": "/m/012zzh",
+            "score": 0.98409307,
+            "description": "Somali cat"
+          },
+          {
+            "entityId": "/m/0hjzp",
+            "score": 0.9708,
+            "description": "Kitten"
+          },
+          {
+            "entityId": "/m/0g4cd0",
+            "score": 0.92895,
+            "description": "Tabby cat"
+          },
+          {
+            "entityId": "/m/0h06f",
+            "score": 0.7106,
+            "description": "Cat Breed"
+          },
+          {
+            "entityId": "/m/012c9l",
+            "score": 0.6171,
+            "description": "Domestic short-haired cat"
+          },
+          {
+            "entityId": "/m/01nlxs",
+            "score": 0.5987,
+            "description": "Breed"
+          },
+          {
+            "entityId": "/m/0bt9lr",
+            "score": 0.5964,
+            "description": "Dog"
+          },
+          {
+            "entityId": "/m/027nbhp",
+            "score": 0.5329,
+            "description": "Cattery"
+          },
+          {
+            "entityId": "/m/0c41p1c",
+            "score": 0.5253,
+            "description": "Calico cat"
+          },
+          {
+            "entityId": "/g/120wqxtz",
+            "score": 0.4892,
+            "description": "Purebred"
+          },
+          {
+            "entityId": "/g/11c3wwbqp6",
+            "score": 0.4675,
+            "description": "Priceless Pet Rescue"
+          },
+          {
+            "entityId": "/m/01yrx",
+            "score": 2.8450565e-06,
+            "description": "Cat"
+          }
+        ],
+        "fullMatchingImages": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Gustav_chocolate.jpg/1280px-Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://qph.fs.quoracdn.net/main-qimg-000c7e2acaf1037cc6edae5066e4a9cc"
+          },
+          {
+            "url": "https://pbs.twimg.com/media/EKOmkMGXkAA2B81.jpg:large"
+          },
+          {
+            "url": "https://static.wikia.nocookie.net/catstips/images/9/9b/Gustav_chocolate.jpg/revision/latest?cb=20120312035746"
+          },
+          {
+            "url": "https://qph.fs.quoracdn.net/main-qimg-295abbab4425d1bfc15ecdf144853937-c"
+          },
+          {
+            "url": "https://catton.jp/wp/wp-content/uploads/2019/09/%E3%82%A2%E3%83%93%E3%82%B7%E3%83%8B%E3%82%A2%E3%83%B3.jpg"
+          },
+          {
+            "url": "https://de-academic.com/pictures/dewiki/71/Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://i.imgur.com/ZxwmJY1.jpg"
+          },
+          {
+            "url": "https://static.wikia.nocookie.net/animals/images/9/9b/Gustav_chocolate.jpg/revision/latest/scale-to-width-down/1000?cb=20160616144446&path-prefix=ar"
+          },
+          {
+            "url": "http://gatitosygatos.com/wp-content/uploads/2016/04/razas-gato-abisinio-gatitosygatos.jpg"
+          },
+          {
+            "url": "https://www.segerios.com/wp-content/uploads/2016/09/Amazing-Red-Abyssinian-Cat-Looking-For-Food.jpg"
+          },
+          {
+            "url": "https://uquiz.com/content/images/personalities/personality_images/144717_1600923009.jpg"
+          },
+          {
+            "url": "https://images.squarespace-cdn.com/content/v1/5eecbaa0d4a53f4107296796/1596559442405-8KJNE3DSEF6C5R6V75BM/Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://www.ibric.org/upload/geditor/202012/0.83685600_1607301788.png"
+          },
+          {
+            "url": "https://64.media.tumblr.com/d7fec584f07cf5958950ce5c1425cb60/tumblr_inline_ot4ublyEFD1rqv40j_1280.png"
+          },
+          {
+            "url": "https://1.bp.blogspot.com/-OtqbWGMGtq0/VtWOGZ5THjI/AAAAAAAAACA/Y8GCLUP-yaw/s1600/Gustav_chocolate.jpg"
+          },
+          {
+            "url": "http://1.bp.blogspot.com/-vBTKUOgdgJw/UpSjoOvjb0I/AAAAAAAAABw/jlq1IdZkPPU/s1600/Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/originals/8e/13/2f/8e132fae451342d4512dde3b052fda3e.jpg"
+          },
+          {
+            "url": "https://www.animaleamico.com/public/razze/294/FT_717471.jpg"
+          },
+          {
+            "url": "http://do-butsu.com/wp-content/uploads/2016/01/Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://pbs.twimg.com/media/Eis3rSZXgAAKWT3?format=jpg&name=large"
+          },
+          {
+            "url": "https://t1.daumcdn.net/cfile/blog/99C997425AEAFE0E08"
+          },
+          {
+            "url": "https://pbs.twimg.com/media/Eis3rSZXgAAKWT3.jpg"
+          },
+          {
+            "url": "https://qph.fs.quoracdn.net/main-qimg-41c3e537f65cb97641439c30b342759d"
+          },
+          {
+            "url": "https://pbs.twimg.com/media/EKOmkMGXkAA2B81.jpg"
+          },
+          {
+            "url": "https://pbs.twimg.com/media/E5_8uafUYAEHmad.jpg"
+          },
+          {
+            "url": "https://images.saymedia-content.com/.image/t_share/MTc2NDY1NDUxMzY5NzY4OTIy/most-sought-after-cat-breeds.jpg"
+          },
+          {
+            "url": "https://images.saymedia-content.com/.image/t_share/MTc0OTY4MTczNjkzNzA3NzE2/top-10-smartest-cat-breeds.jpg"
+          },
+          {
+            "url": "https://krasivosti.pro/uploads/posts/2021-03/1616468326_28-p-assiriiskaya-koshka-foto-koshka-29.jpg"
+          },
+          {
+            "url": "https://t1.bdtcdn.net/photos/2021/07/61043551fcb48f1c7d8dc156_800x0xcover_AYaUdzNn.jpg"
+          },
+          {
+            "url": "https://media0.webgarden.cz/images/media0:5c865cb3e92fc.jpg/800px-Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/originals/ca/dc/b9/cadcb910352bbd6d8291f363d61ed620.jpg"
+          },
+          {
+            "url": "https://www.lebernard.ca/wp-content/uploads/2015/11/Chat-abyssin-elevage.jpg"
+          },
+          {
+            "url": "https://www.zivalnik.si/site/assets/files/7824/abesinka_-_aby.jpg"
+          },
+          {
+            "url": "https://www.ilmiogattoeleggenda.it/wp-content/uploads/2019/08/chocolate.jpg"
+          },
+          {
+            "url": "https://www.domashniy-comfort.ru/images/stories/picture/abis/abis_012.jpg"
+          },
+          {
+            "url": "https://pic4.zhimg.com/80/v2-757d90b7016c3dfffec240b2bfbb2bc3_1440w.jpg"
+          },
+          {
+            "url": "https://toplist.vn/images/800px/meo-long-ngan-abyssinian-507187.jpg"
+          },
+          {
+            "url": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Fblog%2F99C997425AEAFE0E08"
+          },
+          {
+            "url": "https://media.topic.vn/articles/2020/giong-meo-thong-minh-nhat-the-gioi-10ce6b.jpg"
+          },
+          {
+            "url": "https://www.toateanimalele.ro/pisici/abyssiniana/attachment/abyssinian-cat8/"
+          },
+          {
+            "url": "https://umbrella.green//wp-content/uploads/2017/03/4-105.jpg"
+          },
+          {
+            "url": "https://alchetron.com/cdn/abyssinian-cat-3e71224d-e428-4dbc-ac73-c2e3c2cd1c0-resize-750.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/736x/ca/dc/b9/cadcb910352bbd6d8291f363d61ed620.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/736x/8e/13/2f/8e132fae451342d4512dde3b052fda3e--most-popular-breeds-of-cats.jpg"
+          },
+          {
+            "url": "https://pic4.zhimg.com/v2-757d90b7016c3dfffec240b2bfbb2bc3_b.jpg"
+          },
+          {
+            "url": "https://res.cloudinary.com/jerrick/image/upload/f_jpg,q_auto,w_720/60bea5d46d6b7e001e452249.jpg"
+          },
+          {
+            "url": "https://pbs.twimg.com/media/EXGRfO6WkAA_dIK.jpg"
+          },
+          {
+            "url": "https://s.kaskus.id/images/2014/12/24/6061775_20141224040241.jpg"
+          },
+          {
+            "url": "https://nicetopic.net/wp-content/uploads/2021/04/37-10.jpg"
+          }
+        ],
+        "partialMatchingImages": [
+          {
+            "url": "https://images.squarespace-cdn.com/content/v1/5eecbaa0d4a53f4107296796/1596559442405-8KJNE3DSEF6C5R6V75BM/Gustav_chocolate.jpg?format=500w"
+          },
+          {
+            "url": "https://www.bengalishsbengals.com/x/cdn/?https://storage.googleapis.com/wzukusers/user-15043037/images/55f2cd15ea0066c7LtWd/abysinian.jpg"
+          },
+          {
+            "url": "https://usercontent2.hubstatic.com/11959699_f520.jpg"
+          },
+          {
+            "url": "https://lt.freejournal.info/storage/small/475721.jpg"
+          },
+          {
+            "url": "http://sans-demeure.net/wp-content/uploads/2021/07/Gustav_chocolate-700x999.png"
+          },
+          {
+            "url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1620237474i/31286353.jpg"
+          },
+          {
+            "url": "https://pm1.narvii.com/6804/412f8d5c7d9d5a245dd865a89153ed6356821284v2_hq.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/236x/b1/cc/03/b1cc039128392a69ff84bbf1e719152c--most-popular-breeds-of-cats.jpg"
+          },
+          {
+            "url": "https://tse1.mm.bing.net/th?id=OIP.FGBBS0f-SH6afZXol4ECxwHaKk&pid=15.1"
+          },
+          {
+            "url": "https://mblogthumb-phinf.pstatic.net/MjAxODA2MDZfMjc1/MDAxNTI4MjQzNTg2NTA2.j6j2p5amuv4DWTCPoV6F93NzSlkpcZd9kT-B9UFFJHwg.QXFzPI6l50iyGrmgzAp-4ubZ0tRoDD2K20WEO88cnmAg.JPEG.ooc1001/Adult-Brown-Abyssinian-Cat-Looking-At-Someone.jpg?type=w800"
+          },
+          {
+            "url": "https://stat.ameba.jp/user_images/20180729/16/hirs921/2b/31/j/o0800114214237729723.jpg?caw=800"
+          },
+          {
+            "url": "https://www.nature.com/scitable/content/ne0000/ne0000/ne0000/ne0000/113909990/chocolate_2_1.jpg"
+          },
+          {
+            "url": "https://64.media.tumblr.com/d7fec584f07cf5958950ce5c1425cb60/tumblr_inline_ot4ublyEFD1rqv40j_500.png"
+          },
+          {
+            "url": "https://i2.kknews.cc/SIG=1sia24f/53sp00016s9ss82356on.jpg"
+          },
+          {
+            "url": "https://i0.wp.com/upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg?resize=300%2C428&ssl=1"
+          },
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Gustav_chocolate.jpg/400px-Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Gustav_chocolate.jpg/450px-Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://mblogthumb-phinf.pstatic.net/20130522_38/vitaminmd_1369207373395ypmbA_JPEG/20130521153232_786f3d7b2c90402.jpg?type=w2"
+          },
+          {
+            "url": "https://www.perfectcompanion.com/wp-content/uploads/2020/12/800px-Gustav_chocolate-210x300.jpg"
+          },
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Gustav_chocolate.jpg/250px-Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/originals/30/8c/58/308c589a0d6dcfe5fe9db988a853fee7.jpg"
+          },
+          {
+            "url": "https://i1.kknews.cc/SIG=k3s4m1/18no000086699r537n96.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/236x/a2/cf/51/a2cf51157899548a1f5e7fd0d5875944--most-popular-breeds-of-cats.jpg"
+          },
+          {
+            "url": "http://1.bp.blogspot.com/-4XcwPbmFjIE/UH4XTz71fGI/AAAAAAAAAGk/XjFYdvFRzCY/s1600/gambar-kucing-Abyssinian.jpg"
+          },
+          {
+            "url": "http://www.losipet.net/wp-content/uploads/2012/05/420px-Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://i1.wp.com/petcaramelo.com/wp-content/uploads/2021/05/Gato-Abissinio-sentado.jpg?resize=289%2C413&ssl=1"
+          },
+          {
+            "url": "https://annaabi.ee/mpic.php?inside=47093/1-3_7.jpg"
+          },
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Gustav_chocolate.jpg/500px-Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://cactuslotus.files.wordpress.com/2011/07/235px-gustav_chocolate.jpg?w=584"
+          },
+          {
+            "url": "http://2.bp.blogspot.com/-iBXFl1gdW9M/UdzCUbKYBII/AAAAAAAAPLY/dIVf3-_DNvE/s1600/abb.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/222x/37/d8/78/37d8783cfa25fe97f82584226d467179.jpg"
+          },
+          {
+            "url": "https://images.twgreatdaily.com/images/elastic/P2d/P2du8W4BMH2_cNUgyPc_.jpg"
+          },
+          {
+            "url": "https://i2.kknews.cc/SIG=87q3l0/ctp-vzntr/3o14056o56pr4o9s8194orso94830s27.jpg"
+          },
+          {
+            "url": "https://qph.fs.quoracdn.net/main-qimg-869a71303dafebdebe943314d3912c64-lq"
+          },
+          {
+            "url": "https://ekolss.com/img/animals/79/abyssinian-6.jpg"
+          },
+          {
+            "url": "https://static.wikia.nocookie.net/cats/images/9/9b/Gustav_chocolate.jpg/revision/latest/scale-to-width-down/250?cb=20110217214935&path-prefix=en"
+          },
+          {
+            "url": "https://i2.kknews.cc/SIG=pin998/438300025966on982so1.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/222x/30/8c/58/308c589a0d6dcfe5fe9db988a853fee7.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/236x/ed/5d/1a/ed5d1a1f38d0b3ca99e725561ec88c67--most-popular-breeds-of-cats.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/474x/ca/dc/b9/cadcb910352bbd6d8291f363d61ed620.jpg"
+          },
+          {
+            "url": "http://photocdn.sohu.com/20110224/Img303554992.jpg"
+          },
+          {
+            "url": "https://img.mttmp.com/images/2018/03/24/20/1629_oVLYBL_v7o9hnf.jpg!r800x0.jpg"
+          },
+          {
+            "url": "https://i1.kknews.cc/SIG=9kauet/28860003p79753209q68.jpg"
+          },
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Gustav_chocolate.jpg/200px-Gustav_chocolate.jpg"
+          },
+          {
+            "url": "http://3.bp.blogspot.com/_Gs919Hqf1qA/S_tpgunvc_I/AAAAAAAAAHc/I0QbsvaWeEc/s1600/235px-Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/222x/f1/0e/a6/f10ea66a2d20f44b68352fa6a075fe96.jpg"
+          },
+          {
+            "url": "http://3.bp.blogspot.com/_Gs919Hqf1qA/S_tpgunvc_I/AAAAAAAAAHc/I0QbsvaWeEc/s400/235px-Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://i.pinimg.com/originals/42/82/03/4282035a54ae0c4ae7fc4ee3377c3eae.jpg"
+          },
+          {
+            "url": "https://pbs.twimg.com/media/D0_I5RCVsAEiitz.jpg"
+          },
+          {
+            "url": "https://www.robbys-katzenwelt.de/abessinierkatze-gustav-chocola_200_285.jpg"
+          }
+        ],
+        "pagesWithMatchingImages": [
+          {
+            "url": "https://www.sweetiekitty.com/cat-breed/abyssinian/",
+            "pageTitle": "\u003cb\u003eAbyssinian Kittens for Sale\u003c/b\u003e &amp; Cats for Adoption | Sweetie Kitty - 2021",
+            "fullMatchingImages": [
+              {
+                "url": "https://www.sweetiekitty.com/wp-content/uploads/2017/02/Abyssinian.jpg"
+              }
+            ]
+          },
+          {
+            "url": "http://siggysparadise.com/kittens-for-sale/abyssinian-cat-breeders/",
+            "pageTitle": "\u003cb\u003eAbyssinian Cat Breeders\u003c/b\u003e in the United States | Available - Siggy&#39;s ...",
+            "fullMatchingImages": [
+              {
+                "url": "http://siggysparadise.com/wp-content/uploads/2018/08/Abyssinian.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://monencogroup.com/jcss.aspx?iid=167466982&cid=42",
+            "pageTitle": "\u003cb\u003eabyssinian cat for sale\u003c/b\u003e cheap online",
+            "fullMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/originals/8e/13/2f/8e132fae451342d4512dde3b052fda3e.jpg"
+              }
+            ]
+          },
+          {
+            "url": "http://obeki.com/notes.php?iid=160533627-abyssinian+cat+price&cid=6",
+            "pageTitle": "\u003cb\u003eabyssinian cat price\u003c/b\u003e - Obeki",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Abyssinian_cat",
+            "pageTitle": "\u003cb\u003eAbyssinian cat\u003c/b\u003e - Wikipedia",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.targetsportsindia.com/daar.aspx?cid=42&shop=abyssinian+cat+for+sale&xi=1&xc=36&pr=41.99&you=",
+            "pageTitle": "\u003cb\u003eabyssinian cat for sale\u003c/b\u003e Online Shopping - - Target Sports INDIA",
+            "fullMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/originals/8e/13/2f/8e132fae451342d4512dde3b052fda3e.jpg"
+              }
+            ]
+          },
+          {
+            "url": "http://kemchho.com/daar.aspx?cid=42&shop=abyssinian+kittens+for+sale&xi=1&xc=36&pr=40.99&you=",
+            "pageTitle": "\u003cb\u003eabyssinian kittens for sale\u003c/b\u003e Online Shopping - - Kemchho",
+            "partialMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/originals/fc/74/b0/fc74b0295c19d5ce2e176c6e1d0fa761.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.targetsportsindia.com/daar.aspx?cid=42&shop=abyssinian+kittens+for+sale+gumtree&xi=1&xc=36&pr=41.99&you=",
+            "pageTitle": "\u003cb\u003eabyssinian kittens for sale\u003c/b\u003e gumtree Online Shopping - - air guns ...",
+            "fullMatchingImages": [
+              {
+                "url": "https://www.sweetiekitty.com/wp-content/uploads/2017/02/Abyssinian.jpg"
+              }
+            ]
+          },
+          {
+            "url": "http://kemchho.com/daar.aspx?cid=42&shop=abyssinian+cat+price&xi=1&xc=36&pr=40.99&you=",
+            "pageTitle": "\u003cb\u003eabyssinian cat price\u003c/b\u003e Online Shopping - - Kemchho",
+            "fullMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/originals/8e/13/2f/8e132fae451342d4512dde3b052fda3e.jpg"
+              }
+            ]
+          },
+          {
+            "url": "http://kemchho.com/daar.aspx?cid=43&shop=abyssinian+cats+for+sale+near+me&xi=1&xc=36&pr=41.99&you=",
+            "pageTitle": "\u003cb\u003eabyssinian cats for sale\u003c/b\u003e near me Online Shopping - - Kemchho",
+            "fullMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/originals/8e/13/2f/8e132fae451342d4512dde3b052fda3e.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://educalingo.com/en/dic-en/abyssinian-cat",
+            "pageTitle": "Definition and synonyms of \u003cb\u003eAbyssinian cat\u003c/b\u003e in the English dictionary",
+            "fullMatchingImages": [
+              {
+                "url": "https://static.educalingo.com/img/en/800/abyssinian-cat.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://punch-us.com/jcss.aspx?iid=170484013&cid=43",
+            "pageTitle": "\u003cb\u003eabyssinian cat adoption\u003c/b\u003e cheap online",
+            "fullMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/originals/8e/13/2f/8e132fae451342d4512dde3b052fda3e.jpg"
+              }
+            ]
+          },
+          {
+            "url": "http://kemchho.com/daar.aspx?cid=43&shop=abyssinian+cat+adoption&xi=1&xc=36&pr=41.99&you=",
+            "pageTitle": "\u003cb\u003eabyssinian cat adoption\u003c/b\u003e Online Shopping - - Kemchho",
+            "fullMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/originals/8e/13/2f/8e132fae451342d4512dde3b052fda3e.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.ccaschoolgurgaon.org/fast.aspx?cid=42&shop=abyssinian+cat+price&xi=1&xc=36&pr=41.99&you=",
+            "pageTitle": "\u003cb\u003eabyssinian cat price\u003c/b\u003e Online Shopping - - CCA SCHOOL GURGAON",
+            "fullMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/originals/8e/13/2f/8e132fae451342d4512dde3b052fda3e.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.pinterest.ch/pin/544091198704594551/",
+            "pageTitle": "\u003cb\u003eAbyssinian kittens for sale\u003c/b\u003e, Abyssinian kittens, Cat breeds - Pinterest",
+            "partialMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/originals/30/8c/58/308c589a0d6dcfe5fe9db988a853fee7.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.pinterest.com/spottedfire852/abyssinian/",
+            "pageTitle": "120 Abyssinian ideas | \u003cb\u003eabyssinian cats\u003c/b\u003e, abyssinian, cat breeds",
+            "partialMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/originals/42/82/03/4282035a54ae0c4ae7fc4ee3377c3eae.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.pinterest.com/malonecarm/those-amazing-creatures/",
+            "pageTitle": "900+ Those amazing creatures ideas - Pinterest",
+            "partialMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/236x/ca/dc/b9/cadcb910352bbd6d8291f363d61ed620.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.pinterest.com/redcheddarcat/beautiful-abyssinian-cats/",
+            "pageTitle": "34 Beautiful \u003cb\u003eAbyssinian Cats\u003c/b\u003e ❤️ ideas - Pinterest",
+            "partialMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/170x/be/f6/19/bef619efe6c91dd3a59f948d699a976c.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://brainstudy.info/images/abyssinian-cat-rescue-texas",
+            "pageTitle": "\u003cb\u003eAbyssinian Cat\u003c/b\u003e Rescue Texas - brainstudy.info",
+            "fullMatchingImages": [
+              {
+                "url": "http://siggysparadise.com/wp-content/uploads/2018/08/Abyssinian.jpg"
+              }
+            ]
+          },
+          {
+            "url": "http://cats-kingdom.blogspot.com/2011/03/ruddy-abyssinian-cat-ruddy-tawny-or.html",
+            "pageTitle": "Ruddy \u003cb\u003eAbyssinian Cat\u003c/b\u003e | Tawny or Usual - Encyclopedia of Cats Breed",
+            "partialMatchingImages": [
+              {
+                "url": "http://2.bp.blogspot.com/-FZDE37oyDR8/TZTPKf_e7bI/AAAAAAAAGQU/MSe-KglIWU8/s400/Ruddy%2BAby%2B32.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.pinterest.co.kr/pin/336151559658192262/",
+            "pageTitle": "Abyssinian kittens, Abyssinian cats, \u003cb\u003eAbyssinian kittens for sale\u003c/b\u003e",
+            "partialMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/originals/30/8c/58/308c589a0d6dcfe5fe9db988a853fee7.jpg"
+              },
+              {
+                "url": "https://i.pinimg.com/564x/30/8c/58/308c589a0d6dcfe5fe9db988a853fee7--most-popular-breeds-of-cats.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.pinterest.co.uk/cjc7474/abyssinian-somali/",
+            "pageTitle": "\u003cb\u003eAbyssinian\u003c/b\u003e / Somali... - Pinterest",
+            "partialMatchingImages": [
+              {
+                "url": "https://i.pinimg.com/236x/ca/dc/b9/cadcb910352bbd6d8291f363d61ed620.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.redbubble.com/shop/abyssinian+cat+stickers",
+            "pageTitle": "\u003cb\u003eAbyssinian Cat\u003c/b\u003e Stickers | Redbubble",
+            "partialMatchingImages": [
+              {
+                "url": "https://ih1.redbubble.net/image.2285677614.7714/st,small,507x507-pad,600x600,f8f8f8.jpg"
+              }
+            ]
+          },
+          {
+            "url": "http://navyugconvent.edu.in/fast.aspx?cid=42&shop=black+and+white+abyssinian+cat&xi=0&xc=38&pr=40.99&you=",
+            "pageTitle": "black and white \u003cb\u003eabyssinian cat\u003c/b\u003e Online Shopping - - Navyug Convent ...",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.redbubble.com/shop/abyssinian+cat",
+            "pageTitle": "\u003cb\u003eAbyssinian Cat\u003c/b\u003e Gifts &amp; Merchandise | Redbubble",
+            "partialMatchingImages": [
+              {
+                "url": "https://ih1.redbubble.net/image.2285677614.7714/st,small,507x507-pad,600x600,f8f8f8.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://cats.fandom.com/wiki/Abyssinian",
+            "pageTitle": "\u003cb\u003eAbyssinian\u003c/b\u003e | \u003cb\u003eCats\u003c/b\u003e Wiki | Fandom",
+            "partialMatchingImages": [
+              {
+                "url": "https://static.wikia.nocookie.net/cats/images/9/9b/Gustav_chocolate.jpg/revision/latest/scale-to-width-down/250?cb=20110217214935&path-prefix=en"
+              }
+            ]
+          },
+          {
+            "url": "https://www.redbubble.com/shop/abyssinian+stickers",
+            "pageTitle": "\u003cb\u003eAbyssinian\u003c/b\u003e Stickers | Redbubble",
+            "partialMatchingImages": [
+              {
+                "url": "https://ih1.redbubble.net/image.2285677614.7714/st,small,507x507-pad,600x600,f8f8f8.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.registeredpets.co.uk/abyssinian-breeders",
+            "pageTitle": "\u003cb\u003eAbyssinian Breeders\u003c/b\u003e - Registered Pets",
+            "fullMatchingImages": [
+              {
+                "url": "https://images.squarespace-cdn.com/content/v1/5eecbaa0d4a53f4107296796/1596559442405-8KJNE3DSEF6C5R6V75BM/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.segerios.com/amazing-abyssinian-cat-personality-2/",
+            "pageTitle": "Amazing \u003cb\u003eAbyssinian Cat\u003c/b\u003e Personality - Segerios.com",
+            "fullMatchingImages": [
+              {
+                "url": "https://www.segerios.com/wp-content/uploads/2016/09/Amazing-Red-Abyssinian-Cat-Looking-For-Food.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://insight-egypt.com/jvaa.php?iid=188437425-abyssinian+cat+similar+breeds&cid=46",
+            "pageTitle": "\u003cb\u003eabyssinian cat\u003c/b\u003e similar breeds cheap \u003cb\u003ebuy\u003c/b\u003e online - Insight-egypt",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "http://navyugconvent.edu.in/fast.aspx?cid=42&shop=black+and+white+abyssinian+cat&xi=0&xc=38&pr=54.99&you=",
+            "pageTitle": "black and white \u003cb\u003eabyssinian cat\u003c/b\u003e Online Shopping - - Navyug Convent ...",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.maine-coon-cat-nation.com/hypoallergenic-cat-breeds.html",
+            "pageTitle": "Hypoallergenic \u003cb\u003eCat\u003c/b\u003e Breeds",
+            "partialMatchingImages": [
+              {
+                "url": "https://www.maine-coon-cat-nation.com/images/abyssinian.jpeg"
+              }
+            ]
+          },
+          {
+            "url": "http://www.uptownsportsmedicine.com/idss.aspx?iid=179614346-white+abyssinian+cat&cid=45",
+            "pageTitle": "white+\u003cb\u003eabyssinian\u003c/b\u003e+\u003cb\u003ecat\u003c/b\u003e cheap \u003cb\u003ebuy\u003c/b\u003e online - Uptown Sports Medicine",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://october-daye.fandom.com/wiki/Raj",
+            "pageTitle": "Raj | October Daye Wiki",
+            "partialMatchingImages": [
+              {
+                "url": "https://static.wikia.nocookie.net/october-daye/images/e/eb/Abyssinian.jpg/revision/latest/top-crop/width/360/height/450?cb=20201015124414"
+              }
+            ]
+          },
+          {
+            "url": "https://www.targetsportsindia.com/daar.aspx?cid=42&shop=abyssinian+cat&xi=1&xc=36&pr=40.99&you=",
+            "pageTitle": "\u003cb\u003eabyssinian cat\u003c/b\u003e Online Shopping -",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://insight-egypt.com/jvaa.php?iid=159050992-facts+about+abyssinian+cats&cid=43",
+            "pageTitle": "facts about \u003cb\u003eabyssinian cats\u003c/b\u003e cheap \u003cb\u003ebuy\u003c/b\u003e online - Insight-egypt",
+            "partialMatchingImages": [
+              {
+                "url": "https://felinesfancy.com/packs/media/images/cats/abyssian-12d61f0f861757ff3b1af217a587d9e9.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://insight-egypt.com/jvaa.php?iid=159051152-facts+about+abyssinian+cats&cid=43",
+            "pageTitle": "facts about \u003cb\u003eabyssinian cats\u003c/b\u003e cheap \u003cb\u003ebuy\u003c/b\u003e online - Insight-egypt",
+            "partialMatchingImages": [
+              {
+                "url": "https://felinesfancy.com/packs/media/images/cats/abyssian-12d61f0f861757ff3b1af217a587d9e9.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://insight-egypt.com/jvaa.php?iid=159050976-facts+about+abyssinian+cats&cid=43",
+            "pageTitle": "facts about \u003cb\u003eabyssinian cats\u003c/b\u003e cheap \u003cb\u003ebuy\u003c/b\u003e online - Insight-egypt",
+            "partialMatchingImages": [
+              {
+                "url": "https://felinesfancy.com/packs/media/images/cats/abyssian-12d61f0f861757ff3b1af217a587d9e9.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://monencogroup.com/jcss.aspx?iid=179922237&cid=45",
+            "pageTitle": "ruddy \u003cb\u003eabyssinian\u003c/b\u003e cheap online",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.redbubble.com/i/sticker/The-Cute-Light-Brown-Tan-Abyssinian-Cat-by-Pulptures/75727714.EJUG5",
+            "pageTitle": "&quot;The Cute Light Brown Tan \u003cb\u003eAbyssinian Cat\u003c/b\u003e&quot; Sticker by Pulptures",
+            "partialMatchingImages": [
+              {
+                "url": "https://ih1.redbubble.net/image.2285677614.7714/st,small,507x507-pad,600x600,f8f8f8.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.wikiwand.com/en/Abyssinian_cat",
+            "pageTitle": "\u003cb\u003eAbyssinian cat\u003c/b\u003e - Wikiwand",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Gustav_chocolate.jpg/640px-Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://pethelpful.com/cats/Top-10-Smartest-Cat-Breeds",
+            "pageTitle": "Top 10 Smartest \u003cb\u003eCat\u003c/b\u003e Breeds - PetHelpful",
+            "fullMatchingImages": [
+              {
+                "url": "https://images.saymedia-content.com/.image/t_share/MTc0OTY4MTczNjkzNzA3NzE2/top-10-smartest-cat-breeds.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://www.wikiwand.com/en/List_of_cat_breeds",
+            "pageTitle": "List of \u003cb\u003ecat\u003c/b\u003e breeds - Wikiwand",
+            "partialMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Gustav_chocolate.jpg/200px-Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://daydaynews.cc/en/housepet/540459.html",
+            "pageTitle": "Do you want to own a beautiful \u003cb\u003eAbyssinian cat\u003c/b\u003e? | DayDayNews",
+            "partialMatchingImages": [
+              {
+                "url": "https://s167.daydaynews.cc/?url=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F11673293332%2F1000"
+              }
+            ]
+          },
+          {
+            "url": "https://www.ccaschoolgurgaon.org/fast.aspx?cid=44&shop=abyssinian+cat+domestic+cats&xi=1&xc=36&pr=40.99&you=",
+            "pageTitle": "\u003cb\u003eabyssinian cat\u003c/b\u003e domestic cats Online Shopping - - CCA SCHOOL ...",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "http://www.pattarumadom.com/door.php?cid=43&shop=black+abyssinian+cat&xi=1&xc=36&pr=41.99&you=",
+            "pageTitle": "black \u003cb\u003eabyssinian cat\u003c/b\u003e Online Shopping -",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "http://garle.com/thrdsq.aspx?productid=203978368&categoryid=101",
+            "pageTitle": "ticked coat \u003cb\u003ecat\u003c/b\u003e,garle.com",
+            "fullMatchingImages": [
+              {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+              }
+            ]
+          },
+          {
+            "url": "https://animals-are-cool.fandom.com/wiki/Category:Domestic_Cat_Subspecies",
+            "pageTitle": "Category:Domestic \u003cb\u003eCat\u003c/b\u003e Subspecies | Animals Wiki",
+            "partialMatchingImages": [
+              {
+                "url": "https://static.wikia.nocookie.net/animals-are-cool/images/9/9b/Gustav_chocolate.jpg/revision/latest/smart/width/250/height/250?cb=20200518224141"
+              }
+            ]
+          },
+          {
+            "url": "https://catstips.fandom.com/wiki/Abyssinian_(cat)",
+            "pageTitle": "\u003cb\u003eAbyssinian\u003c/b\u003e (\u003cb\u003ecat\u003c/b\u003e) | Catstips Wiki | Fandom",
+            "fullMatchingImages": [
+              {
+                "url": "https://static.wikia.nocookie.net/catstips/images/9/9b/Gustav_chocolate.jpg/revision/latest?cb=20120312035746"
+              }
+            ]
+          },
+          {
+            "url": "https://animalia-life.com/abyssinian.html",
+            "pageTitle": "\u003cb\u003eAbyssinian\u003c/b\u003e - \u003cb\u003eCat\u003c/b\u003e Breed history and some interesting facts",
+            "fullMatchingImages": [
+              {
+                "url": "https://animalia-life.com/data_images/abyssinian/abyssinian8.jpg"
+              }
+            ]
+          }
+        ],
+        "visuallySimilarImages": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Gustav_chocolate.jpg"
+          },
+          {
+            "url": "https://render.fineartamerica.com/images/rendered/default/flat/puzzle/images/artworkimages/medium/1/3-abyssinian-cat-jean-michel-labat.jpg?&targetx=0&targety=-62&imagewidth=750&imageheight=1124&modelwidth=750&modelheight=1000&backgroundcolor=FCFCFA&orientation=1&producttype=puzzle-18-24&brightness=754&v=6"
+          },
+          {
+            "url": "https://tica.org/images/Awards/Best-of-International/2007_kit.jpg"
+          },
+          {
+            "url": "https://render.fineartamerica.com/images/rendered/default/flat/puzzle/images-medium-5/abyssinian-cat-jean-michel-labat.jpg?&targetx=0&targety=-62&imagewidth=750&imageheight=1125&modelwidth=750&modelheight=1000&backgroundcolor=FCFEFC&orientation=1&producttype=puzzle-18-24&brightness=758&v=6"
+          },
+          {
+            "url": "https://d3fa68hw0m2vcc.cloudfront.net/1c4/195865822.jpeg"
+          },
+          {
+            "url": "https://render.fineartamerica.com/images/rendered/default/greeting-card/images/artworkimages/medium/1/abyssinian-cats-jean-michel-labat.jpg?&targetx=-24&targety=0&imagewidth=749&imageheight=500&modelwidth=700&modelheight=500&backgroundcolor=NULL&orientation=0"
+          },
+          {
+            "url": "https://www.catbreedsjunction.com/images/BlueAbyssinianKitten.jpg"
+          },
+          {
+            "url": "https://www.pets4you.com/wp-content/uploads/2018/06/abyssinian.jpg"
+          },
+          {
+            "url": "https://perfectpets.com.au/uploads/files/getfile/type/breed/id/367/file/962652600533be107ec2708.19453273-breed-367.gif"
+          },
+          {
+            "url": "https://www.catbreedsjunction.com/images/RuddyAbyssinianKitten.jpg"
+          },
+          {
+            "url": "https://azure.wgp-cdn.co.uk/app-yourcat/posts/abyssinian-1.jpg?&width=480&height=480&bgcolor=ffffff&mode=crop"
+          },
+          {
+            "url": "https://vetstreet.brightspotcdn.com/dims4/default/a72777c/2147483647/crop/0x0%2B0%2B0/resize/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F3f%2F7e88109dc511e0a2380050568d634f%2Ffile%2FAbyssinian-5-645mk062211.jpg"
+          },
+          {
+            "url": "https://zaoda.xyz/Image/U2FsdGVkX18fqQsskL+13szQVpVq+tf3uo5AT5pEk9RLmmfg4bAWroN8ZAjkvF9bf8kabeKFbQWJK+XSO7QH0PvlVFa3nGS/m4bs75FxT5eZk758IJCFrg+TjdFISpP7wd+aK6C/RJKO0vdOnX6LVzDpF+d2eROWISMIagk1WTGRpidd9xWC5/EJpkwkaFeuFSxxEAqcnptEY5E3zI3xHCuEhrCisnD51zQ6cCTcdfv8Hk8VQPMLMk30309K8V1Vt7DOGv+Ayk+d/abyssinian-kittens.jpg"
+          }
+        ],
+        "bestGuessLabels": [
+          {
+            "label": "abyssinian cat for sale",
+            "languageCode": "en"
+          }
+        ]
+      }
+    }
+  ]
+}
