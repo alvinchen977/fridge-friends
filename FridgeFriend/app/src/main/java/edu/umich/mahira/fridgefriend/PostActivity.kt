@@ -194,19 +194,32 @@ class PostActivity : AppCompatActivity() {
         val forReceiptTakePicture = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
 //                doCrop(cropIntent)
-                val uriPathHelper = URIPathHelper()
-                val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
-                convertToPdf(filePath.toString())
+                // PDF
+//                val uriPathHelper = URIPathHelper()
+//                val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
+//                convertToPdf(filePath.toString())
+//
+//                val name = filePath.toString().substringAfterLast("/").substringBeforeLast(".jpg")
+//                var directory1 = filePath.toString().substringBeforeLast("/")
+//                var directory = directory1.substringBeforeLast("/")
+//                var pdfFile = "$directory/Documents/$name.pdf"
+//
+//                val base64Image = getBase64FromPath(pdfFile)
+//                val image = ReceiptItem(pdf = base64Image)
+//
+//                postReceipt(applicationContext, image)
+                if (imageUri != null) {
+                    val uriPathHelper = URIPathHelper()
+                    val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
+                    val imageFile = File (filePath!!)
+                    val bm = BitmapFactory.decodeFile(imageFile.toString())
+                    val bOut = ByteArrayOutputStream()
+                    bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
+                    val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
+                    val image = ReceiptItem(pdf = base64Image)
+                    postReceipt(applicationContext, image)
+                }
 
-                val name = filePath.toString().substringAfterLast("/").substringBeforeLast(".jpg")
-                var directory1 = filePath.toString().substringBeforeLast("/")
-                var directory = directory1.substringBeforeLast("/")
-                var pdfFile = "$directory/Documents/$name.pdf"
-
-                val base64Image = getBase64FromPath(pdfFile)
-                val image = ReceiptItem(pdf = base64Image)
-
-                postReceipt(applicationContext, image)
             } else {
                 Log.d("TakePicture", "failed")
             }

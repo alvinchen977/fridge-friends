@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
+import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley.newRequestQueue
 import org.json.JSONObject
@@ -18,9 +19,16 @@ object GroceryItemStore {
         )
         val postRequest = JsonObjectRequest(
             Request.Method.POST,
-            serverUrl+"postGrocery/", JSONObject(jsonObj),
-            { Log.d("postGrocery", "grocery posted!") },
-            { error -> Log.e("postGrocery", error.localizedMessage ?: "JsonObjectRequest error") }
+            serverUrl + "postGrocery/", JSONObject(jsonObj),
+            Response.Listener { response ->
+                Log.d("postGrocery", response.toString());
+            },
+            Response.ErrorListener { error ->
+                Log.e(
+                    "postGrocery",
+                    error.localizedMessage ?: "JsonObjectRequest error"
+                )
+            }
         )
 
         if (!this::queue.isInitialized) {
@@ -31,13 +39,20 @@ object GroceryItemStore {
 
     fun postReceipt(context: Context, item: ReceiptItem) {
         val jsonObj = mapOf(
-            "pdf" to item.pdf,
+            "image" to item.pdf,
         )
         val postRequest = JsonObjectRequest(
             Request.Method.POST,
-            serverUrl+"postReceipt/", JSONObject(jsonObj),
-            { Log.d("postReceipt", "receipt posted!") },
-            { error -> Log.e("postReceipt", error.localizedMessage ?: "JsonObjectRequest error") }
+            serverUrl + "postReceipt/", JSONObject(jsonObj),
+            Response.Listener { response ->
+                Log.d("postReceipt", response.toString());
+            },
+            Response.ErrorListener { error ->
+                Log.e(
+                    "postReceipt",
+                    error.localizedMessage ?: "JsonObjectRequest error"
+                )
+            }
         )
 
         if (!this::queue.isInitialized) {
