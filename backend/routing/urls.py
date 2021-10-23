@@ -23,4 +23,5 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('postReceipt/', views.postReceipt, name='postReceipt'),
+	path('postGrocery/', views.postGrocery, name='postGrocery'),
     ]
