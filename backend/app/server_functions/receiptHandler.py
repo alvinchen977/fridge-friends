@@ -23,7 +23,7 @@ def handleReceipt(request):
 					},
 						"features":[
 						{
-							"type":"TEXT_DETECTION",
+							"type":"DOCUMENT_TEXT_DETECTION",
 						}
 					]
 				}
