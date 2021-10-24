@@ -20,7 +20,6 @@ import android.graphics.BitmapFactory
 import android.graphics.pdf.PdfDocument
 import android.graphics.pdf.PdfDocument.PageInfo
 import android.util.Base64
-import androidx.core.content.ContextCompat
 import com.android.volley.RequestQueue
 
 import edu.umich.mahira.fridgefriend.GroceryItemStore.postGrocery
@@ -53,7 +52,13 @@ class PostActivity : AppCompatActivity() {
         )
         return base64
     }
-
+    fun convertToBase64(filePath : String): String? {
+        val imageFile = File(filePath!!)
+        val bm = BitmapFactory.decodeFile(imageFile.toString())
+        val bOut = ByteArrayOutputStream()
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
+        return Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
+    }
     private fun doCrop(intent: Intent?) {
         intent ?: run {
             imageUri?.let { view.previewImage.display(it) }
@@ -179,11 +184,7 @@ class PostActivity : AppCompatActivity() {
                 if (imageUri != null) {
                     val uriPathHelper = URIPathHelper()
                     val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
-                    val imageFile = File (filePath!!)
-                    val bm = BitmapFactory.decodeFile(imageFile.toString())
-                    val bOut = ByteArrayOutputStream()
-                    bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
-                    val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
+                    val base64Image = filePath?.let { convertToBase64(it) }
                     val image = GroceryItem(image = base64Image)
                     val temp = postGrocery(applicationContext, image)
                     val intent = Intent(applicationContext,DisplayScannedItemActivity::class.java)
@@ -217,11 +218,7 @@ class PostActivity : AppCompatActivity() {
                 if (imageUri != null) {
                     val uriPathHelper = URIPathHelper()
                     val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
-                    val imageFile = File (filePath!!)
-                    val bm = BitmapFactory.decodeFile(imageFile.toString())
-                    val bOut = ByteArrayOutputStream()
-                    bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
-                    val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
+                    val base64Image = filePath?.let { convertToBase64(it) }
                     val image = ReceiptItem(pdf = base64Image)
                     postReceipt(applicationContext, image)
                 }
