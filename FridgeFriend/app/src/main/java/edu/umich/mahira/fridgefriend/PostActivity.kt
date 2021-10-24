@@ -24,6 +24,9 @@ import com.android.volley.RequestQueue
 
 import edu.umich.mahira.fridgefriend.GroceryItemStore.postGrocery
 import edu.umich.mahira.fridgefriend.GroceryItemStore.postReceipt
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream
@@ -186,7 +189,7 @@ class PostActivity : AppCompatActivity() {
                     val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
                     val base64Image = filePath?.let { convertToBase64(it) }
                     val image = GroceryItem(image = base64Image)
-                    val temp = postGrocery(applicationContext, image)
+                    var temp = postGrocery(applicationContext, image)
                     val intent = Intent(applicationContext,DisplayScannedItemActivity::class.java)
                     intent.putExtra("displayText", temp)
                     intent.putExtra("imagePath", filePath)
