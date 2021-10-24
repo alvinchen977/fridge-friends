@@ -13,8 +13,6 @@ import android.widget.ImageView
 import android.widget.TextView
 
 
-
-
 class DisplayScannedItemActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +54,23 @@ class DisplayScannedItemActivity : AppCompatActivity() {
             }
         }
 
+        val buttonAdd = findViewById<Button>(R.id.button2)
+        buttonAdd.setOnClickListener(View.OnClickListener {
+            var exist = false
+            for(i in items){
+                if (i != null) {
+                    if(i.name == textView.text ){
+                        exist = true
+                        i.quantity = i.quantity?.plus(1)
+                        break
+                    }
+                }
+            }
+
+            if(!exist){
+                items.add((Item(textView.text.toString(),1)))
+            }
+        })
 
 
 

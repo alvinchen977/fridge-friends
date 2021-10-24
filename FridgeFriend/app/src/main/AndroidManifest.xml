@@ -28,9 +28,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FridgeFriend">
         <activity
+            android:name=".FridgeActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity
             android:name=".DisplayScannedItemActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".PostActivity"
             android:label="@string/post"
