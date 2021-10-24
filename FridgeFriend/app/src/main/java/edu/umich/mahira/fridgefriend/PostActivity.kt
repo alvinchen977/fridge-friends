@@ -20,6 +20,7 @@ import android.graphics.BitmapFactory
 import android.graphics.pdf.PdfDocument
 import android.graphics.pdf.PdfDocument.PageInfo
 import android.util.Base64
+import androidx.core.content.ContextCompat
 import com.android.volley.RequestQueue
 
 import edu.umich.mahira.fridgefriend.GroceryItemStore.postGrocery
@@ -184,7 +185,12 @@ class PostActivity : AppCompatActivity() {
                     bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
                     val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
                     val image = GroceryItem(image = base64Image)
-                    postGrocery(applicationContext, image)
+                    val temp = postGrocery(applicationContext, image)
+                    val intent = Intent(applicationContext,DisplayScannedItemActivity::class.java)
+                    intent.putExtra("displayText", temp)
+                    intent.putExtra("imagePath", filePath)
+                    startActivity( intent, null)
+                    Log.d("returned", temp)
                 }
             } else {
                 Log.d("TakePicture", "failed")
