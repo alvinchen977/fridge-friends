@@ -1,8 +1,11 @@
 package edu.umich.mahira.fridgefriend
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import edu.umich.mahira.fridgefriend.databinding.ActivityFridgeBinding
 
 val items = arrayListOf<Item?>() //use this to the items
@@ -18,7 +21,7 @@ class FridgeActivity : AppCompatActivity() {
         setContentView(view.root)
 
         itemListAdapter = GroceryListAdapter(this, items)
-        view.GroceryListView.adapter = itemListAdapter
+        view.GroceryListView.setAdapter(itemListAdapter)
 
     }
 }

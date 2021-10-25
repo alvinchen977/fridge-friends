@@ -9,27 +9,29 @@
         android:id="@+id/itemTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/item"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/numbersItemTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="288dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="16dp"
         android:text="@string/numberOfItem"
-        app:layout_constraintStart_toEndOf="@+id/itemTextView"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemTextView" />
     <Button
         android:id="@+id/MinusButtom"
-        android:layout_width="46dp"
-        android:layout_height="32dp"
-        app:icon="@android:drawable/button_onoff_indicator_off"
+        android:layout_width="52dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="16dp"
+        app:icon="@android:drawable/ic_input_delete"
+        app:layout_constraintHorizontal_bias="0.745"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/numbersItemTextView"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

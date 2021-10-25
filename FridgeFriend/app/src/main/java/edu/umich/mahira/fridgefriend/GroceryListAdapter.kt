@@ -23,7 +23,6 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
             listItemView.numbersItemTextView.text = quantity.toString()
             listItemView.root.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#E0E0E0" else "#EEEEEE"))
         }
-
         return listItemView.root
     }
 }

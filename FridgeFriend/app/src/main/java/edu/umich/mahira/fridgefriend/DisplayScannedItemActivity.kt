@@ -1,6 +1,7 @@
 package edu.umich.mahira.fridgefriend
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,7 +15,6 @@ import android.widget.TextView
 
 
 class DisplayScannedItemActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_scanned_item)
@@ -59,17 +59,17 @@ class DisplayScannedItemActivity : AppCompatActivity() {
             var exist = false
             for(i in items){
                 if (i != null) {
-                    if(i.name == textView.text ){
+                    if(i.name == displayText ){
                         exist = true
                         i.quantity = i.quantity?.plus(1)
                         break
                     }
                 }
             }
-
             if(!exist){
                 items.add((Item(textView.text.toString(),1)))
             }
+            startActivity(Intent(this, MainActivity::class.java))
         })
 
 
