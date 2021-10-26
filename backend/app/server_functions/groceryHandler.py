@@ -35,7 +35,7 @@ def handleGrocery(request):
 		visionAPIUrl = 'https://vision.googleapis.com/v1/images:annotate?key='+ VISION_KEY
 		visionAPIResponse = requests.post(visionAPIUrl, json=visionRequestBody)	
 		logger.logVisionAPIResponse(visionAPIResponse)
-		json_data = json.loads(visionAPIResponse.body)
+		json_data = visionAPIResponse.json()
 		return HttpResponse(visionAPIResponse, status=200)		
 	else:
 		ErrorMessage = "Malformed Request, Request must contain base64 encoded Image"
