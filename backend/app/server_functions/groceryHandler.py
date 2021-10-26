@@ -23,8 +23,8 @@ def handleGrocery(request):
 					},
 						"features":[
 						{
-							"type":"LABEL_DETECTION",
-							"maxResults":5
+							"type":"OBJECT_LOCALIZATION",
+							"maxResults":100
 						}
 					]
 				}
@@ -34,7 +34,8 @@ def handleGrocery(request):
 		#visionJson = json.loads(visionRequestBody)
 		visionAPIUrl = 'https://vision.googleapis.com/v1/images:annotate?key='+ VISION_KEY
 		visionAPIResponse = requests.post(visionAPIUrl, json=visionRequestBody)	
-		logger.logVisionAPIResponse(visionAPIResponse)		
+		logger.logVisionAPIResponse(visionAPIResponse)
+		json_data = json.loads(visionAPIResponse.body)
 		return HttpResponse(visionAPIResponse, status=200)		
 	else:
 		ErrorMessage = "Malformed Request, Request must contain base64 encoded Image"
