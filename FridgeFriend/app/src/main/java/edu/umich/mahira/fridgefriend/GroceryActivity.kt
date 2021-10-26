@@ -1,3 +1,5 @@
+// temporary: might use room instead for shopping list
+
 package edu.umich.mahira.fridgefriend
 
 import android.content.Intent
@@ -8,7 +10,7 @@ import android.view.View
 import android.widget.Button
 import edu.umich.mahira.fridgefriend.databinding.ActivityFridgeBinding
 
-val items = arrayListOf<Item?>() //use this to the items
+val items = arrayListOf<Item?>() // use this to the items
 
 class GroceryActivity : AppCompatActivity() {
     private lateinit var view: ActivityFridgeBinding
