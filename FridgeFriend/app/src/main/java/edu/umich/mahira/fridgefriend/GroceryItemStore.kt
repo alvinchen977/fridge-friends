@@ -15,7 +15,7 @@ import org.json.JSONObject
 object GroceryItemStore {
     private lateinit var queue: RequestQueue
     private const val serverUrl = "https://18.118.131.242/"
-    fun postGrocery(context: Context, item: GroceryItem): String {
+    fun postGrocery(context: Context, item: GroceryItem, completion: (String) -> Unit): String {
         val jsonObj = mapOf(
             "image" to item.image,
         )
@@ -24,6 +24,7 @@ object GroceryItemStore {
             serverUrl + "postGrocery/", JSONObject(jsonObj),
             { response ->
                 Log.d("postGrocery", response.toString())
+                completion(response.toString())
             },
             { error ->
                 Log.e(

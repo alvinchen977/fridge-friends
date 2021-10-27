@@ -189,12 +189,14 @@ class PostActivity : AppCompatActivity() {
                     val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
                     val base64Image = filePath?.let { convertToBase64(it) }
                     val image = GroceryItem(image = base64Image)
-                    var temp = postGrocery(applicationContext, image)
-                    val intent = Intent(applicationContext,DisplayScannedItemActivity::class.java)
-                    intent.putExtra("displayText", temp)
-                    intent.putExtra("imagePath", filePath)
-                    startActivity( intent, null)
-                    Log.d("returned", temp)
+                    postGrocery(applicationContext, image){
+                        val intent = Intent(applicationContext,DisplayScannedItemActivity::class.java)
+                        intent.putExtra("displayText", it)
+                        intent.putExtra("imagePath", filePath)
+                        startActivity( intent, null)
+                        Log.d("returned", it)
+                    }
+
                 }
             } else {
                 Log.d("TakePicture", "failed")
