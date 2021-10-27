@@ -226,6 +226,9 @@ class PostActivity : AppCompatActivity() {
                     val base64Image = filePath?.let { convertToBase64(it) }
                     val image = ReceiptItem(pdf = base64Image)
                     postReceipt(applicationContext, image)
+                    val intent = Intent(applicationContext,DisplayScannedReceiptActivity::class.java)
+                    intent.putExtra("imagePath", filePath)
+                    startActivity( intent, null)
                 }
 
             } else {
