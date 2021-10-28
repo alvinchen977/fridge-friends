@@ -28,6 +28,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FridgeFriend">
         <activity
+            android:name=".SpendingListAdapter"
+            android:exported="true" />
+        <activity
+            android:name=".SpendingGraphActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".DisplayScannedReceiptActivity"
             android:exported="true" />
         <activity
