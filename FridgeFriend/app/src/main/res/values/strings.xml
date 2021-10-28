@@ -3,4 +3,9 @@
     <string name="post">Post</string>
     <string name="camera">Camera</string>
     <string name="preview">Image</string>
+
+    <string name="hint_shop">Shop...</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Item not saved because it is empty.</string>
+    <string name="add_item">Add item</string>
 </resources>
