@@ -5,6 +5,7 @@ from django.core.files.storage import FileSystemStorage
 from app.logging import logger
 import json
 import requests
+import re
 # Called in views.py when a POST request is made to postGrocery endpoint
 
 #need to remove before production!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -33,8 +34,18 @@ def handleReceipt(request):
 		#visionJson = json.loads(visionRequestBody)
 		visionAPIUrl = 'https://vision.googleapis.com/v1/images:annotate?key='+ VISION_KEY
 		visionAPIResponse = requests.post(visionAPIUrl, json=visionRequestBody)	
-		logger.logVisionAPIResponse(visionAPIResponse)		
-		return HttpResponse(visionAPIResponse, status=200)		
+		responseObjectList = visionAPIResponse.json()['responses'][0]['textAnnotations']
+		logger.logReceiptResponse(visionAPIResponse)		
+		logger.logTest('responseObjectList',str(responseObjectList))
+		wordList = []
+		for obj in responseObjectList:
+			wordList.append(obj['description'])
+		returnWordList = []
+		for word in wordList:
+			if (re.match("^\d*\.\d*", word)):
+				returnWordList.append(word)
+		json_data = json.dumps(returnWordList)
+		return HttpResponse(json_data, status=200)		
 	else:
 		ErrorMessage = "Malformed Request, Request must contain base64 encoded Image"
 		return HttpResponse(ErrorMessage, status=422) #malformed request 
