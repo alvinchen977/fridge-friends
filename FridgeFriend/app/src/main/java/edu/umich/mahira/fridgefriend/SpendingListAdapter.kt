@@ -12,7 +12,7 @@ import edu.umich.mahira.fridgefriend.databinding.ActivitySpendingListAdapterBind
 import edu.umich.mahira.fridgefriend.databinding.ListitemFridgeBinding
 
 class SpendingListAdapter(context: Context, users: ArrayList<Int?>) :
-    ArrayAdapter<Int?>(context, 0, users) {
+    ArrayAdapter<Int?>(context, 0, users.reversed()) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val listItemView = (convertView?.tag /* reuse binding */ ?: run {
