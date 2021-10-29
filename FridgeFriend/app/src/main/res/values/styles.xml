@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- base application theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar"></style>
+
     <!-- may need to increase margin sizes -->
     <style name="word_title">
         <item name="android:layout_marginBottom">8dp</item>
