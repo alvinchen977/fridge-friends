@@ -28,6 +28,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FridgeFriend">
         <activity
+            android:name=".ReminderActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".SpendingListAdapter"
             android:exported="true" />
         <activity
@@ -58,6 +62,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".ReminderBroadcast"/>
     </application>
 
 </manifest>
