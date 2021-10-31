@@ -24,6 +24,9 @@ import com.android.volley.RequestQueue
 
 import edu.umich.mahira.fridgefriend.GroceryItemStore.postGrocery
 import edu.umich.mahira.fridgefriend.GroceryItemStore.postReceipt
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream
@@ -52,7 +55,13 @@ class PostActivity : AppCompatActivity() {
         )
         return base64
     }
-
+    fun convertToBase64(filePath : String): String? {
+        val imageFile = File(filePath!!)
+        val bm = BitmapFactory.decodeFile(imageFile.toString())
+        val bOut = ByteArrayOutputStream()
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
+        return Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
+    }
     private fun doCrop(intent: Intent?) {
         intent ?: run {
             imageUri?.let { view.previewImage.display(it) }
@@ -178,13 +187,16 @@ class PostActivity : AppCompatActivity() {
                 if (imageUri != null) {
                     val uriPathHelper = URIPathHelper()
                     val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
-                    val imageFile = File (filePath!!)
-                    val bm = BitmapFactory.decodeFile(imageFile.toString())
-                    val bOut = ByteArrayOutputStream()
-                    bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
-                    val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
+                    val base64Image = filePath?.let { convertToBase64(it) }
                     val image = GroceryItem(image = base64Image)
-                    postGrocery(applicationContext, image)
+                    postGrocery(applicationContext, image){
+                        val intent = Intent(applicationContext,DisplayScannedItemActivity::class.java)
+                        intent.putExtra("displayText", it)
+                        intent.putExtra("imagePath", filePath)
+                        startActivity( intent, null)
+                        Log.d("returned", it)
+                    }
+
                 }
             } else {
                 Log.d("TakePicture", "failed")
@@ -211,13 +223,12 @@ class PostActivity : AppCompatActivity() {
                 if (imageUri != null) {
                     val uriPathHelper = URIPathHelper()
                     val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
-                    val imageFile = File (filePath!!)
-                    val bm = BitmapFactory.decodeFile(imageFile.toString())
-                    val bOut = ByteArrayOutputStream()
-                    bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
-                    val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
+                    val base64Image = filePath?.let { convertToBase64(it) }
                     val image = ReceiptItem(pdf = base64Image)
                     postReceipt(applicationContext, image)
+                    val intent = Intent(applicationContext,DisplayScannedReceiptActivity::class.java)
+                    intent.putExtra("imagePath", filePath)
+                    startActivity( intent, null)
                 }
 
             } else {

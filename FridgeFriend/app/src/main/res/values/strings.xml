@@ -3,4 +3,6 @@
     <string name="post">Post</string>
     <string name="camera">Camera</string>
     <string name="preview">Image</string>
+    <string name="item">Fish</string>
+    <string name="numberOfItem">0</string>
 </resources>
