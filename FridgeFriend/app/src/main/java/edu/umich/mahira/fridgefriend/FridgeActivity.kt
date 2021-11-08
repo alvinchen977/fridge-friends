@@ -1,5 +1,8 @@
 package edu.umich.mahira.fridgefriend
 
+import GroceryListFragment
+import MyFridgeFragment
+import SavingsFragment
 import android.Manifest
 import android.content.ContentValues
 import android.content.Intent
@@ -14,12 +17,12 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
-import android.view.View
-import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import edu.umich.mahira.fridgefriend.databinding.ActivityFridgeBinding
 import java.io.ByteArrayOutputStream
 import java.io.File
+import kotlinx.android.synthetic.main.activity_fridge.*
 
 val items = arrayListOf<Item?>() //use this to the items
 
@@ -101,5 +104,24 @@ class FridgeActivity : AppCompatActivity() {
             imageUri = mediaStoreAlloc("image/jpeg")
             forTakePicture.launch(imageUri)
         }
+
+        val groceryListFragment=GroceryListFragment()
+
+        bottomNavigationView.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.home->startActivity(Intent(this, MainActivity::class.java))
+                R.id.grocery_list->setCurrentFragment(groceryListFragment)
+                R.id.my_fridge->startActivity(Intent(this, FridgeActivity::class.java))
+                R.id.savings->startActivity(Intent(this, SpendingGraphActivity::class.java))
+            }
+            true
+        }
     }
+
+    private fun setCurrentFragment(fragment: Fragment)=
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment,fragment)
+            commit()
+        }
+
 }
