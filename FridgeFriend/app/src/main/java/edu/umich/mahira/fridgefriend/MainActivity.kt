@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home->setCurrentFragment(recipeFragment)
                 R.id.grocery_list->setCurrentFragment(groceryListFragment)
-                R.id.my_fridge->setCurrentFragment(myFridgeFragment)
-                R.id.savings->setCurrentFragment(savingsFragment)
+                R.id.my_fridge->startActivity(Intent(this, FridgeActivity::class.java))
+                R.id.savings->startActivity(Intent(this, SpendingGraphActivity::class.java))
             }
             true
         }
