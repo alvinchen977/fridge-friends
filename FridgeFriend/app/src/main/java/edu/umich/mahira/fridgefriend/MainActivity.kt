@@ -33,10 +33,14 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.home->startActivity(Intent(this, MainActivity::class.java))
+                R.id.recipes->setCurrentFragment(recipeFragment)
                 R.id.grocery_list->setCurrentFragment(groceryListFragment)
-                R.id.my_fridge->startActivity(Intent(this, FridgeActivity::class.java))
-                R.id.savings->startActivity(Intent(this, SpendingGraphActivity::class.java))
+                R.id.my_fridge->setCurrentFragment(myFridgeFragment)
+                R.id.savings->setCurrentFragment(savingsFragment)
+                //adels stuff
+                //R.id.home->startActivity(Intent(this, MainActivity::class.java))
+                //R.id.my_fridge->startActivity(Intent(this, FridgeActivity::class.java))
+                //R.id.savings->startActivity(Intent(this, SpendingGraphActivity::class.java))
             }
             true
         }
