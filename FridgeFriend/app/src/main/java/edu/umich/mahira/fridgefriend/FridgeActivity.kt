@@ -1,5 +1,5 @@
 package edu.umich.mahira.fridgefriend
-/*
+
 import GroceryListFragment
 import MyFridgeFragment
 import SavingsFragment

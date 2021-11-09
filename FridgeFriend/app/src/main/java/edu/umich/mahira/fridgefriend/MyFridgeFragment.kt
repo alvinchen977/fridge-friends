@@ -7,17 +7,21 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import edu.umich.mahira.fridgefriend.databinding.ActivityFridgeBinding
 import java.io.ByteArrayOutputStream
 import java.io.File
 import kotlinx.android.synthetic.main.activity_fridge.*
+import android.view.View
 
 
 val items = arrayListOf<Item?>() //use this to the items
@@ -48,11 +52,14 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
             values)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
 
-        itemListAdapter = GroceryListAdapter(this, items)
-        view.GroceryListView.setAdapter(itemListAdapter)
+        super.onCreate(savedInstanceState)
+        view = ActivityFridgeBinding.inflate(layoutInflater)
+        view.root.setBackgroundColor(Color.parseColor("#E0E0E0"))
+        //setContentView(view.root)
 
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
             results.forEach {
