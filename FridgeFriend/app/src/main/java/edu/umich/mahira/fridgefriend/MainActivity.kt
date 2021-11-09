@@ -1,7 +1,6 @@
 package edu.umich.mahira.fridgefriend
 
 import GroceryListFragment
-import MyFridgeFragment
 import RecipeFragment
 import SavingsFragment
 import android.content.Intent
@@ -10,11 +9,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ListView
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    fun startPost(view: View?) = startActivity(Intent(this, PostActivity::class.java))
-    fun viewFridge(view: View?) = startActivity(Intent(this, FridgeActivity::class.java))
     fun viewGraph(view: View?) = startActivity(Intent(this, SpendingGraphActivity::class.java))
     fun startReminder(view: View?) = startActivity(Intent(this, ReminderActivity::class.java))
 
@@ -37,10 +34,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.grocery_list->setCurrentFragment(groceryListFragment)
                 R.id.my_fridge->setCurrentFragment(myFridgeFragment)
                 R.id.savings->setCurrentFragment(savingsFragment)
-                //adels stuff
-                //R.id.home->startActivity(Intent(this, MainActivity::class.java))
-                //R.id.my_fridge->startActivity(Intent(this, FridgeActivity::class.java))
-                //R.id.savings->startActivity(Intent(this, SpendingGraphActivity::class.java))
             }
             true
         }

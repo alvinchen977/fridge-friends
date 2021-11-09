@@ -69,7 +69,7 @@ class DisplayScannedItemActivity : AppCompatActivity() {
             if(!exist){
                 items.add((Item(textView.text.toString(),1)))
             }
-            startActivity(Intent(this, FridgeActivity::class.java))
+            startActivity(Intent(this, MyFridgeFragment::class.java))
         })
 
 

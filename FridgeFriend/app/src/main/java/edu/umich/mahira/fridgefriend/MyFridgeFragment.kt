@@ -15,13 +15,12 @@ import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import edu.umich.mahira.fridgefriend.databinding.ActivityFridgeBinding
 import java.io.ByteArrayOutputStream
 import java.io.File
-import kotlinx.android.synthetic.main.activity_fridge.*
-import android.view.View
 
 
 val items = arrayListOf<Item?>() //use this to the items
@@ -44,7 +43,7 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
         values.put(MediaStore.MediaColumns.MIME_TYPE, mediaType)
         values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
 
-        return contentResolver.insert(
+        return activity?.contentResolver?.insert(
             if (mediaType.contains("video"))
                 MediaStore.Video.Media.EXTERNAL_CONTENT_URI
             else
@@ -52,29 +51,34 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
             values)
     }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         super.onCreate(savedInstanceState)
         view = ActivityFridgeBinding.inflate(layoutInflater)
         view.root.setBackgroundColor(Color.parseColor("#E0E0E0"))
-        //setContentView(view.root)
+        activity?.setContentView(view.root)
+
+        itemListAdapter = GroceryListAdapter(requireActivity(), items)
+        view.GroceryListView.setAdapter(itemListAdapter)
 
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
             results.forEach {
                 if (!it.value) {
-                    toast("${it.key} access denied")
-                    finish()
+                    activity?.toast("${it.key} access denied")
+                    activity?.finish()
                 }
             }
         }.launch(arrayOf(
             Manifest.permission.CAMERA,
             Manifest.permission.READ_EXTERNAL_STORAGE))
 
-        if (!packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
-            toast("Device has no camera!")
-            return
+        if (!activity?.packageManager?.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)!!) {
+            activity?.toast("Device has no camera!")
+            return inflater.inflate(R.layout.fragment_my_fridge, container, false)
         }
 
         // Take the food picture
@@ -83,12 +87,12 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
 //                doCrop(cropIntent)
                 if (imageUri != null) {
                     val uriPathHelper = URIPathHelper()
-                    val filePath = imageUri?.let { uriPathHelper.getPath(this, it) }
+                    val filePath = imageUri?.let { uriPathHelper.getPath(requireActivity(), it) }
                     val base64Image = filePath?.let { convertToBase64(it) }
                     val image = GroceryItem(image = base64Image)
-                    GroceryItemStore.postGrocery(applicationContext, image) {
+                    GroceryItemStore.postGrocery(activity?.applicationContext!!, image) {
                         val intent =
-                            Intent(applicationContext, DisplayScannedItemActivity::class.java)
+                            Intent(activity?.applicationContext, DisplayScannedItemActivity::class.java)
                         intent.putExtra("displayText", it)
                         intent.putExtra("imagePath", filePath)
                         startActivity(intent, null)
@@ -105,7 +109,6 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
             imageUri = mediaStoreAlloc("image/jpeg")
             forTakePicture.launch(imageUri)
         }
-
-
+        return inflater.inflate(R.layout.fragment_my_fridge, container, false)
     }
 }

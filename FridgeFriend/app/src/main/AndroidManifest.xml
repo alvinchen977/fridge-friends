@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="edu.umich.mahira.fridgefriend">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -33,7 +34,8 @@
             android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".SpendingListAdapter"
-            android:exported="true" />
+            android:exported="true"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".SpendingGraphActivity"
             android:exported="true"
@@ -42,17 +44,10 @@
             android:name=".DisplayScannedReceiptActivity"
             android:exported="true" />
         <activity
-            android:name=".FridgeActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".DisplayScannedItemActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".PostActivity"
-            android:label="@string/post"
-            android:parentActivityName=".MainActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
