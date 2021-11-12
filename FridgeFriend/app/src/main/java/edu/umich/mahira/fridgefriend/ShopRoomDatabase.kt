@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 // Annotates class to be a Room Database with a table (entity) of the Shop class
 @Database(entities = arrayOf(Shop::class), version = 1, exportSchema = false)
@@ -31,7 +32,7 @@ public abstract class ShopRoomDatabase : RoomDatabase() {
 
             // Add sample items: like apple
             // this might be where we can pull in items from recipes
-            var item = Shop("apple")
+            var item = Shop(1, "apple")
             shopDao.insert(item)
         }
     }

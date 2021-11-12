@@ -1,14 +1,13 @@
-// temporary: might use room instead for shopping list
-// clear all button******
 package edu.umich.mahira.fridgefriend
 
+import edu.umich.mahira.fridgefriend.ShopView
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.observe
+//import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -44,7 +43,8 @@ class ShopActivity : AppCompatActivity() {
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
-        ShopView.allItems.observe(owner = this) { items ->
+        val x = shopViewModel.temp
+        shopViewModel.allItems.observe(this) { items ->
             // Update the cached copy of the items in the adapter.
             items?.let { adapter.submitList(it) }
         }
@@ -62,7 +62,7 @@ class ShopActivity : AppCompatActivity() {
 
         if (requestCode == newItemActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY)?.let { reply ->
-                val item = Shop(reply)
+                val item = Shop(1, reply)
                 shopViewModel.insert(item)
             }
         } else {

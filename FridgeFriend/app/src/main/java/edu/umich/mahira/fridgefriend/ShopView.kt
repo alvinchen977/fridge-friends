@@ -13,6 +13,7 @@ class ShopView(private val repository: ShopRepository) : ViewModel() {
     //   the UI when the data actually changes.
     // - Repository is completely separated from the UI through the ViewModel.
     val allItems: LiveData<List<Shop>> = repository.allItems.asLiveData()
+    val temp = 0
 
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
