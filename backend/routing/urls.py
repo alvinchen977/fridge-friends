@@ -24,4 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('postReceipt/', views.postReceipt, name='postReceipt'),
 	path('postGrocery/', views.postGrocery, name='postGrocery'),
-    ]
+	path('findRecipeByIngredients/', views.findRecipeByIngredients, name='findRecipeByIngredients'),
+	path('findRecipeByTitle/', views.findRecipeByTitle, name='findRecipeByTitle'),
+	path('findRecipeByKeyword/', views.findRecipeByKeyword, name='findRecipeByKeyword'),	
+	path('findRecipeByLikeStatus/', views.findRecipeByLikeStatus, name='findRecipeByLikeStatus'),
+]

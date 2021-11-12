@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'routing.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fridgedb',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
+        'NAME': 'fridge_database',
+        'USER': 'fridge_user',
+        'PASSWORD': 'fridge_user',
         'HOST': 'localhost',
         'PORT': '',
     }
