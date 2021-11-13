@@ -3,6 +3,7 @@ package edu.umich.mahira.fridgefriend
 import androidx.fragment.app.Fragment
 import android.Manifest
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -14,11 +15,10 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import edu.umich.mahira.fridgefriend.databinding.ActivityFridgeBinding
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.fragment_my_fridge.view.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 
@@ -26,7 +26,7 @@ import java.io.File
 val items = arrayListOf<Item?>() //use this to the items
 
 class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
-    private lateinit var view: ActivityFridgeBinding
+
     private lateinit var itemListAdapter: GroceryListAdapter
     private var imageUri: Uri? = null
 
@@ -51,16 +51,9 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
             values)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        super.onCreate(savedInstanceState)
-        view = ActivityFridgeBinding.inflate(layoutInflater)
-        view.root.setBackgroundColor(Color.parseColor("#E0E0E0"))
-        activity?.setContentView(view.root)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.setBackgroundColor(Color.parseColor("#E0E0E0"))
 
         itemListAdapter = GroceryListAdapter(requireActivity(), items)
         view.GroceryListView.setAdapter(itemListAdapter)
@@ -78,7 +71,6 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
 
         if (!activity?.packageManager?.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)!!) {
             activity?.toast("Device has no camera!")
-            return inflater.inflate(R.layout.fragment_my_fridge, container, false)
         }
 
         // Take the food picture
@@ -109,6 +101,5 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
             imageUri = mediaStoreAlloc("image/jpeg")
             forTakePicture.launch(imageUri)
         }
-        return inflater.inflate(R.layout.fragment_my_fridge, container, false)
     }
 }

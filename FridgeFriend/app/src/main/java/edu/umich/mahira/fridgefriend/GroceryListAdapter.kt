@@ -34,6 +34,7 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
                                 listItemView.numbersItemTextView.text = quantity.toString()
                                 if(i.quantity == 0){
                                     items.remove(i)
+                                    // Refresh here
                                     val intent = Intent(context, MyFridgeFragment::class.java)
                                     context.startActivity(intent)
                                 }

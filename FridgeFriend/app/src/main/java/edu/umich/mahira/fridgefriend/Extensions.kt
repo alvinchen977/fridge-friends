@@ -5,6 +5,7 @@ import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 fun Context.toast(message: String, short: Boolean = true) {
@@ -15,3 +16,5 @@ fun ImageView.display(uri: Uri) {
     setImageURI(uri)
     visibility = View.VISIBLE
 }
+
+
