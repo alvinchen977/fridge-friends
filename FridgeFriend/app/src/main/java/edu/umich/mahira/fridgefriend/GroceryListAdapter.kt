@@ -3,12 +3,10 @@ package edu.umich.mahira.fridgefriend
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.core.content.ContextCompat.startActivity
 import edu.umich.mahira.fridgefriend.databinding.ListitemFridgeBinding
 
 class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
@@ -36,7 +34,8 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
                                 listItemView.numbersItemTextView.text = quantity.toString()
                                 if(i.quantity == 0){
                                     items.remove(i)
-                                    val intent = Intent(context, FridgeActivity::class.java)
+                                    // Refresh here
+                                    val intent = Intent(context, MyFridgeFragment::class.java)
                                     context.startActivity(intent)
                                 }
                                 break

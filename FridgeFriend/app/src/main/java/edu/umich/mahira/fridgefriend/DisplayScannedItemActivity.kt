@@ -69,7 +69,9 @@ class DisplayScannedItemActivity : AppCompatActivity() {
             if(!exist){
                 items.add((Item(textView.text.toString(),1)))
             }
-            startActivity(Intent(this, MainActivity::class.java))
+            // Refresh here
+            finish()
+
         })
 
 
