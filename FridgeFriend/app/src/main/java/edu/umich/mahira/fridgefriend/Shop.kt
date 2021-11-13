@@ -8,9 +8,5 @@ import androidx.room.PrimaryKey
 // as the columns in the table
 
 @Entity(tableName = "shopList")
-data class Shop(@PrimaryKey(autoGenerate = true) val id: Int, @ColumnInfo(name = "item") val item: String) {
+data class Shop(@PrimaryKey/*(autoGenerate = true) val id: Int,*/ @ColumnInfo(name = "item") val item: String)
     // might want to add val num: Int and val type: String later for amount and type (i.e. 1 oz)
-
-
-
-}

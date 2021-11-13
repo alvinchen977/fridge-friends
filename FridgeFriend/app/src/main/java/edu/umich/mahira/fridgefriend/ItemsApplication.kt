@@ -5,11 +5,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
 class ItemsApplication : Application() {
-    // No need to cancel this scope as it'll be torn down with the process
+    // scope will be torn down when processed so don't need to cancel
     val applicationScope = CoroutineScope(SupervisorJob())
 
-    // Using by lazy so the database and the repository are only created when they're needed
-    // rather than when the application starts
+    // lazy allows for database and repository to be created only when needed
     val database by lazy { ShopRoomDatabase.getDatabase(this, applicationScope) }
     val repository by lazy { ShopRepository(database.shopDao()) }
 }

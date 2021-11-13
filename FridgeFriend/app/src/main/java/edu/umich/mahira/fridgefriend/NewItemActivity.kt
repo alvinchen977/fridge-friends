@@ -2,20 +2,22 @@ package edu.umich.mahira.fridgefriend
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 
+// activity for entering an item
 class NewItemActivity : AppCompatActivity() {
 
-    private lateinit var editItemView: EditText
+    /*private lateinit var editItemView: EditText*/
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_item)
-        editItemView = findViewById(R.id.edit_item)
+        // editItemView = findViewById(R.id.edit_item)
+        val editItemView = findViewById<EditText>(R.id.edit_item)
 
         val button = findViewById<Button>(R.id.button_save)
         button.setOnClickListener {
@@ -32,6 +34,6 @@ class NewItemActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
+        const val EXTRA_REPLY = "edu.umich.mahira.fridgefriend.shoplistsql.REPLY"
     }
 }

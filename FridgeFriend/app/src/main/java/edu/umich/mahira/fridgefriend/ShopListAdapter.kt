@@ -7,8 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import edu.umich.mahira.fridgefriend.ShopListAdapter.ShopViewHolder
 
-class ShopListAdapter : ListAdapter<Shop, ShopListAdapter.ShopViewHolder>(ItemComparator()) {
+class ShopListAdapter : ListAdapter<Shop, ShopViewHolder>(ItemComparator/*()*/) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopViewHolder {
         return ShopViewHolder.create(parent)
@@ -35,13 +36,17 @@ class ShopListAdapter : ListAdapter<Shop, ShopListAdapter.ShopViewHolder>(ItemCo
         }
     }
 
-    class ItemComparator : DiffUtil.ItemCallback<Shop>() {
-        override fun areItemsTheSame(oldItem: Shop, newItem: Shop): Boolean {
-            return oldItem === newItem
-        }
+    // make sure to use this in a way that adds the amounts of the items together if they are the same
+    /*class ItemComparator : DiffUtil.ItemCallback<Shop>() { instead of next two lines? */
+    companion object {
+        private val ItemComparator = object : DiffUtil.ItemCallback<Shop>() {
+            override fun areItemsTheSame(oldItem: Shop, newItem: Shop): Boolean {
+                return oldItem === newItem
+            }
 
-        override fun areContentsTheSame(oldItem: Shop, newItem: Shop): Boolean {
-            return oldItem.item == newItem.item
+            override fun areContentsTheSame(oldItem: Shop, newItem: Shop): Boolean {
+                return oldItem.item == newItem.item
+            }
         }
     }
 }

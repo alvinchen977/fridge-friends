@@ -1,23 +1,23 @@
 package edu.umich.mahira.fridgefriend
 
-import android.view.View
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
+
+// Allows us to keep a reference to our repository and a list of all items.
 class ShopView(private val repository: ShopRepository) : ViewModel() {
     // instead of viewmodel use savedstatemodel? so items wont be deleted when more storage is needed?
     // https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate
 
-    // Using LiveData and caching what allWords returns has several benefits:
-    // - We can put an observer on the data (instead of polling for changes) and only update the
-    //   the UI when the data actually changes.
-    // - Repository is completely separated from the UI through the ViewModel.
-    val allItems: LiveData<List<Shop>> = repository.allItems.asLiveData()
-    val temp = 0
-
-    /**
-     * Launching a new coroutine to insert the data in a non-blocking way
+    /*
+    Using LiveData and caching what allItems returns allows us to put an observer on the data
+    (instead of polling for changes) and only update the UI when the data actually changes.
+    note: repository is completely separated from the UI through the ViewModel()
      */
+    val allItems: LiveData<List<Shop>> = repository.allItems.asLiveData()
+    // val temp = 0
+
+    // Launching a new coroutine to insert the data in a non-blocking way
     fun insert(item: Shop) = viewModelScope.launch {
         repository.insert(item)
     }
