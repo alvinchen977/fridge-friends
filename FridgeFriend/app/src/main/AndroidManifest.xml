@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="edu.umich.mahira.fridgefriend">
+    <!--xmlns tools: allows ItemsApplication to extend android.app.Activity -->
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -42,10 +44,13 @@
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ShopActivity"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            tools:ignore="Instantiatable" />
+        <!-- parent as ShopActivity not MainActivity -->
+        <!-- allows ItemsApplication to extend android.app.Activity -->
         <activity
             android:name=".PostActivity"
             android:label="@string/post"

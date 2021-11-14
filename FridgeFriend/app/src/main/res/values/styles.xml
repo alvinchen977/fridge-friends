@@ -2,7 +2,13 @@
 <resources>
 
     <!-- base application theme -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar"></style>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+<!--
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+-->
+    </style>
 
     <!-- may need to increase margin sizes -->
     <style name="word_title">

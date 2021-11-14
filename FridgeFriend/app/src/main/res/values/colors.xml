@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <!-- base application theme -->
-    <!-- Customize your theme here. -->
+    <!-- these three -->
     <color name="colorPrimary">#1e53e6</color>
     <color name="colorPrimaryDark">#2c3465</color>
     <color name="colorAccent">#FF03DAC5</color>

@@ -1,6 +1,7 @@
 package edu.umich.mahira.fridgefriend
 
 import android.app.Application
+import android.app.Activity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
