@@ -15,6 +15,8 @@ class NewItemActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_item)
         val editItemView = findViewById<EditText>(R.id.edit_item)
+        val editNumView = findViewById<EditText>(R.id.edit_num)
+        val editTypeView = findViewById<EditText>(R.id.edit_type)
 
         val button = findViewById<Button>(R.id.button_save)
         button.setOnClickListener {

@@ -8,5 +8,7 @@ import androidx.room.PrimaryKey
 // as the columns in the table
 
 @Entity(tableName = "shopList")
-data class Shop(@PrimaryKey/*(autoGenerate = true) val id: Int,*/ @ColumnInfo(name = "item") val item: String)
-    // might want to add val num: Int and val type: String later for amount and type (i.e. 1 oz)
+data class Shop(@PrimaryKey/*(autoGenerate = true) val id: Int,*/ @ColumnInfo(name = "item") val item: String/*,
+                @ColumnInfo(name = "num") val num: Int, @ColumnInfo(name = "type") val type: String*/)
+    // amount and type (i.e. 1 oz)
+    // I'm thinking we could turn the id into a categorization thing. 1 means produce. 2 means dairy. etc.

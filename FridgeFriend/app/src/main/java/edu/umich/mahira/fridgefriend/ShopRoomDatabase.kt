@@ -64,8 +64,8 @@ abstract class ShopRoomDatabase : RoomDatabase() {
 
             // Add sample items: like apple
             // this might be where we can pull in items from recipes
-            var item = Shop(/*1, */"apple")
-            shopDao.insert(item)
+            //var item = Shop("apple",1,"lb")
+            shopDao.insert(Shop("apple"/*,1,"lb"*/))
         }
     }
 }
