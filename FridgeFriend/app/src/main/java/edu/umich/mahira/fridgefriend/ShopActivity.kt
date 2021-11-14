@@ -16,9 +16,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class ShopActivity : AppCompatActivity() {
 
     private val newItemActivityRequestCode = 1
-    private val shopViewModel: ShopView by viewModels {
-        ShopViewFactory((application as ItemsApplication).repository)
-    }
+//    private val shopViewModel: ShopView by viewModels {
+//        ShopViewFactory((application as ItemsApplication).repository)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,20 +39,34 @@ class ShopActivity : AppCompatActivity() {
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
         // val x = shopViewModel.temp
-        shopViewModel.allItems.observe(owner = this) { items ->
-            // Update the cached copy of the items in the adapter.
-            items/*?*/.let { adapter.submitList(it) }
-        }
+//        shopViewModel.allItems.observe(owner = this) { items ->
+//            // Update the cached copy of the items in the adapter.
+//            items/*?*/.let { adapter.submitList(it) }
+//        }
 
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
-        if (requestCode == newItemActivityRequestCode && resultCode == Activity.RESULT_OK) {
+//        if (resultCode != RESULT_CANCELED /*&& intentData != null*/) {
+//            if (requestCode == newItemActivityRequestCode && resultCode == Activity.RESULT_OK && intentData != null/* && resultCode != RESULT_CANCELED*/) {
+//                intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY)?.let { reply ->
+//                    val item = Shop(/*1, */reply)
+//                    shopViewModel.insert(item)
+//                }
+//            } else {
+//                Toast.makeText(
+//                    applicationContext,
+//                    R.string.empty_not_saved,
+//                    Toast.LENGTH_LONG
+//                ).show()
+//            }
+//        }
+        if (requestCode == newItemActivityRequestCode && resultCode == Activity.RESULT_OK/* && intentData != null && resultCode != RESULT_CANCELED*/) {
             intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY)?.let { reply ->
                 val item = Shop(/*1, */reply)
-                shopViewModel.insert(item)
+                //shopViewModel.insert(item)
             }
         } else {
             Toast.makeText(
