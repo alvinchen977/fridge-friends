@@ -39,10 +39,13 @@ class ShopActivity : AppCompatActivity() {
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
         // val x = shopViewModel.temp
-//        shopViewModel.allItems.observe(owner = this) { items -> // problem area
-//            // Update the cached copy of the items in the adapter.
-//            items/*?*/.let { adapter.submitList(it) }
-//        }
+        shopViewModel.allItems.observe(owner = this) { items -> // problem area
+            // Update the cached copy of the items in the adapter.
+            items/*?*/.let { adapter.submitList(it) }
+        } // with problem areas commented out --> runs but cant see items entered
+        // with problem areas in but no question mark^ --> app closes out just by pushing the shop button
+        // with problem areas in including question mark --> E/AndroidRuntime: FATAL EXCEPTION: main ...
+        // android.app.Application cannot be cast to ItemsApplication ...
 
     }
 
@@ -66,7 +69,7 @@ class ShopActivity : AppCompatActivity() {
         if (requestCode == newItemActivityRequestCode && resultCode == Activity.RESULT_OK/* && intentData != null && resultCode != RESULT_CANCELED*/) {
             intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY)?.let { reply ->
                 val item = Shop(/*1, */reply)
-                //shopViewModel.insert(item) // problem area
+                shopViewModel.insert(item) // problem area
             }
         } else {
             Toast.makeText(
