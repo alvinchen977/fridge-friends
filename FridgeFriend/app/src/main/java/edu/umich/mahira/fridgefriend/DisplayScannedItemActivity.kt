@@ -70,11 +70,10 @@ class DisplayScannedItemActivity : AppCompatActivity() {
                 items.add((Item(textView.text.toString(),1)))
             }
             // Refresh here
+            MainActivity().replaceFridgeFragment()
             finish()
 
         })
-
-
 
     }
 }

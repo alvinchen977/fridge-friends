@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var listView: ListView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,6 +40,28 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    /*private fun refreshFragment(context: Context?) {
+        context?.let {
+            val fragmentManager = (context as? AppCompatActivity)?.supportFragmentManager
+            fragmentManager?.let {
+                val currentFragment = fragmentManager.findFragmentById(R.id.flFragment)
+                currentFragment?.let {
+                    val fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.detach(it)
+                    fragmentTransaction.attach(it)
+                    fragmentTransaction.commit()
+                }
+            }
+        }
+
+    }*/
+
+    fun replaceFridgeFragment() {
+        val myFridgeFragment=MyFridgeFragment()
+        setCurrentFragment(myFridgeFragment)
+    }
+
 
     private fun setCurrentFragment(fragment:Fragment)=
         supportFragmentManager.beginTransaction().apply {
