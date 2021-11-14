@@ -11,12 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 // activity for entering an item
 class NewItemActivity : AppCompatActivity() {
 
-    /*private lateinit var editItemView: EditText*/
-
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_item)
-        // editItemView = findViewById(R.id.edit_item)
         val editItemView = findViewById<EditText>(R.id.edit_item)
 
         val button = findViewById<Button>(R.id.button_save)

@@ -23,12 +23,13 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        } // 'proguard-android.txt' could work better here as optimize could flag additional things
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+        // = 1.8 instead of JavaVersion.VERSION_1_8
     }
     packagingOptions {
         exclude 'META-INF/atomicfu.kotlin_module'
@@ -37,6 +38,11 @@ android {
         jvmTarget = '1.8'
     }
 }
+
+/*repositories {
+    mavenCentral()
+}*/
+
 // dependency versions listed in build.gradle (project)
 // located at fridge-friends/FridgeFriend/build.gradle
 dependencies {

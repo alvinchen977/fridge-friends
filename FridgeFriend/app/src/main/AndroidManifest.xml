@@ -28,7 +28,23 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FridgeFriend">
+        android:theme="@style/Theme.FridgeFriend"
+
+        android:name=".ItemsApplication">
+        <activity
+            android:name=".ShopActivity"
+            android:label="@string/shop"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SHOP" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NewItemActivity"></activity>
+        <!-- OTHER -->
+
+        <!-- version 1
         <activity
             android:name=".ShopActivity"
             android:exported="true"
@@ -48,9 +64,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            tools:ignore="Instantiatable" />
+            tools:ignore="Instantiatable" /> -->
         <!-- parent as ShopActivity not MainActivity -->
         <!-- allows ItemsApplication to extend android.app.Activity -->
+
         <activity
             android:name=".PostActivity"
             android:label="@string/post"

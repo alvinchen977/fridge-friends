@@ -4,7 +4,9 @@
     <string name="camera">Camera</string>
     <string name="preview">Image</string>
 
-    <string name="hint_item">Shop...</string>
+    <string name="shop">Shop</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_item">pickles</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Item not saved because it is empty.</string>
     <string name="add_item">Add item</string>

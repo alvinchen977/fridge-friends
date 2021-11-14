@@ -26,6 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:contentDescription="@string/add_item"
-        android:src="@drawable/ic_baseline_add_24"/>
+        android:src="@drawable/ic_addition_sign"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
