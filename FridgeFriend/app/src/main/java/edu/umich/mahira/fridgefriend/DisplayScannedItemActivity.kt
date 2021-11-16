@@ -1,7 +1,6 @@
 package edu.umich.mahira.fridgefriend
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -41,8 +40,6 @@ class DisplayScannedItemActivity : AppCompatActivity() {
 
         // We also want to disable editing when the user exits the field.
         // This will make the button the only non-programmatic way of editing it.
-        // We also want to disable editing when the user exits the field.
-        // This will make the button the only non-programmatic way of editing it.
         textView.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
             // If it loses focus...
             if (!hasFocus) {
@@ -68,9 +65,12 @@ class DisplayScannedItemActivity : AppCompatActivity() {
             }
             if(!exist){
                 items.add((Item(textView.text.toString(),1)))
+
             }
             // Refresh here
-            MainActivity().replaceFridgeFragment()
+            //MainActivity().replaceFridgeFragment()
+            //MyFridgeFragment().refreshFragment(this)
+            //MyFridgeFragment().updateList(items)
             finish()
 
         })

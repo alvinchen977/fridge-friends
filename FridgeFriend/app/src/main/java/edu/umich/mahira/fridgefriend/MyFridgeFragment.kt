@@ -8,7 +8,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -18,12 +17,15 @@ import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.fragment_my_fridge.view.*
 import java.io.ByteArrayOutputStream
 import java.io.File
+import android.os.Build
+import android.os.Handler
 
 
-val items = arrayListOf<Item?>() //use this to the items
+val items = arrayListOf<Item?>() //use this for the items
 
 class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
 
@@ -53,10 +55,9 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.setBackgroundColor(Color.parseColor("#E0E0E0"))
 
         itemListAdapter = GroceryListAdapter(requireActivity(), items)
-        view.GroceryListView.setAdapter(itemListAdapter)
+        view.GroceryListView.adapter = itemListAdapter
 
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
             results.forEach {
@@ -84,22 +85,38 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
                     val image = GroceryItem(image = base64Image)
                     GroceryItemStore.postGrocery(activity?.applicationContext!!, image) {
                         val intent =
-                            Intent(activity?.applicationContext, DisplayScannedItemActivity::class.java)
+                            Intent(
+                                activity?.applicationContext,
+                                DisplayScannedItemActivity::class.java
+                            )
                         intent.putExtra("displayText", it)
                         intent.putExtra("imagePath", filePath)
                         startActivity(intent, null)
                         Log.d("returned", it)
                     }
-
                 }
+                //updateList(items)
+                //MainActivity().setCurrentFragment(this, "myFridgeFragment")
+                //update list view after call to api
+                //TODO make it so it calls this function immediatly after API call
+                Handler().postDelayed({
+                    updateList(items)
+                    //(activity as MainActivity?)?.setCurrentFrag(this, "myFridgeFragment")
+                }, 5000)
             } else {
                 Log.d("TakePicture", "failed")
             }
+
         }
         // Food picture
         view.postGrocery.setOnClickListener {
             imageUri = mediaStoreAlloc("image/jpeg")
             forTakePicture.launch(imageUri)
         }
+    }
+
+    fun updateList(newList: ArrayList<Item?>) {
+        itemListAdapter.notifyDataSetChanged()
+        Log.d("UpdateList", "yes")
     }
 }
