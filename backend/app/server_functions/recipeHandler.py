@@ -1,7 +1,10 @@
 import json
 import requests
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+
+from django.db import connection 
+
 
 #receives a post request with {"ingredients": [array of ingredients]} in the body
 #returns a list of recipes containing all of the keywords listed  
@@ -20,5 +23,13 @@ def findRecipeByKeyword(request):
 
 #receives a post request with { "username": "someval" } in the body
 #returns list of recipes the user has liked 
-def findRecipeByLikeStatus(status=200):
+def findRecipeByLikeStatus(request):
 	return HttpResponse(status=200) 
+
+def findRecipeByDefault(request):
+	cursor = connection.cursor()
+	cursor.execute("SELECT * FROM recipes ORDER BY random() LIMIT 5;")
+	rows = cursor.fetchall()	
+	response = {}
+	response['recipes'] = rows
+	return JsonResponse(response)

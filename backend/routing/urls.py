@@ -28,4 +28,7 @@ urlpatterns = [
 	path('findRecipeByTitle/', views.findRecipeByTitle, name='findRecipeByTitle'),
 	path('findRecipeByKeyword/', views.findRecipeByKeyword, name='findRecipeByKeyword'),	
 	path('findRecipeByLikeStatus/', views.findRecipeByLikeStatus, name='findRecipeByLikeStatus'),
+	path('findRecipeByDefault/', views.findRecipeByDefault, name='findRecipeByDefault'),
+	path('registerNewUser/', views.registerNewUser, name='registerNewUser'),
+	
 ]

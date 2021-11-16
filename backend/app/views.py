@@ -53,6 +53,11 @@ def findRecipeByLikeStatus(request):
 		return HttpResponse(status=404)
 	return recipeHandler.findRecipeByKeyword(request)
 
+def findRecipeByDefault(request):
+	if request.method != "GET":
+		return HttpResponse(status=404)
+	return recipeHandler.findRecipeByDefault(request)
+
 @csrf_exempt
 def registerNewUser(request):
 	if request.method != 'POST':
