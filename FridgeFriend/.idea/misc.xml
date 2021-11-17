@@ -11,24 +11,33 @@
         <entry key="..\:/Users/adeli/OneDrive/Desktop/fall2021/eecs441/FridgeFriend/fridge-friends/FridgeFriend/app/src/main/res/layout/fragment_my_fridge.xml" value="0.264" />
         <entry key="..\:/Users/adeli/OneDrive/Desktop/fall2021/eecs441/FridgeFriend/fridge-friends/FridgeFriend/app/src/main/res/layout/listitem_fridge.xml" value="0.264" />
         <entry key="..\:/Users/adeli/OneDrive/Desktop/fall2021/eecs441/FridgeFriend/fridge-friends/FridgeFriend/app/src/main/res/menu/bottom_nav_menu.xml" value="0.8" />
+        <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.29583333333333334" />
+        <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_add_foreground.xml" value="0.29583333333333334" />
+        <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_baseline_trending_up_24.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_grocery_list_background.xml" value="0.1" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_grocery_list_foreground.xml" value="0.2574074074074074" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_my_fridge_background.xml" value="0.2574074074074074" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_my_fridge_foreground.xml" value="0.10277777777777777" />
+        <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_person_foreground.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_recipes_background.xml" value="0.10277777777777777" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_recipes_foreground.xml" value="0.2574074074074074" />
+        <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_remove_foreground.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_savings_background.xml" value="0.2574074074074074" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_temp_background.xml" value="0.10277777777777777" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/drawable/ic_temp_foreground.xml" value="0.10277777777777777" />
-        <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_display_scanned_item.xml" value="0.375" />
+        <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_display_scanned_item.xml" value="0.1773049645390071" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_fridge.xml" value="0.125" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_main_test.xml" value="0.1" />
+        <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_post.xml" value="0.25" />
+        <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_spending_list_adapter.xml" value="0.375" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/fragment_grocery_list.xml" value="0.335" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/fragment_my_fridge.xml" value="0.25" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/fragment_recipe.xml" value="0.2796875" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/fragment_savings.xml" value="0.25" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/list_row.xml" value="0.335" />
+        <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/listitem_fridge.xml" value="0.335" />
+        <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/recyclerview_item.xml" value="0.335" />
       </map>
     </option>
   </component>

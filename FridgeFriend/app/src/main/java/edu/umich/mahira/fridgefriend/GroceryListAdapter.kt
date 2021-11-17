@@ -21,11 +21,11 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
         getItem(position)?.run {
             listItemView.itemTextView.text = name
             listItemView.numbersItemTextView.text = quantity.toString()
-            listItemView.root.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#E0E0E0" else "#EEEEEE"))
+            listItemView.root.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#FFFFFFFF" else "#F1FEFF"))
 
-            listItemView.MinusButtom.visibility = View.VISIBLE
-            listItemView.MinusButtom.setOnClickListener { v: View ->
-                if (v.id == R.id.MinusButtom) {
+            listItemView.MinusButton.visibility = View.VISIBLE
+            listItemView.MinusButton.setOnClickListener { v: View ->
+                if (v.id == R.id.MinusButton) {
                     for (i in items) {
                         if (i != null) {
                             if (i.name == name) {

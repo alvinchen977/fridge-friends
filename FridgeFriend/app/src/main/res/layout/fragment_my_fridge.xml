@@ -7,27 +7,58 @@
     tools:context=".MainActivity">
 
 
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:layout_below="@+id/postGrocery"
+        android:layout_alignParentStart="true"
+        android:background="#F1FEFF"
+        app:layout_constraintTop_toBottomOf="@+id/postGrocery">
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ems="10"
+            android:hint="Enter item here" />
+
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7sp"
+            android:layout_toRightOf="@+id/input"
+            android:src="@drawable/ic_add_foreground" />
+
+    </RelativeLayout>
+
     <ImageButton
         android:id="@+id/reminderButton2"
         android:layout_width="69dp"
         android:layout_height="54dp"
         android:onClick="startReminder"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_today"
+        app:tint="@color/button"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/postGrocery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="59dp"
+        android:layout_height="54dp"
+        android:backgroundTint="@color/white"
         android:contentDescription="@string/camera"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myFridgeFragment"
         app:srcCompat="@android:drawable/ic_menu_camera"
+        app:tint="@color/button"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <TextView
@@ -46,13 +77,14 @@
 
     <ListView
         android:id="@+id/GroceryListView"
-        android:layout_width="409dp"
-        android:layout_height="454dp"
+        android:layout_width="411dp"
+        android:layout_height="403dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postGrocery"
-        app:layout_constraintVertical_bias="0.4" />
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintVertical_bias="0.461" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
