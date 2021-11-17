@@ -23,7 +23,7 @@ def makeRequest(thread_number):
             recipe["instructions"] = "null"
             recipe["ingredients"] = "null"
         try:
-            recipe["image"] = base64.b64encode(requests.get(scraper.image()).content)
+            recipe["image"] = str(base64.b64encode(requests.get(scraper.image()).content))
             sleep(.05)
         except Exception as ex:
             recipe["image"] = "null"
@@ -33,7 +33,7 @@ def makeRequest(thread_number):
             recipe["total_time"] = scraper.total_time()
         except:
             recipe["total_time"] = "null"
-                    #print("totaltime failed")
+            #print("totaltime failed")
         try:
             recipe["nutrients"] = scraper.nutrients()
         except:
