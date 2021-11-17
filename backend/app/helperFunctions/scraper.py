@@ -47,8 +47,9 @@ def makeRequest(thread_number):
         if (recipe["title"] != "null"):
             recipes[i] = recipe
             print ("recipe: " + str(i) + "Succeeded")
-        with open("./all_recipes_json/all_recipes_" + str(thread_number) + ".json", "w") as json_file:
-            json_file.write(json.dumps(recipes))
+        if (i % 500 == 0): 
+            with open("./all_recipes_json/all_recipes_" + str(thread_number) + ".json", "w") as json_file:
+                json_file.write(json.dumps(recipes))
 
 for i in range (0,thread_count):
     multiprocessing.Process(target=makeRequest, args=(i,)).start()
