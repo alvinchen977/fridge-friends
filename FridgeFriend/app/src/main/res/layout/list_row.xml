@@ -5,7 +5,7 @@
     android:padding="15sp"
     android:background="@color/white">
 
-    <TextView
+    <!--TextView
         android:id="@+id/number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,6 +31,6 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="18sp"
-        android:src="@drawable/ic_remove_foreground" />
+        android:src="@drawable/ic_remove_foreground" /-->
 
 </RelativeLayout>

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import edu.umich.mahira.fridgefriend.databinding.ListitemFridgeBinding
 
+
 class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
     ArrayAdapter<Item?>(context, 0, users) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -22,8 +23,9 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
             listItemView.itemTextView.text = name
             listItemView.numbersItemTextView.text = quantity.toString()
             listItemView.root.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#FFFFFFFF" else "#F1FEFF"))
-
             listItemView.MinusButton.visibility = View.VISIBLE
+            listItemView.EditButton.visibility = View.VISIBLE
+
             listItemView.MinusButton.setOnClickListener { v: View ->
                 if (v.id == R.id.MinusButton) {
                     for (i in items) {
@@ -34,16 +36,30 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
                                 listItemView.numbersItemTextView.text = quantity.toString()
                                 if(i.quantity == 0){
                                     items.remove(i)
-                                    // Refresh here
-
+                                    // Refresh fragment view
+                                    notifyDataSetChanged()
                                 }
                                 break
                             }
                         }
                     }
-
                 }
             }
+
+            listItemView.EditButton.setOnClickListener { v: View ->
+                if (v.id == R.id.EditButton) {
+                    for (i in items) {
+                        if (i != null) {
+                            if (i.name == name) {
+                                //do something
+                                break
+                            }
+                        }
+                    }
+                }
+            }
+
+
         }
         return listItemView.root
     }

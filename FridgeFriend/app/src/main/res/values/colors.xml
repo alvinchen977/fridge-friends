@@ -13,5 +13,6 @@
     <color name="blue_1">#00101f</color>
     <color name="blue_5">#0078ff</color>
     <color name="button">#32384A</color>
+    <color name="list_item">#F1FEFF</color>
 
 </resources>

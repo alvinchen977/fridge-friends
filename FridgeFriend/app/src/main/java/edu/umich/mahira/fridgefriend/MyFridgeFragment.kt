@@ -3,7 +3,6 @@ package edu.umich.mahira.fridgefriend
 import androidx.fragment.app.Fragment
 import android.Manifest
 import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -16,12 +15,9 @@ import android.util.Base64
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.fragment_my_fridge.view.*
 import java.io.ByteArrayOutputStream
 import java.io.File
-import android.os.Build
 import android.os.Handler
 
 
@@ -100,7 +96,7 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
                 //update list view after call to api
                 //TODO make it so it calls this function immediatly after API call
                 Handler().postDelayed({
-                    updateList(items)
+                    updateList()
                     //(activity as MainActivity?)?.setCurrentFrag(this, "myFridgeFragment")
                 }, 5000)
             } else {
@@ -115,7 +111,7 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
         }
     }
 
-    fun updateList(newList: ArrayList<Item?>) {
+    private fun updateList() {
         itemListAdapter.notifyDataSetChanged()
         Log.d("UpdateList", "yes")
     }

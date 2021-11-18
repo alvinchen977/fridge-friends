@@ -56,7 +56,7 @@ class DisplayScannedItemActivity : AppCompatActivity() {
             var exist = false
             for(i in items){
                 if (i != null) {
-                    if(i.name == displayText ){
+                    if(i.name == displayText){
                         exist = true
                         i.quantity = i.quantity?.plus(1)
                         break
@@ -67,10 +67,6 @@ class DisplayScannedItemActivity : AppCompatActivity() {
                 items.add((Item(textView.text.toString(),1)))
 
             }
-            // Refresh here
-            //MainActivity().replaceFridgeFragment()
-            //MyFridgeFragment().refreshFragment(this)
-            //MyFridgeFragment().updateList(items)
             finish()
 
         })

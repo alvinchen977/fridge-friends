@@ -30,25 +30,25 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button"
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="48dp"
-        app:icon="@android:drawable/ic_menu_edit"
+        app:srcCompat="@drawable/ic_edit_foreground"
         app:iconTint="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button2"
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="100dp"
-        app:icon="@android:drawable/ic_input_add"
+        app:srcCompat="@android:drawable/ic_input_add"
         app:iconTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
