@@ -4,14 +4,14 @@ import json
 import multiprocessing 
 import requests
 import base64
+
 base_url = "https://www.allrecipes.com/recipe/"
 wait_time = .001
-thread_count = 12
-def makeRequest(thread_number):
+thread_count = 10
+
+def makeRequest(start, end):
     recipes = {} 
-    start_loop = 7000 + 10000 * thread_number
-    end_loop = start_loop + 1000
-    for i in range(start_loop,end_loop):
+    for i in range(start,end):
         recipe = {} 
         scraper = scrape_me(base_url + str(i) + "/")
         try:
@@ -24,7 +24,6 @@ def makeRequest(thread_number):
             recipe["ingredients"] = "null"
         try:
             recipe["image"] = str(base64.b64encode(requests.get(scraper.image()).content))
-            sleep(.05)
         except Exception as ex:
             recipe["image"] = "null"
             print (ex)
@@ -47,9 +46,20 @@ def makeRequest(thread_number):
         if (recipe["title"] != "null"):
             recipes[i] = recipe
             print ("recipe: " + str(i) + "Succeeded")
-        if (i % 500 == 0): 
-            with open("./all_recipes_json/all_recipes_" + str(thread_number) + ".json", "w") as json_file:
-                json_file.write(json.dumps(recipes))
+    with open("./all_recipes_json/all_recipes_" + str(start) + "_" +str(end) + ".json", "w") as json_file:
+            json_file.write(json.dumps(recipes))
 
-for i in range (0,thread_count):
-    multiprocessing.Process(target=makeRequest, args=(i,)).start()
+increment = 499 
+current = 7000
+count = 0
+while (count < 6 ):
+    print("ITERATTION: " + str(current))
+    count = count + 1
+    tasks = []
+    for i in range (0,thread_count):
+        p = multiprocessing.Process(target=makeRequest, args=(current, current + increment))
+        current = current + increment + 1
+        tasks.append(p)
+        p.start()
+    for task in tasks:
+        task.join()

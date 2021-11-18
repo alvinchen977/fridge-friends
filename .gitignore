@@ -10,14 +10,17 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+
+#db files
+*.json
+
 # Package Files #
 *.jar
 *.war
 *.nar
 *.ear
 *.zip
-*.tar.gz
 *.rar
-
+*.tar.gz
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
