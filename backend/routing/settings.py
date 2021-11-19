@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-+k*iihliy6129guh&kis(g8j#jo3)e87dvgtzq5dl5=0nosa^-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['18.118.131.242', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['100.26.191.198', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'fridge_database',
         'USER': 'fridge_user',
-        'PASSWORD': 'fridge_user',
+        'PASSWORD': 'fridgefridge',
         'HOST': 'localhost',
         'PORT': '',
     }
