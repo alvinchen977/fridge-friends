@@ -7,7 +7,7 @@ import base64
 
 base_url = "https://www.allrecipes.com/recipe/"
 wait_time = .001
-thread_count = 10
+thread_count = 4
 
 def makeRequest(start, end):
     recipes = {} 
@@ -53,6 +53,7 @@ increment = 499
 current = 7000
 count = 0
 while (count < 6 ):
+    current = current + 10000 * count 
     print("ITERATTION: " + str(current))
     count = count + 1
     tasks = []
