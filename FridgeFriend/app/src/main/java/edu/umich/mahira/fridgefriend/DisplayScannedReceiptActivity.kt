@@ -1,17 +1,16 @@
 package edu.umich.mahira.fridgefriend
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 
 class DisplayScannedReceiptActivity : AppCompatActivity() {
+    @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_scanned_receipt)
@@ -24,7 +23,7 @@ class DisplayScannedReceiptActivity : AppCompatActivity() {
         // Find the button which will start editing process.
         val originalKeyListener = textView.keyListener;
         textView.keyListener = null;
-        val buttonShowIme = findViewById<Button>(R.id.button)
+        val buttonShowIme = findViewById<ImageButton>(R.id.button)
         buttonShowIme.setOnClickListener(View.OnClickListener {
             textView.keyListener = originalKeyListener;
             // Focus the field.
@@ -49,10 +48,10 @@ class DisplayScannedReceiptActivity : AppCompatActivity() {
             }
         }
 
-        val buttonAdd = findViewById<Button>(R.id.button2)
+        val buttonAdd = findViewById<ImageButton>(R.id.button2)
         buttonAdd.setOnClickListener(View.OnClickListener {
             receipts.add(textView.text.toString().toInt())
-            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         })
     }
 }

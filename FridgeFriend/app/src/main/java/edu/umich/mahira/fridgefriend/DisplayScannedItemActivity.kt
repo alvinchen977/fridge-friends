@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 
 
 class DisplayScannedItemActivity : AppCompatActivity() {
@@ -28,7 +25,7 @@ class DisplayScannedItemActivity : AppCompatActivity() {
         // Find the button which will start editing process.
         val originalKeyListener = textView.keyListener;
         textView.keyListener = null;
-        val buttonShowIme = findViewById<Button>(R.id.button)
+        val buttonShowIme = findViewById<ImageButton>(R.id.button)
         buttonShowIme.setOnClickListener(View.OnClickListener {
             textView.keyListener = originalKeyListener;
             // Focus the field.
@@ -51,12 +48,12 @@ class DisplayScannedItemActivity : AppCompatActivity() {
             }
         }
 
-        val buttonAdd = findViewById<Button>(R.id.button2)
+        val buttonAdd = findViewById<ImageButton>(R.id.button2)
         buttonAdd.setOnClickListener(View.OnClickListener {
             var exist = false
             for(i in items){
                 if (i != null) {
-                    if(i.name == displayText){
+                    if(i.name == textView.text ){
                         exist = true
                         i.quantity = i.quantity?.plus(1)
                         break
@@ -68,7 +65,6 @@ class DisplayScannedItemActivity : AppCompatActivity() {
 
             }
             finish()
-
         })
 
     }

@@ -3,6 +3,7 @@ package edu.umich.mahira.fridgefriend
 import androidx.fragment.app.Fragment
 import android.Manifest
 import android.content.ContentValues
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -10,6 +11,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
@@ -18,7 +20,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.android.synthetic.main.fragment_my_fridge.view.*
 import java.io.ByteArrayOutputStream
 import java.io.File
-import android.os.Handler
+import android.view.inputmethod.InputMethodManager
+import kotlinx.android.synthetic.main.fragment_my_fridge.*
+
+
+
 
 
 val items = arrayListOf<Item?>() //use this for the items
@@ -73,7 +79,6 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
         // Take the food picture
         val forTakePicture = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
-//                doCrop(cropIntent)
                 if (imageUri != null) {
                     val uriPathHelper = URIPathHelper()
                     val filePath = imageUri?.let { uriPathHelper.getPath(requireActivity(), it) }
@@ -91,13 +96,9 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
                         Log.d("returned", it)
                     }
                 }
-                //updateList(items)
-                //MainActivity().setCurrentFragment(this, "myFridgeFragment")
-                //update list view after call to api
-                //TODO make it so it calls this function immediatly after API call
+//                update list view after call to api
                 Handler().postDelayed({
                     updateList()
-                    //(activity as MainActivity?)?.setCurrentFrag(this, "myFridgeFragment")
                 }, 5000)
             } else {
                 Log.d("TakePicture", "failed")
@@ -109,6 +110,51 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
             imageUri = mediaStoreAlloc("image/jpeg")
             forTakePicture.launch(imageUri)
         }
+
+        // Find the button which will start editing process.
+        val originalKeyListener = input.keyListener;
+        input.keyListener = null;
+        view.input.setOnClickListener(View.OnClickListener {
+            input.keyListener = originalKeyListener;
+            // Focus the field.
+            input.requestFocus()
+            // Show soft keyboard for the user to enter the value.
+            val imm = activity?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT)
+        })
+
+        // We also want to disable editing when the user exits the field.
+        // This will make the button the only non-programmatic way of editing it.
+        input.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            // If it loses focus...
+            if (!hasFocus) {
+                // Hide soft keyboard.
+                val imm = activity?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(input.windowToken, 0)
+                // Make it non-editable again.
+                input.keyListener = null
+            }
+        }
+
+        view.add.setOnClickListener(View.OnClickListener {
+            if(view.input.text.toString() != ""){
+                var exist = false
+                for(i in items){
+                    if (i != null) {
+                        if(i.name == view.input.text.toString()){
+                            exist = true
+                            i.quantity = i.quantity?.plus(1)
+                            break
+                        }
+                    }
+                }
+                if(!exist){
+                    items.add((Item(view.input.text.toString(),1)))
+                }
+                updateList()
+                view.input.text.clear()
+            }
+        })
     }
 
     private fun updateList() {
