@@ -16,7 +16,7 @@ import org.json.JSONArray
 
 object RecipeStore {
     private lateinit var queue: RequestQueue
-    private const val serverUrl = "https://18.118.131.242/"
+    private const val serverUrl = "https://54.174.234.61/"
     fun getRecipes(context: Context, completion: (Array<Any>) -> Unit): String {
         val getRequest = JsonObjectRequest(
             Request.Method.GET,

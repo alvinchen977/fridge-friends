@@ -1,18 +1,19 @@
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.ListView
 import androidx.fragment.app.Fragment
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import edu.umich.mahira.fridgefriend.DisplayScannedItemActivity
 import edu.umich.mahira.fridgefriend.R
+import edu.umich.mahira.fridgefriend.RecipeAdapter
 import edu.umich.mahira.fridgefriend.RecipeStore
-import edu.umich.mahira.fridgefriend.RecipeStore.getRecipes
+import android.app.ProgressDialog
+import android.widget.Toast
+
 
 class RecipeFragment:Fragment(R.layout.fragment_recipe) {
+    private lateinit var listView: ListView
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Toast.makeText(activity?.applicationContext!!, "wait while recipes load", Toast.LENGTH_SHORT)
         RecipeStore.getRecipes(activity?.applicationContext!!){ it ->
 //            val arrayTutorialType = object : TypeToken<Array<Array<String>>>() {}.type
 //            var tutorials: Array<Any> = Gson().fromJson(it.toString(), arrayTutorialType)
@@ -30,6 +31,14 @@ class RecipeFragment:Fragment(R.layout.fragment_recipe) {
                 }
 
             }
+            listView = view.findViewById<ListView>(R.id.recipe_list_view)
+            val listItems = arrayOfNulls<String>(list.size)
+            for (i in 0 until list.size) {
+                val recipe = list[i]
+                listItems[i] = recipe
+            }
+            val adapter = RecipeAdapter(activity?.applicationContext!!, listItems)
+            listView.adapter = adapter
 
         }
     }
