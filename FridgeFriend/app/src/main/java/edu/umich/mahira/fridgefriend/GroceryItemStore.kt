@@ -14,7 +14,7 @@ import org.json.JSONObject
 
 object GroceryItemStore {
     private lateinit var queue: RequestQueue
-    private const val serverUrl = "https://18.118.131.242/"
+    private const val serverUrl = "https://54.174.234.61/"
     fun postGrocery(context: Context, item: GroceryItem, completion: (String) -> Unit): String {
         val jsonObj = mapOf(
             "image" to item.image,

@@ -1,17 +1,13 @@
 package edu.umich.mahira.fridgefriend
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 
 
 class DisplayScannedItemActivity : AppCompatActivity() {
@@ -29,7 +25,7 @@ class DisplayScannedItemActivity : AppCompatActivity() {
         // Find the button which will start editing process.
         val originalKeyListener = textView.keyListener;
         textView.keyListener = null;
-        val buttonShowIme = findViewById<Button>(R.id.button)
+        val buttonShowIme = findViewById<ImageButton>(R.id.button)
         buttonShowIme.setOnClickListener(View.OnClickListener {
             textView.keyListener = originalKeyListener;
             // Focus the field.
@@ -39,8 +35,6 @@ class DisplayScannedItemActivity : AppCompatActivity() {
             imm.showSoftInput(textView, InputMethodManager.SHOW_IMPLICIT)
         })
 
-        // We also want to disable editing when the user exits the field.
-        // This will make the button the only non-programmatic way of editing it.
         // We also want to disable editing when the user exits the field.
         // This will make the button the only non-programmatic way of editing it.
         textView.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
@@ -54,12 +48,12 @@ class DisplayScannedItemActivity : AppCompatActivity() {
             }
         }
 
-        val buttonAdd = findViewById<Button>(R.id.button2)
+        val buttonAdd = findViewById<ImageButton>(R.id.button2)
         buttonAdd.setOnClickListener(View.OnClickListener {
             var exist = false
             for(i in items){
                 if (i != null) {
-                    if(i.name == displayText ){
+                    if(i.name == textView.text ){
                         exist = true
                         i.quantity = i.quantity?.plus(1)
                         break
@@ -68,13 +62,10 @@ class DisplayScannedItemActivity : AppCompatActivity() {
             }
             if(!exist){
                 items.add((Item(textView.text.toString(),1)))
+
             }
-            // Refresh here
             finish()
-
         })
-
-
 
     }
 }
