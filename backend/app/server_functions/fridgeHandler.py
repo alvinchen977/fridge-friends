@@ -95,8 +95,11 @@ def postToFridge(request):
         if not row is None:
             cursor.execute("SELECT items FROM virtualfridges WHERE ownerid = %s", (username,))
             currentItems = cursor.fetchone()[0]
-            if not currentItems is None: 
-                currentItems[itemName] = quantity
+            if not currentItems is None:
+                if itemName not in currentItems: 
+                    currentItems[itemName] = quantity
+                else:
+                    currentItems[itemName] += quantity
                 if currentItems[itemName] <= 0:
                     del currentItems[itemName]
                 cursor.execute("UPDATE virtualfridges SET items = %s WHERE ownerid = %s", (json.dumps(currentItems), username,))

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Scrolli..."
     tools:context="edu.umich.mahira.fridgefriend.ShopActivity"
-    tools:showIn="@layout/activity_shop">
+    tools:showIn="@layout/activity_shop"> <!-- .MainActivity ?frag? -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@id/recyclerview"

@@ -14,6 +14,7 @@ import org.json.JSONObject
 
 object GroceryItemStore {
     private lateinit var queue: RequestQueue
+    var firstTime: Boolean? = true
     private const val serverUrl = "https://54.174.234.61/"
     fun postGrocery(context: Context, item: GroceryItem, completion: (String) -> Unit): String {
         val jsonObj = mapOf(
@@ -57,8 +58,13 @@ object GroceryItemStore {
                 }
                 else{
                     for (key in temp.keys()){
-                        if (temp[key].toString().toDouble().toInt() > highest){
-                            highest = temp[key].toString().toDouble().toInt()
+//                        if (temp[key].toString().toDouble().toInt() > highest){
+//                            highest = temp[key].toString().toDouble().toInt()
+//                        }
+                        if (temp[key].toString().toDoubleOrNull() != null){
+                            if (temp[key].toString().toDouble().toInt() > highest){
+                                highest = temp[key].toString().toDouble().toInt()
+                            }
                         }
                     }
                     completion(highest.toString())

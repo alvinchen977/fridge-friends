@@ -32,9 +32,16 @@ class RecipeFragment:Fragment(R.layout.fragment_recipe) {
 
         val viewLikedButton: Button = view.findViewById(R.id.showLiked)
         viewLikedButton.setOnClickListener {
-            val intent =
-            Intent(activity?.applicationContext!!, SavedRecipesActivity::class.java)
-            startActivity(intent)
+            if (FridgeID.id == null){
+                val intent =
+                    Intent(activity?.applicationContext!!, SignInActivity::class.java)
+                startActivity(intent)
+            }
+            else {
+                val intent =
+                    Intent(activity?.applicationContext!!, SavedRecipesActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         val viewSearchButton: Button = view.findViewById(R.id.showSearch)

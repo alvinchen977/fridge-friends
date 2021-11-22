@@ -7,9 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Base64
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.viewModels
+import kotlinx.android.synthetic.main.activity_recipe_detail.*
 
 class RecipeDetailActivity : AppCompatActivity() {
     var image: String = "";
@@ -21,6 +24,7 @@ class RecipeDetailActivity : AppCompatActivity() {
         val Ingredients: TextView = findViewById(R.id.recipeDetailIngredients)
         val Instructios: TextView = findViewById(R.id.recipeDetailInstructions)
         val likeButton: Button = findViewById(R.id.likeRecipe)
+        val addIngredButton: Button = findViewById(R.id.addIngred) //connect to shopList
         Title.text = intent.getStringExtra("title")
         Ingredients.text = intent.getStringExtra("ingredients")
         Instructios.text = intent.getStringExtra("instructions")
@@ -52,6 +56,21 @@ class RecipeDetailActivity : AppCompatActivity() {
                 ) {
                     finish()
                 }
+            }
+        }
+
+        addIngredButton.setOnClickListener {
+            val shopViewModel: ShopView by viewModels { //?activity?
+                ShopViewFactory((application as ItemsApplication).repository)
+            }
+            var trimmed: String = recipeDetailIngredients.text.toString().replace("{", "")
+            trimmed = trimmed.replace("}", "")
+            Log.d("detail", trimmed)
+            val stripped = trimmed.split(",").toTypedArray()
+            for (values in stripped){
+                var temp = values.drop(1)
+                temp = temp.dropLast(1)
+                shopViewModel.insert(Shop(temp))
             }
         }
 

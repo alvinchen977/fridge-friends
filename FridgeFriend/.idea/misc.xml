@@ -3,6 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_edit_item.xml" value="0.1578125" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_new_item.xml" value="0.1" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_recipe_detail.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_saved_recipes.xml" value="0.1" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_set_cat.xml" value="0.1" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_shop.xml" value="0.22" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/content_shop.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/fragment_my_fridge.xml" value="0.1" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/fragment_recipe.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/fragment_savings.xml" value="0.1" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/list_item_recipe.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/layout/recyclerview_item.xml" value="0.1" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/Users/14197/Desktop/FridgeFriends/fridge-friends/FridgeFriend/app/src/main/res/menu/bottom_nav_shop.xml" value="0.1" />
         <entry key="..\:/Users/adeli/OneDrive/Desktop/fall2021/eecs441/FridgeFriend/fridge-friends/FridgeFriend/app/src/main/res/drawable/border.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/adeli/OneDrive/Desktop/fall2021/eecs441/FridgeFriend/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_display_scanned_item.xml" value="0.264" />
         <entry key="..\:/Users/adeli/OneDrive/Desktop/fall2021/eecs441/FridgeFriend/fridge-friends/FridgeFriend/app/src/main/res/layout/activity_display_scanned_receipt.xml" value="0.1" />
