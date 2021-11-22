@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <EditText
         android:id="@+id/itemTextView"
         android:layout_width="219dp"
         android:layout_height="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/item"
+        android:textColor="@color/black"
         android:textSize="16sp"
+        android:background="@null"
         app:layout_constraintEnd_toStartOf="@+id/MinusButton"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />

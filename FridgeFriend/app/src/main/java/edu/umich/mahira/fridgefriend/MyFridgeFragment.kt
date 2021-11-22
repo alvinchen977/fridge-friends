@@ -3,6 +3,7 @@ package edu.umich.mahira.fridgefriend
 import androidx.fragment.app.Fragment
 import android.Manifest
 import android.content.ContentValues
+import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -153,6 +154,10 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
                 }
                 updateList()
                 view.input.text.clear()
+                // We also want to disable editing when the user exits the field.
+                // This will make the button the only non-programmatic way of editing it.
+                val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(view.add.windowToken, 0)
             }
         })
     }
