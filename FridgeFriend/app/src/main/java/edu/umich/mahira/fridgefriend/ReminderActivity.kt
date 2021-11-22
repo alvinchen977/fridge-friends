@@ -22,7 +22,7 @@ class ReminderActivity : AppCompatActivity() {
         val threeDays: CheckBox = findViewById(R.id.checkBox2)
         val fiveDays: CheckBox = findViewById(R.id.checkBox3)
         val oneWeek: CheckBox = findViewById(R.id.checkBox4)
-        val threeSeconds: CheckBox = findViewById(R.id.checkBox5)
+        val oneMinute: CheckBox = findViewById(R.id.checkBox5)
 
         reminderButton.setOnClickListener {
             Toast.makeText(this, "Reminder Set!", Toast.LENGTH_SHORT).show()
@@ -50,9 +50,9 @@ class ReminderActivity : AppCompatActivity() {
                 val oneweek = 1000 * 10 * 60 * 60 * 24 * 7
                 alarmManager.set(AlarmManager.RTC_WAKEUP, currentTime+oneweek, pendingIntent)
             }
-            if (threeSeconds.isChecked) {
-                val threeseconds = 1000 * 3
-                alarmManager.set(AlarmManager.RTC_WAKEUP, currentTime+threeseconds, pendingIntent)
+            if (oneMinute.isChecked) {
+                val oneminute = 1000 * 60
+                alarmManager.set(AlarmManager.RTC_WAKEUP, currentTime+oneminute, pendingIntent)
             }
 
             startActivity(Intent(this, MainActivity::class.java))
