@@ -27,8 +27,10 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
             listItemView.itemTextView.setText(name)
             listItemView.numbersItemTextView.text = quantity.toString()
             listItemView.root.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#FFFFFFFF" else "#F1FEFF"))
+            listItemView.MinusButton.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#FFFFFFFF" else "#F1FEFF"))
+            listItemView.EditButton.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#FFFFFFFF" else "#F1FEFF"))
             listItemView.MinusButton.visibility = View.VISIBLE
-            listItemView.EditButton.visibility = View.VISIBLE
+            listItemView.EditButton.visibility = View.INVISIBLE
 
             listItemView.MinusButton.setOnClickListener { v: View ->
                 if (v.id == R.id.MinusButton) {
@@ -47,6 +49,15 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
                     }
                 }
             }
+
+            listItemView.itemTextView.setOnClickListener {
+                listItemView.EditButton.visibility = View.VISIBLE
+                // Show soft keyboard for the user to enter the value.
+                //val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                //imm.showSoftInput(listItemView.itemTextView, InputMethodManager.SHOW_IMPLICIT)
+
+            }
+
             listItemView.EditButton.setOnClickListener { v: View ->
                 if (v.id == R.id.EditButton) {
                     val i = items[position]
@@ -61,12 +72,14 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
                                 }
                             }
                             i.name = listItemView.itemTextView.text.toString()
+
                             notifyDataSetChanged()
-                            val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                            imm.hideSoftInputFromWindow(listItemView.EditButton.windowToken, 0)
                         }
                     }
                 }
+                val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(listItemView.EditButton.windowToken, 0)
+                listItemView.EditButton.visibility = View.INVISIBLE
             }
         }
         return listItemView.root

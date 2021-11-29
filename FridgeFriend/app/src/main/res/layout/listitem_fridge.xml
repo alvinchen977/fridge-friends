@@ -7,14 +7,15 @@
 
     <EditText
         android:id="@+id/itemTextView"
-        android:layout_width="219dp"
+        android:layout_width="260dp"
         android:layout_height="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="20dp"
+        android:background="@null"
         android:text="@string/item"
         android:textColor="@color/black"
+        android:focusable="false"
         android:textSize="16sp"
-        android:background="@null"
         app:layout_constraintEnd_toStartOf="@+id/MinusButton"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -24,32 +25,34 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
+        android:textColor="@color/black"
         android:text="@string/numberOfItem"
         app:layout_constraintEnd_toStartOf="@+id/itemTextView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/MinusButton"
-        android:layout_width="35dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="72dp"
+        android:layout_width="25dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
         android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/EditButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_remove_foreground" />
+        app:srcCompat="@drawable/ic_baseline_delete_forever_24"
+        app:tint="@color/button" />
 
     <ImageButton
         android:id="@+id/EditButton"
         android:layout_width="35dp"
         android:layout_height="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="20dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+        app:srcCompat="@drawable/ic_check"
+        app:tint="@color/button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
