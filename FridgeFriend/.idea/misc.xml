@@ -29,6 +29,8 @@
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/fragment_recipe.xml" value="0.2796875" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/fragment_savings.xml" value="0.25" />
         <entry key="..\:/Users/mazig/Documents/eecs441/fridge-friends/FridgeFriend/app/src/main/res/layout/list_row.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_recipe_detail.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/list_item_recipe.xml" value="0.25" />
       </map>
     </option>
   </component>
