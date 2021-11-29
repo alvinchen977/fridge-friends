@@ -8,20 +8,6 @@
 
     <!--android:onClick="startPost"-->
 
-    <ImageButton
-        android:id="@+id/receiptButton"
-        android:layout_width="59dp"
-        android:layout_height="54dp"
-        android:backgroundTint="@color/white"
-        android:contentDescription="@string/camera"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/savingsFragment"
-        app:srcCompat="@drawable/ic_camera_foreground"
-        app:tint="@color/button"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
-
     <TextView
         android:id="@+id/savingsFragment"
         android:layout_width="wrap_content"
@@ -36,11 +22,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <ImageButton
+        android:id="@+id/receiptButton"
+        android:layout_width="59dp"
+        android:layout_height="54dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/savingsFragment"
+        app:srcCompat="@drawable/ic_camera_foreground"
+        app:tint="@color/button"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
     <com.jjoe64.graphview.GraphView
         android:id="@+id/idGraphView"
-        android:layout_width="321dp"
-        android:layout_height="398dp"
-        android:layout_alignParentTop="true"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/receiptButton"
@@ -50,6 +49,7 @@
         android:id="@+id/SpendingListView"
         android:layout_width="383dp"
         android:layout_height="193dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

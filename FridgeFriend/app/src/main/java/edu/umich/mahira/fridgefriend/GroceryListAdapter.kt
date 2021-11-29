@@ -2,17 +2,12 @@ package edu.umich.mahira.fridgefriend
 
 import android.content.Context
 import android.graphics.Color
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
-import android.widget.ImageButton
-import androidx.appcompat.app.AppCompatActivity
 import edu.umich.mahira.fridgefriend.databinding.ListitemFridgeBinding
-import kotlinx.android.synthetic.main.fragment_my_fridge.*
-import kotlinx.android.synthetic.main.fragment_my_fridge.view.*
 
 class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
     ArrayAdapter<Item?>(context, 0, users) {

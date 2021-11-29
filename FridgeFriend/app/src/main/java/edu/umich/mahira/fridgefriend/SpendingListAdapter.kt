@@ -2,8 +2,6 @@ package edu.umich.mahira.fridgefriend
 
 import android.content.Context
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,8 +21,9 @@ class SpendingListAdapter(context: Context, users: ArrayList<Int?>) :
 
         getItem(position)?.run {
             listItemView.spendingTextView.text = this.toString()
-            listItemView.root.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#E0E0E0" else "#EEEEEE"))
+            listItemView.root.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#F1FEFF" else "#FFFFFFFF"))
         }
+        notifyDataSetChanged()
         return listItemView.root
     }
 }

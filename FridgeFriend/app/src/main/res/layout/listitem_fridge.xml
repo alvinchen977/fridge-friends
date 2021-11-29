@@ -23,11 +23,13 @@
         android:id="@+id/numbersItemTextView"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:textColor="@color/black"
         android:text="@string/numberOfItem"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/itemTextView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton

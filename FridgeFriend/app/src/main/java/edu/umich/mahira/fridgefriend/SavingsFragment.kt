@@ -57,7 +57,6 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
         view.SpendingListView.setAdapter(itemListAdapter)
 
         // on below line we are initializing our graph view.
-        // on below line we are initializing our graph view.
         graphView = view.idGraphView
 
         // on below line we are adding data to our graph view.
@@ -75,25 +74,15 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
         // after adding data to our line graph series.
         // on below line we are setting
         // title for our graph view.
-
-        // after adding data to our line graph series.
-        // on below line we are setting
-        // title for our graph view.
-        graphView!!.setTitle("My Graph View")
+        graphView!!.title = "My Graph View"
 
         // on below line we are setting
         // text color to our graph view.
-
-        // on below line we are setting
-        // text color to our graph view.
-        graphView!!.setTitleColor(android.R.color.holo_red_light)
+        graphView!!.titleColor = android.R.color.holo_red_light
 
         // on below line we are setting
         // our title text size.
-
-        // on below line we are setting
-        // our title text size.
-        graphView!!.setTitleTextSize(18f)
+        graphView!!.titleTextSize = 18f
 
         // on below line we are adding
         // data series to our graph view.
@@ -136,11 +125,11 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
             forReceiptTakePicture.launch(imageUri)
         }
 
-
-
-
     }
 
-
+    private fun updateList() {
+        itemListAdapter.notifyDataSetChanged()
+        Log.d("UpdateList", "yes")
+    }
 
 }
