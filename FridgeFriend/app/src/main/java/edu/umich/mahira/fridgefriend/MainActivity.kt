@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-    fun viewGraph(view: View?) = startActivity(Intent(this, SpendingGraphActivity::class.java))
     fun startReminder(view: View?) = startActivity(Intent(this, ReminderActivity::class.java))
 
     private lateinit var listView: ListView

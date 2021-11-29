@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
@@ -18,9 +19,14 @@ import edu.umich.mahira.fridgefriend.GroceryItemStore.postReceipt
 import kotlinx.android.synthetic.main.fragment_savings.view.*
 import java.io.ByteArrayOutputStream
 import java.io.File
+import com.jjoe64.graphview.GraphView
+import com.jjoe64.graphview.series.DataPoint
+import com.jjoe64.graphview.series.LineGraphSeries
 
+val receipts = arrayListOf<Int?>() //use this to the items
 class SavingsFragment:Fragment(R.layout.fragment_savings) {
-
+    private lateinit var itemListAdapter: SpendingListAdapter
+    var graphView: GraphView? = null
     private var imageUri: Uri? = null
 
     fun convertToBase64(filePath : String): String? {
@@ -47,6 +53,51 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        itemListAdapter = SpendingListAdapter(requireActivity(), receipts)
+        view.SpendingListView.setAdapter(itemListAdapter)
+
+        // on below line we are initializing our graph view.
+        // on below line we are initializing our graph view.
+        graphView = view.idGraphView
+
+        // on below line we are adding data to our graph view.
+        var counter = 0.0
+        val dataArray = arrayListOf<DataPoint>()
+        for (i in receipts){
+            dataArray.add(DataPoint(counter, i?.toDouble()!!))
+            counter += 1.0
+        }
+        // on below line we are adding data to our graph view.
+        val series: LineGraphSeries<DataPoint> = LineGraphSeries(
+            dataArray.toTypedArray()
+        )
+
+        // after adding data to our line graph series.
+        // on below line we are setting
+        // title for our graph view.
+
+        // after adding data to our line graph series.
+        // on below line we are setting
+        // title for our graph view.
+        graphView!!.setTitle("My Graph View")
+
+        // on below line we are setting
+        // text color to our graph view.
+
+        // on below line we are setting
+        // text color to our graph view.
+        graphView!!.setTitleColor(android.R.color.holo_red_light)
+
+        // on below line we are setting
+        // our title text size.
+
+        // on below line we are setting
+        // our title text size.
+        graphView!!.setTitleTextSize(18f)
+
+        // on below line we are adding
+        // data series to our graph view.
+        graphView!!.addSeries(series);
 
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
             results.forEach {
@@ -75,7 +126,6 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
                     intent.putExtra("imagePath", filePath)
                     startActivity( intent, null)
                 }
-
             } else {
                 Log.d("TakePicture", "failed")
             }
@@ -85,6 +135,10 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
             imageUri = mediaStoreAlloc("image/jpeg")
             forReceiptTakePicture.launch(imageUri)
         }
+
+
+
+
     }
 
 
