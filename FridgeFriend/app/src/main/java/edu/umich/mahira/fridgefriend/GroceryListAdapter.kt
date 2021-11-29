@@ -27,6 +27,8 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
             listItemView.itemTextView.setText(name)
             listItemView.numbersItemTextView.text = quantity.toString()
             listItemView.root.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#FFFFFFFF" else "#F1FEFF"))
+            listItemView.MinusButton.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#FFFFFFFF" else "#F1FEFF"))
+            listItemView.EditButton.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#FFFFFFFF" else "#F1FEFF"))
             listItemView.MinusButton.visibility = View.VISIBLE
             listItemView.EditButton.visibility = View.VISIBLE
 

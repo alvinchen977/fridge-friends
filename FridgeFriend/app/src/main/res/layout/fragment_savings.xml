@@ -22,16 +22,15 @@
 
     <ImageButton
         android:id="@+id/receiptButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_width="59dp"
+        android:layout_height="54dp"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/camera"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/savingsFragment"
-        app:srcCompat="@android:drawable/ic_menu_camera"
+        app:srcCompat="@drawable/ic_camera_foreground"
         app:tint="@color/button"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
