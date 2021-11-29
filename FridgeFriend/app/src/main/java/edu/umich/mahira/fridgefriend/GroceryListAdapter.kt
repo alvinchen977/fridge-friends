@@ -50,7 +50,7 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
                 }
             }
 
-            listItemView.itemTextView.setOnClickListener {
+            listItemView.itemTextView.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
                 listItemView.EditButton.visibility = View.VISIBLE
             }
 
