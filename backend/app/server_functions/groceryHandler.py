@@ -5,6 +5,7 @@ from django.core.files.storage import FileSystemStorage
 from app.logging import logger
 import json
 import requests
+import environ
 from collections import defaultdict; 
 # Called in views.py when a POST request is made to postGrocery endpoint
 
@@ -31,7 +32,7 @@ def handleGrocery(request):
 				}
 			]
 		}
-		
+
 		#visionJson = json.loads(visionRequestBody)
 		visionAPIUrl = 'https://vision.googleapis.com/v1/images:annotate?key='+ VISION_KEY
 		visionAPIResponse = requests.post(visionAPIUrl, json=visionRequestBody)	
