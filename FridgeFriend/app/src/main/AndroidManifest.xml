@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.umich.mahira.fridgefriend">
-    <!--xmlns tools: allows ItemsApplication to extend android.app.Activity -->
-
+    <!-- xmlns tools: allows ItemsApplication to extend android.app.Activity -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -22,29 +21,35 @@
         android:required="false" />
 
     <application
+        android:name=".ItemsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FridgeFriend"
-
-        android:name=".ItemsApplication">
+        android:theme="@style/Theme.FridgeFriend">
+        <activity
+            android:name=".SetCatActivity"
+            android:exported="false" />
         <activity
             android:name=".ShopActivity"
-            android:label="@string/shop"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/shop">
             <intent-filter>
                 <action android:name="android.intent.action.SHOP" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewItemActivity"></activity>
-        <!-- OTHER -->
-
-        <!-- version 1
+        <activity
+            android:name=".NewItemActivity"
+            android:label="@string/add_to_list"></activity>
+        <activity
+            android:name=".EditItemActivity"
+            android:label="@string/update_item"></activity> <!-- OTHER -->
+        <!--
+ version 1
         <activity
             android:name=".ShopActivity"
             android:exported="true"
@@ -64,10 +69,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            tools:ignore="Instantiatable" /> -->
+            tools:ignore="Instantiatable" />
+        -->
         <!-- parent as ShopActivity not MainActivity -->
         <!-- allows ItemsApplication to extend android.app.Activity -->
-
         <activity
             android:name=".PostActivity"
             android:label="@string/post"

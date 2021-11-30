@@ -11,21 +11,60 @@
         android:id="@+id/recyclerview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:listitem="@layout/recyclerview_item"
+        android:background="#22306d"
         android:padding="@dimen/big_padding"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/recyclerview_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#6dceee"
+        android:contentDescription="@string/edit_cat"
+        android:src="@drawable/ic_settings"
+        app:backgroundTint="@color/white"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--android:text="@string/clear"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="50sp"-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/clear_all"
+        android:src="@drawable/ic_clear"
+        app:backgroundTint="#d1481a"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fab"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
         android:contentDescription="@string/add_item"
-        android:src="@drawable/ic_addition_sign"/>
+        android:src="@drawable/ic_addition_sign"
+        app:backgroundTint="#8fe857"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fab2"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,10 +8,11 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import edu.umich.mahira.fridgefriend.Shop
 
 // makes class into a Room Database with a table (entity) of Shop class
 // set exportSchema to a directory for Room to use to send our list to
-@Database(entities = arrayOf(Shop::class), version = 1/*, exportSchema = false*/)
+@Database(entities = arrayOf(Shop::class), version = 3, exportSchema = false)
 abstract class ShopRoomDatabase : RoomDatabase() {
 
     abstract fun shopDao(): ShopDao
@@ -30,7 +31,8 @@ abstract class ShopRoomDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ShopRoomDatabase::class.java,
-                    "item_database"
+                    //"item_database"
+                    "iName_database"
                 )
                     // wipes and rebuild instead of migrating if no migration object exists
                     .fallbackToDestructiveMigration()
@@ -65,7 +67,8 @@ abstract class ShopRoomDatabase : RoomDatabase() {
             // Add sample items: like apple
             // this might be where we can pull in items from recipes
             //var item = Shop("apple",1,"lb")
-            shopDao.insert(Shop("apple"/*,1,"lb"*/))
+            shopDao.insert(Shop("produce",1,"lb","potatoes"))
+            //shopDao.insert("1 lb potatoes")
         }
     }
 }

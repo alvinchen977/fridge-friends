@@ -14,14 +14,34 @@ class ShopView(private val repository: ShopRepository) : ViewModel() {
     (instead of polling for changes) and only update the UI when the data actually changes.
     note: repository is completely separated from the UI through the ViewModel()
      */
+    //val allItems: LiveData<List<Array<String>> = repository.allItems.asLiveData()
     val allItems: LiveData<List<Shop>> = repository.allItems.asLiveData()
-    // val temp = 0
+    //val changingItem: LiveData<String>.asLiveData()
 
     // Launching a new coroutine to insert the data in a non-blocking way
-    fun insert(item: Shop) = viewModelScope.launch {
-        repository.insert(item)
+    fun insert(shop: Shop) = viewModelScope.launch {
+        repository.insert(shop)
     }
-    // add in edit and delete functions
+    /*fun insert(item: Shop) = viewModelScope.launch {
+        repository.insert(item)
+    }*/
+
+    fun delete(item: Shop) = viewModelScope.launch {
+        repository.delete(item)
+    }
+
+    fun deleteAll() = viewModelScope.launch {
+        repository.deleteAll()
+    }
+
+    // fix to update with list of user categories set to asLiveData
+    /*fun determineCategory(category: String) : Int {
+        var c = 0
+        if (category == "Produce") {
+            c = 1
+        }
+        return c
+    }*/
 }
 
 class ShopViewFactory(private val repository: ShopRepository) : ViewModelProvider.Factory {

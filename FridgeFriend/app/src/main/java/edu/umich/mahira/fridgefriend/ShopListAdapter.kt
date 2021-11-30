@@ -17,8 +17,20 @@ class ShopListAdapter : ListAdapter<Shop, ShopViewHolder>(ItemComparator/*()*/) 
 
     override fun onBindViewHolder(holder: ShopViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.item)
+        //holder.bind(current.item)
+        //holder.bind(Shop(current.iAmount,current.iType,current.iName).lookItem)
+        holder.bind((current.iAmount.toString() + " " + current.iType + " " + current.iName))
     }
+
+    fun getItemAt(position: Int): Shop {
+        return getItem(position)
+        //holder.setIsRecyclable(true)
+    }
+
+//    fun getItemText(holder: ShopViewHolder, position: Int): String {
+//        val current = getItem(position)
+//        return holder.bind(current.item)
+//    }
 
     class ShopViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val shopItemView: TextView = itemView.findViewById(R.id.textView)
@@ -45,7 +57,10 @@ class ShopListAdapter : ListAdapter<Shop, ShopViewHolder>(ItemComparator/*()*/) 
             }
 
             override fun areContentsTheSame(oldItem: Shop, newItem: Shop): Boolean {
-                return oldItem.item == newItem.item
+                if ((oldItem.iName == newItem.iName) && (oldItem.iType == newItem.iType)) {
+                    oldItem.iAmount = oldItem.iAmount + newItem.iAmount
+                }
+                return (oldItem.iName == newItem.iName) && (oldItem.iType == newItem.iType)
             }
         }
     }

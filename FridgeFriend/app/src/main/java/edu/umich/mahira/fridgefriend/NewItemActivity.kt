@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -21,18 +22,62 @@ class NewItemActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.button_save)
         button.setOnClickListener {
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(editItemView.text)) {
+            if (TextUtils.isEmpty(editItemView.text) || TextUtils.isEmpty(editNumView.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
+            } /*else if (TextUtils.isEmpty(editTypeView.text) && TextUtils.isEmpty(edit....)) {
+                //val item = editNumView.text.toString() + " " + editItemView.text.toString()
+                // nothing now that split item into name amount type
+
+                //Shop(item).iName = editItemView.text.toString()
+                //Shop(item).iAmount = Integer.parseInt(editNumView.toString())
+
+                //replyIntent.putExtra(EXTRA_REPLY, item)
+                //setResult(Activity.RESULT_OK, replyIntent)
+                replyIntent.putExtra(EXTRA_REPLY1, Integer.parseInt(editNumView.toString()))
+                replyIntent.putExtra(EXTRA_REPLY2, "")
+                replyIntent.putExtra(EXTRA_REPLY3, editItemView.text.toString())
+                setResult(Activity.RESULT_OK, replyIntent)
+            }*/ else if (TextUtils.isEmpty(editTypeView.text)) {
+                //val item = editNumView.text.toString() + " " + editItemView.text.toString()
+                // nothing now that split item into name amount type
+
+                //Shop(item).iName = editItemView.text.toString()
+                //Shop(item).iAmount = Integer.parseInt(editNumView.toString())
+
+                //replyIntent.putExtra(EXTRA_REPLY, item)
+                //setResult(Activity.RESULT_OK, replyIntent)
+                replyIntent.putExtra(EXTRA_REPLY0, "produce")
+                replyIntent.putExtra(EXTRA_REPLY1, Integer.parseInt(editNumView.text.toString()))
+                replyIntent.putExtra(EXTRA_REPLY2, "")
+                replyIntent.putExtra(EXTRA_REPLY3, editItemView.text.toString())
+                setResult(Activity.RESULT_OK, replyIntent)
             } else {
-                val item = editItemView.text.toString()
-                replyIntent.putExtra(EXTRA_REPLY, item)
+                //val item = editNumView.text.toString() + " " + editTypeView.text.toString() + " of " + editItemView.text.toString()
+                // nothing now that split item into name amount type
+
+                //
+                val tempItem: Shop = Shop("produce",Integer.parseInt(editNumView.text.toString()), editTypeView.text.toString(), editItemView.text.toString())
+                tempItem.iName = editItemView.text.toString()
+                tempItem.iAmount = Integer.parseInt(editNumView.text.toString())
+                tempItem.iType = editTypeView.text.toString()
+
+                //replyIntent.putExtra(EXTRA_REPLY, item)
+                replyIntent.putExtra(EXTRA_REPLY0, "produce")
+                replyIntent.putExtra(EXTRA_REPLY1, Integer.parseInt(editNumView.text.toString()))
+                replyIntent.putExtra(EXTRA_REPLY2, editTypeView.text.toString())
+                replyIntent.putExtra(EXTRA_REPLY3, editItemView.text.toString())
                 setResult(Activity.RESULT_OK, replyIntent)
             }
+            Log.d("NewItem", "right before finish")
             finish()
         }
     }
 
     companion object {
-        const val EXTRA_REPLY = "edu.umich.mahira.fridgefriend.shoplistsql.REPLY"
+        //const val EXTRA_REPLY = "edu.umich.mahira.fridgefriend.shoplistsql.REPLY"
+        const val EXTRA_REPLY0 = "edu.umich.mahira.fridgefriend.shoplistsql.REPLY0"
+        const val EXTRA_REPLY1 = "edu.umich.mahira.fridgefriend.shoplistsql.REPLY1"
+        const val EXTRA_REPLY2 = "edu.umich.mahira.fridgefriend.shoplistsql.REPLY2"
+        const val EXTRA_REPLY3 = "edu.umich.mahira.fridgefriend.shoplistsql.REPLY3"
     }
 }

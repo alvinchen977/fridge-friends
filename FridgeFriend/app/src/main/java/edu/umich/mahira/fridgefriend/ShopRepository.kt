@@ -22,5 +22,19 @@ class ShopRepository(private val shopDao: ShopDao) {
     @WorkerThread
     suspend fun insert(item: Shop) {
         shopDao.insert(item)
+        //var split = arrayOf<String>(item.iAmount.toString(), item.iType, item.iName)
+        //shopDao.insert(split)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun delete(item: Shop) {
+        shopDao.delete(item)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun deleteAll() {
+        shopDao.deleteAll()
     }
 }
