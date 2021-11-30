@@ -98,12 +98,12 @@ class ShopActivity : AppCompatActivity() {
                     Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show()
                     Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show()
                     Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show() ?split?*/
-                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
-                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
-                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
-                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
-                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
-                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show()
                     //Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).setText(findViewById<EditText>(R.id.changed_item).text)
                 }
             }
