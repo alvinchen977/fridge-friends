@@ -7,6 +7,33 @@ from django.db import connection
 
 #receives a post request with {"ingredients": [array of ingredients]} in the body
 #returns a list of recipes containing all of the keywords listed  
+def likeRecipe(request): 
+    json_data = json.loads(request.body)
+    if "username" in json_data and "recipeid" in json_data:
+        username = json_data["username"]
+        recipeid = json_data["recipeid"]
+        cursor = connection.cursor()
+        cursor.execute("INSERT INTO liked_recipes VALUES "
+                "(%s,%s);",(username,recipeid,))
+        return HttpResponse("Recipe Liked", status=200)
+    else:
+        ErrorMessage = "Malformed request, request must contain recipeid and username"
+        return HttpResponse(ErrorMessage, status=422)
+
+
+
+def unlikeRecipe(request): 
+    json_data = json.loads(request.body)
+    if "username" in json_data and "recipeid" in json_data:
+        username = json_data["username"]
+        recipeid = json_data["recipeid"]
+        cursor = connection.cursor()
+        cursor.execute("DELETE FROM liked_recipes WHERE username = %s AND recipeid = %s", (username,recipeid))
+        return HttpResponse("Recipe unliked", status = 200)
+    else: 
+        return HttpResponse("Malformed request, must have username and recipeid", status=422)
+
+
 def findRecipeByIngredients(request):
     json_data = json.loads(request.body)
     response = {}
@@ -37,11 +64,22 @@ def findRecipeByKeyword(request):
 #receives a post request with { "username": "someval" } in the body
 #returns list of recipes the user has liked 
 def findRecipeByLikeStatus(request):
-    return HttpResponse(status=200) 
+    json_data = json.loads(request.body)
+    response = {}
+    response['recipes'] = []
+    if "username" in json_data: 
+        username = json_data["username"]
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM recipes WHERE recipeid IN (SELECT recipeid FROM liked_recipes WHERE username = %s);", (username,))
+        rows = cursor.fetchall()
+        response['recipes'].append(rows)
+        return JsonResponse(response)
+    else:
+        return HttpResponse("Malformed Request, request must contain username", status=422)
 
 def findRecipeByDefault(request):
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM recipes ORDER BY random() LIMIT 5;")
+    cursor.execute("SELECT * FROM recipes ORDER BY random() LIMIT 15;")
     rows = cursor.fetchall()	
     response = {}
     response['recipes'] = rows
