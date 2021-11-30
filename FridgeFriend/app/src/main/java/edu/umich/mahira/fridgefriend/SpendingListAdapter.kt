@@ -22,6 +22,7 @@ class SpendingListAdapter(context: Context, users: ArrayList<Int?>) :
         getItem(position)?.run {
             listItemView.spendingTextView.text = this.toString()
             listItemView.root.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#F1FEFF" else "#FFFFFFFF"))
+            listItemView.spendingTextView.setBackgroundColor(Color.parseColor(if (position % 2 == 0) "#F1FEFF" else "#FFFFFFFF"))
         }
         notifyDataSetChanged()
         return listItemView.root

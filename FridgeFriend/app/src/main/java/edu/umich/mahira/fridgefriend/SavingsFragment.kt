@@ -7,7 +7,6 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.os.Handler
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
@@ -29,7 +28,7 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
     var graphView: GraphView? = null
     private var imageUri: Uri? = null
 
-    fun convertToBase64(filePath : String): String? {
+    private fun convertToBase64(filePath : String): String? {
         val imageFile = File(filePath!!)
         val bm = BitmapFactory.decodeFile(imageFile.toString())
         val bOut = ByteArrayOutputStream()
@@ -54,10 +53,11 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
         super.onViewCreated(view, savedInstanceState)
 
         itemListAdapter = SpendingListAdapter(requireActivity(), receipts)
-        view.SpendingListView.setAdapter(itemListAdapter)
+        view.SpendingListView.adapter = itemListAdapter
 
         // on below line we are initializing our graph view.
         graphView = view.idGraphView
+
 
         // on below line we are adding data to our graph view.
         var counter = 0.0
@@ -70,19 +70,6 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
         val series: LineGraphSeries<DataPoint> = LineGraphSeries(
             dataArray.toTypedArray()
         )
-
-        // after adding data to our line graph series.
-        // on below line we are setting
-        // title for our graph view.
-        graphView!!.title = "My Graph View"
-
-        // on below line we are setting
-        // text color to our graph view.
-        graphView!!.titleColor = android.R.color.holo_red_light
-
-        // on below line we are setting
-        // our title text size.
-        graphView!!.titleTextSize = 18f
 
         // on below line we are adding
         // data series to our graph view.
@@ -124,7 +111,6 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
             imageUri = mediaStoreAlloc("image/jpeg")
             forReceiptTakePicture.launch(imageUri)
         }
-
     }
 
     private fun updateList() {
