@@ -22,6 +22,11 @@ import java.io.File
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import okhttp3.internal.wait
 
 val receipts = arrayListOf<Int?>() //use this to the items
 class SavingsFragment:Fragment(R.layout.fragment_savings) {
@@ -109,7 +114,7 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
                     val uriPathHelper = URIPathHelper()
                     val filePath = imageUri?.let { uriPathHelper.getPath(requireActivity(), it) }
                     val base64Image = filePath?.let { convertToBase64(it) }
-                    val image = ReceiptItem(pdf = base64Image)
+                    val image = ReceiptItem(image = base64Image)
                     postReceipt(activity?.applicationContext!!, image)
                     val intent = Intent(activity?.applicationContext!!, DisplayScannedReceiptActivity::class.java)
                     intent.putExtra("imagePath", filePath)
@@ -124,6 +129,7 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
             imageUri = mediaStoreAlloc("image/jpeg")
             forReceiptTakePicture.launch(imageUri)
         }
+
 
     }
 
