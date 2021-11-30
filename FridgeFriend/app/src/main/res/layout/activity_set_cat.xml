@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#22306d"
+    android:orientation="vertical">
+
+    <!-- dropdown category menu -->
+
+    <EditText
+        android:id="@+id/edit_cat1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:background="#6dceee"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_cat1"
+        android:inputType="textAutoComplete"
+        android:minHeight="@dimen/min_height"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edit_cat2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:background="#6dceee"
+        android:backgroundTintMode="@color/black"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_cat2"
+        android:inputType="textAutoComplete"
+        android:minHeight="@dimen/min_height"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edit_cat3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:background="#6dceee"
+        android:backgroundTint="#6dceee"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_cat3"
+        android:inputType="textAutoComplete"
+        android:minHeight="@dimen/min_height"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edit_cat4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:background="#6dceee"
+        android:backgroundTintMode="@color/black"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_cat4"
+        android:inputType="textAutoComplete"
+        android:minHeight="@dimen/min_height"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edit_cat5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:background="#6dceee"
+        android:backgroundTint="#6dceee"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_cat5"
+        android:inputType="textAutoComplete"
+        android:minHeight="@dimen/min_height"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:backgroundTint="#6dceee"
+        android:text="@string/button_save"
+        android:textColor="@color/black" />
+
+</LinearLayout>

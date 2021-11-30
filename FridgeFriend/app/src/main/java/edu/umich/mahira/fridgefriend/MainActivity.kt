@@ -14,6 +14,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+    /* previously
+    fun startPost(view: View?) = startActivity(Intent(this, PostActivity::class.java))
+    fun startShop(view: View?) = startActivity(Intent(this, ShopActivity::class.java))
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+   }
+}*/
     fun startReminder(view: View?) = startActivity(Intent(this, ReminderActivity::class.java))
 
     private lateinit var listView: ListView
@@ -49,6 +57,3 @@ class MainActivity : AppCompatActivity() {
         }
 
 }
-
-
-
