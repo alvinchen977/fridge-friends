@@ -79,7 +79,7 @@ def userLogin(request):
 @csrf_exempt
 def userLogout(request):
     if request.method != 'POST':
-        return HTtpResponse(status=404)
+        return HttpResponse(status=404)
     return userHandler.userLogout(request)
 
 @csrf_exempt
