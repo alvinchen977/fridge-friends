@@ -1,5 +1,6 @@
 package edu.umich.mahira.fridgefriend
 
+import androidx.fragment.app.Fragment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +10,8 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
+//import androidx.activity.viewModels
+// bc shopactivity is no longer an activity it cannot use things from androidx.activity
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
@@ -18,13 +20,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.recyclerview.widget.ItemTouchHelper
 
-
-
+class ShopActivity : Fragment(R.layout.activity_shop) {
+    
+}
 
 //val items = arrayListOf<Item?>() // use this to the items
 //val LENGTH_MAX: Int = 10
 
-class ShopActivity : AppCompatActivity() {
+/*class ShopActivity : AppCompatActivity() {
     //public var itemText = String
     private val newItemActivityRequestCode = 1
     //private val editItemActivityRequestCode = 2
@@ -220,4 +223,4 @@ class ShopActivity : AppCompatActivity() {
             ).show()
         }
     }
-}
+}*/

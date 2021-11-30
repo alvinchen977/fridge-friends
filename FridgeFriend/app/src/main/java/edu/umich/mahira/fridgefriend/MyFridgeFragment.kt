@@ -25,9 +25,6 @@ import android.view.inputmethod.InputMethodManager
 import kotlinx.android.synthetic.main.fragment_my_fridge.*
 
 
-
-
-
 val items = arrayListOf<Item?>() //use this for the items
 
 class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
