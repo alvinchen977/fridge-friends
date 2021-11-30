@@ -20,7 +20,7 @@ class SetCatActivity : AppCompatActivity() {
         val editCat4 = findViewById<EditText>(R.id.edit_cat4)
         val editCat5 = findViewById<EditText>(R.id.edit_cat5)
 
-        val button = findViewById<Button>(R.id.button_save)
+        val button = findViewById<Button>(R.id.button_finish)
         /*button.setOnClickListener {
             val replyIntent = Intent()
             if (TextUtils.isEmpty(editCat1.text)) {

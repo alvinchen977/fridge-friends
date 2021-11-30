@@ -17,9 +17,9 @@ class ShopListAdapter : ListAdapter<Shop, ShopViewHolder>(ItemComparator/*()*/) 
 
     override fun onBindViewHolder(holder: ShopViewHolder, position: Int) {
         val current = getItem(position)
-        //holder.bind(current.item)
+        holder.bind(current.item)
         //holder.bind(Shop(current.iAmount,current.iType,current.iName).lookItem)
-        holder.bind((current.iAmount.toString() + " " + current.iType + " " + current.iName))
+        //holder.bind((current.iAmount.toString() + " " + current.iType + " " + current.iName)) ?split?
     }
 
     fun getItemAt(position: Int): Shop {
@@ -57,10 +57,11 @@ class ShopListAdapter : ListAdapter<Shop, ShopViewHolder>(ItemComparator/*()*/) 
             }
 
             override fun areContentsTheSame(oldItem: Shop, newItem: Shop): Boolean {
-                if ((oldItem.iName == newItem.iName) && (oldItem.iType == newItem.iType)) {
+                /*if ((oldItem.iName == newItem.iName) && (oldItem.iType == newItem.iType)) { ?split?
                     oldItem.iAmount = oldItem.iAmount + newItem.iAmount
                 }
-                return (oldItem.iName == newItem.iName) && (oldItem.iType == newItem.iType)
+                return (oldItem.iName == newItem.iName) && (oldItem.iType == newItem.iType)*/
+                return oldItem == newItem
             }
         }
     }

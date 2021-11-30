@@ -17,9 +17,10 @@ import androidx.lifecycle.*
 // represents the SQLite table for grocery list with the properties
 // as the columns in the table
 // val cat: LiveData<String> ... etc.
+/*data class Shop(/*@PrimaryKey (autoGenerate = true) val id: Int, @PrimaryKey var cat: String,?cat? */@ColumnInfo(name = "iAmount") var iAmount: Int,
+                @ColumnInfo(name = "iType") var iType: String, @PrimaryKey @ColumnInfo(name = "iName") var iName: String) { ?split?*/
 @Entity(tableName = "shopList") // represents a SQLite table
-data class Shop(/*@PrimaryKey (autoGenerate = true) val id: Int, @PrimaryKey*/ var cat: String, @ColumnInfo(name = "iAmount") var iAmount: Int,
-                @ColumnInfo(name = "iType") var iType: String, @PrimaryKey @ColumnInfo(name = "iName") var iName: String) {
+data class Shop(@PrimaryKey @ColumnInfo(name = "item") var item: String) {
 
     // every entity needs a PrimaryKey
     // ColumnInfo represents the name of the column in the table

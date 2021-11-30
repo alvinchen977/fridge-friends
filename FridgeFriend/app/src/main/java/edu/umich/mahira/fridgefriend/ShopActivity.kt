@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 class ShopActivity : AppCompatActivity() {
     //public var itemText = String
     private val newItemActivityRequestCode = 1
-    private val editItemActivityRequestCode = 2
+    //private val editItemActivityRequestCode = 2
     private val setCatActivityRequestCode = 3
     private val shopViewModel: ShopView by viewModels {
         ShopViewFactory((application as ItemsApplication).repository)
@@ -76,7 +76,7 @@ class ShopActivity : AppCompatActivity() {
 
                     //val itemText: CharSequence = (adapter.getItemAt(viewHolder.adapterPosition)).item
                     val temporary = adapter.getItemAt(viewHolder.adapterPosition)
-                    val itemText = temporary.iAmount.toString() + " " + temporary.iType + " " + temporary.iName
+                    //val itemText = temporary.iAmount.toString() + " " + temporary.iType + " " + temporary.iName  ?split?
 
                     //val changess: TextView = findViewById<EditText>(R.id.changed_item)
                     //changess.text = itemText
@@ -89,14 +89,21 @@ class ShopActivity : AppCompatActivity() {
                         val intent = Intent(this@ShopActivity, NewItemActivity::class.java)
                         startActivityForResult(intent, newItemActivityRequestCode)
                     }*/
+
                     //Toast.makeText(this@ShopActivity, "Update Item", Toast.LENGTH_SHORT).show()
                     // allows item being edited to stay on the screen for about 15 seconds
+                    /*Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show()
                     Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show()
                     Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show()
                     Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show()
                     Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show()
-                    Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show()
-                    Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show() ?split?*/
+                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.toString(), Toast.LENGTH_LONG).show()
                     //Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).setText(findViewById<EditText>(R.id.changed_item).text)
                 }
             }
@@ -168,12 +175,12 @@ class ShopActivity : AppCompatActivity() {
 //            }
 //        }
         if (requestCode == newItemActivityRequestCode && resultCode == Activity.RESULT_OK/* && intentData != null && resultCode != RESULT_CANCELED*/) {
-            /*intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY)?.let { reply ->
+            intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY)?.let { reply ->
                 //val item = reply1
                 //val item = Shop(reply,1,"lb")
 
                 shopViewModel.insert(Shop(reply.toLowerCase()/*,1,"lb"*/)) // problem area
-            }*/
+            }
             /*intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY1)?.let { reply1 ->
                 val item1 = reply1
             }
@@ -184,13 +191,13 @@ class ShopActivity : AppCompatActivity() {
                 val item3 = reply3
             }
             shopViewModel.insert(Shop(item1,item2,item3))*/
-            val reply0 = intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY0)
-            val reply1 = intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY1)
+            //val reply0 = intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY0) ?cat?
+            /*val reply1 = intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY1) ?split?
             val reply2 = intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY2)
             val reply3 = intentData?.getStringExtra(NewItemActivity.EXTRA_REPLY3)
             //val cat : Int = shopViewModel.determineCategory(reply0.toString())
-            shopViewModel.insert(Shop(reply0.toString(), Integer.parseInt(reply1),
-                reply2.toString().toLowerCase(),reply3.toString().toLowerCase()))
+            shopViewModel.insert(Shop(/*reply0.toString(), ?cat? */Integer.parseInt(reply1.toString()),
+                reply2.toString().toLowerCase(),reply3.toString().toLowerCase()))*/
 
 //            intentData?.getIntExtra(NewItemActivity.EXTRA_REPLY)?.let { (reply2) ->
 //                val item = reply2

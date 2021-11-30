@@ -9,7 +9,9 @@ interface ShopDao {
     // flow always holds/caches latest version of data and notifies observers when data has changed
     // order by ASC is what makes it alphabetized
     // @Query("SELECT * FROM shopList ORDER BY item ASC") // or should it be cat + iName?
-    @Query("SELECT * FROM shopList ORDER BY cat AND iName ASC") // shopList is the tableName of our entity in Shop.kt
+    //@Query("SELECT * FROM shopList ORDER BY cat AND iName ASC") // shopList is the tableName of our entity in Shop.kt
+    //@Query("SELECT * FROM shopList ORDER BY iName ASC") ?split?
+    @Query("SELECT * FROM shopList ORDER BY item ASC")
     fun getAlphabetizedItems(): Flow<List<Shop>>
 
     // to organize items into 6 main categories (produce, staples, drinks, refrigerator, freezer, snacksCandy, misc)

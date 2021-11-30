@@ -19,8 +19,8 @@ class EditItemActivity : AppCompatActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val replyIntent = Intent()
-        val itemTo = replyIntent.getCharSequenceExtra("itemToChange")
+        //val replyIntent = Intent() unused w/ commented out
+        //val itemTo = replyIntent.getCharSequenceExtra("itemToChange") unused w/ commented out
 
         //val changedItem: TextView = findViewById<EditText>(R.id.changed_item)
 
