@@ -34,5 +34,5 @@ urlpatterns = [
     path('userCreate/', views.userCreate, name='userCreate'),
     path('userLogin/', views.userLogin, name='userLogin'),
     path('userLogout/', views.userLogout, name='userLogout'),
-    path('createUserFridge/', views.createUserFridge, name="createUserFridge"),
+    #path('createUserFridge/', views.createUserFridge, name="createUserFridge"),
 ]

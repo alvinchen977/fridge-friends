@@ -9,8 +9,8 @@ from django.db import connection
 #returns a list of recipes containing all of the keywords listed  
 def likeRecipe(request): 
     json_data = json.loads(request.body)
-    if "username" in json_data and "recipeid" in json_data:
-        username = json_data["username"]
+    if "recipeid" in json_data:
+        username = "test"
         recipeid = json_data["recipeid"]
         cursor = connection.cursor()
         cursor.execute("INSERT INTO liked_recipes VALUES "
