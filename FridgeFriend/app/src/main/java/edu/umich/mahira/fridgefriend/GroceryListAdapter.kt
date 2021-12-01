@@ -37,6 +37,7 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
 
             listItemView.itemTextView.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
                 listItemView.EditButton.visibility = View.VISIBLE
+                MyFridgeFragment().onPause()
             }
 
             listItemView.EditButton.setOnClickListener { v: View ->
@@ -46,6 +47,7 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
                         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                         imm.hideSoftInputFromWindow(listItemView.EditButton.windowToken, 0)
                         listItemView.EditButton.visibility = View.INVISIBLE
+                        MyFridgeFragment().onResume()
                     }
                 }
             }

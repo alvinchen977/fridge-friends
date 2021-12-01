@@ -51,7 +51,16 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
             values)
     }
-
+    //                update list view after call to api
+    var mainHandler = Handler(Looper.getMainLooper())
+    private var updateTextTask = object : Runnable {
+        override fun run() {
+            FridgeItemStore.getItems(activity?.applicationContext!!){
+                updateList()
+                mainHandler.postDelayed(this, 5000)
+            }
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -146,16 +155,17 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
             }
         })
 
-        //                update list view after call to api
-        val mainHandler = Handler(Looper.getMainLooper())
-        mainHandler.post(object : Runnable {
-            override fun run() {
-                FridgeItemStore.getItems(activity?.applicationContext!!){
-                    updateList()
-                    mainHandler.postDelayed(this, 5000)
-                }
-            }
-        })
+        mainHandler = Handler(Looper.getMainLooper())
+
+    }
+    override fun onPause() {
+        super.onPause()
+        mainHandler.removeCallbacks(updateTextTask)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainHandler.post(updateTextTask)
     }
 
     private fun updateList() {
