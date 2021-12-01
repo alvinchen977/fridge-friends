@@ -27,13 +27,14 @@ import kotlinx.android.synthetic.main.activity_shop.*
 
 //class ShopActivity : AppCompatActivity() {
 class ShopActivity : Fragment(R.layout.activity_shop) {
-    //public var itemText = String
+    /*//public var itemText = String
     private val newItemActivityRequestCode = 1
     //private val editItemActivityRequestCode = 2
     private val setCatActivityRequestCode = 3
     /*private val shopViewModel: ShopView by viewModels { ?activity?
         ShopViewFactory((application as ItemsApplication).repository)
     }*/
+
     private val shopViewModel: ShopView by requireApplication().viewModels {
         ShopViewFactory((activity?.application as ItemsApplication).repository)
     }
@@ -239,5 +240,5 @@ class ShopActivity : Fragment(R.layout.activity_shop) {
                 Toast.LENGTH_LONG
             ).show()
         }
-    }
+    }*/
 }
