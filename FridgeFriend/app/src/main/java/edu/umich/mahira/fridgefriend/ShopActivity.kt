@@ -34,7 +34,7 @@ class ShopActivity : Fragment(R.layout.activity_shop) {
     /*private val shopViewModel: ShopView by viewModels { ?activity?
         ShopViewFactory((application as ItemsApplication).repository)
     }*/
-    private val shopViewModel: ShopView by requireActivity().viewModels {
+    private val shopViewModel: ShopView by requireApplication().viewModels {
         ShopViewFactory((activity?.application as ItemsApplication).repository)
     }
 
