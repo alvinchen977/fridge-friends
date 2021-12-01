@@ -8,11 +8,13 @@ import json
 
 from django.http import HttpResponse, JsonResponse
 from django.db import connection
-
+from app.server_functions import fridgeHandler  
 
 def userLogin(request):
     if request.session.has_key('username'):
-        return HttpResponse(request.session['username'])
+        response = {}
+        response['username'] = request.session['username']
+        return JsonResponse(response)
     form_data = json.loads(request.body)
     user_form = form_data['username']
     pass_form = form_data['password']
@@ -25,7 +27,7 @@ def userLogin(request):
     cursor.execute(exists_query, (user_form,))
     exists = cursor.fetchall()
     if not exists:
-        return HttpResponse()
+        return JsonResponse({})
     password_query = """SELECT password
                         FROM users
                         WHERE username = %s"""
@@ -37,8 +39,10 @@ def userLogin(request):
     password = hashalgo(user_form, pass_form)
     if password_in_db == password:
         request.session['username'] = user_form
-        return HttpResponse(user_form)
-    return HttpResponse()
+        response = {}
+        response['username'] = user_form
+        return JsonResponse(response)
+    return JsonResponse({})
 
 
 def userLogout(request):
@@ -46,7 +50,7 @@ def userLogout(request):
         del request.session['username']
     except:
         pass
-    return HttpResponse()
+    return JsonResponse({})
 
 def userCreate(request):
     form_data = json.loads(request.body)
@@ -61,7 +65,7 @@ def userCreate(request):
     cursor.execute(exists_query, (user_form,))
     exists = cursor.fetchall()
     if exists or not pass_form:
-        return HttpResponse()
+        return JsonResponse({})
 
     salt = uuid.uuid4().hex
     hash_obj = hashlib.new('sha512')
@@ -74,7 +78,10 @@ def userCreate(request):
                       VALUES (%s, %s);"""
     cursor.execute(create_query, (user_form, password_db_string))
     request.session['username'] = user_form
-    return HttpResponse(user_form)
+    response = {}
+    response['username'] = user_form
+    fridgeHandler.createUserFridge(request)
+    return JsonResponse(response)
 
 
 def hashalgo(username, password):

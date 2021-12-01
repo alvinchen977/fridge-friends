@@ -10,13 +10,15 @@ from app.server_functions import groceryHandler
 from app.server_functions import recipeHandler
 
 from app.server_functions import userHandler
+
+from app.server_functions import fridgeHandler 
 # from app.server_functions import fileName 
 # you can then use the specific function as fileName.funcionName
 #any folder you want to import from MUST have a __init__.py to be recognized as a module
 
 # Create your views here.
 @csrf_exempt
-def postReceipt(request): 
+def handleReceipt(request): 
     #If we access this method without making a POST, we will exit and error
     if request.method != 'POST':
         return HttpResponse(status=404)
@@ -29,6 +31,7 @@ def postGrocery(request):
         return HttpResponse(status=404)
     return groceryHandler.handleGrocery(request)
 
+##################### RECIPES #########################################
 @csrf_exempt
 def findRecipeByIngredients(request):
     if request.method != 'POST': 
@@ -70,6 +73,7 @@ def unlikeRecipe(request):
         return HttpResponse(status = 404) 
     return recipeHandler.unlikeRecipe(request) 
 
+######################## USER MANAGEMENT ################################
 @csrf_exempt
 def userLogin(request):
     if request.method != 'POST':
@@ -87,3 +91,47 @@ def userCreate(request):
     if request.method != 'POST':
         return HttpResponse(status=404)
     return userHandler.userCreate(request)
+######################### USER FRIDGE ####################################
+@csrf_exempt
+def createUserFridge(request):
+    if request.method != 'POST':
+        return HttpResponse(status=404)
+    return fridgeHandler.createUserFridge(request)
+
+@csrf_exempt
+def deleteFromFridge(request):
+    if request.method != 'POST':
+        return HttpResponse(status=404)
+    return fridgeHandler.deleteFromFridge(request)
+
+@csrf_exempt
+def updateFridgeItem(request):
+    if request.method != 'POST':
+        return HttpResponse(status=404)
+    return fridgeHandler.updateFridgeItem(request)
+
+@csrf_exempt 
+def postToFridge(request):
+    if request.method != "POST":
+        return HttpResponse(status = 404)
+    return fridgeHandler.postToFridge(request)
+@csrf_exempt 
+def getUserFridge(request):
+    if request.method != "POST":
+        return HttpResponse(status = 404)
+    return fridgeHandler.getUserFridge(request)
+
+
+########################Receipts########################
+@csrf_exempt
+def postReceipt(request):
+    if request.method != "POST":
+        return HttpResponse(status = 404)
+    return receiptHandler.postReceipt(request)
+
+@csrf_exempt
+def getReceipts(request):
+    if request.method != "POST":
+        return HttpResponse(status = 404)
+    return receiptHandler.getReceipts(request)
+
