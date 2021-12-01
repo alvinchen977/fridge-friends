@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
+import android.os.Looper
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
@@ -21,11 +23,6 @@ import java.io.File
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import okhttp3.internal.wait
 
 val receipts = arrayListOf<Int?>() //use this to the items
 class SavingsFragment:Fragment(R.layout.fragment_savings) {
@@ -107,6 +104,14 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
                     intent.putExtra("imagePath", filePath)
                     startActivity( intent, null)
                 }
+                // update list view after call to api
+                val mainHandler = Handler(Looper.getMainLooper())
+                mainHandler.post(object : Runnable {
+                    override fun run() {
+                        updateList()
+                        mainHandler.postDelayed(this, 5000)
+                    }
+                })
             } else {
                 Log.d("TakePicture", "failed")
             }
@@ -116,11 +121,12 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
             imageUri = mediaStoreAlloc("image/jpeg")
             forReceiptTakePicture.launch(imageUri)
         }
+
     }
+
 
     private fun updateList() {
         itemListAdapter.notifyDataSetChanged()
         Log.d("UpdateList", "yes")
     }
-
 }
