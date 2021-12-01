@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.umich.mahira.fridgefriend">
+    <!-- xmlns tools: allows ItemsApplication to extend android.app.Activity -->
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -21,6 +22,7 @@
         android:required="false" />
 
     <application
+        android:name=".ItemsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -29,6 +31,55 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FridgeFriend"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".SetCatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShopActivity"
+            android:exported="true"
+            android:label="@string/shop">
+            <intent-filter>
+                <action android:name="android.intent.action.SHOP" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NewItemActivity"
+            android:label="@string/add_to_list"></activity>
+        <activity
+            android:name=".EditItemActivity"
+            android:label="@string/update_item"></activity> <!-- OTHER -->
+        <!--
+ version 1
+        <activity
+            android:name=".ShopActivity"
+            android:exported="true"
+            android:label="Shop"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".NewItemActivity"
+            android:exported="true"
+            android:label="NewItem"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ItemsApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:parentActivityName=".ShopActivity"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            tools:ignore="Instantiatable" />
+        -->
+        <!-- parent as ShopActivity not MainActivity -->
+        <!-- allows ItemsApplication to extend android.app.Activity -->
+        <!--<activity
+            android:name=".PostActivity"
+            android:label="@string/post"
+            android:parentActivityName=".MainActivity" />-->
+        
         <activity
             android:name=".ReminderActivity"
             android:exported="true"
@@ -58,7 +109,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <receiver android:name=".ReminderBroadcast"/>
+
     </application>
 
 </manifest>

@@ -36,4 +36,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"/>
 
+        <!--app:srcCompat="@android:drawable/btn_default_small"
+        tools:ignore="SpeakableTextPresentCheck" /> -->
+
+    <!-- groceryList
+    <ImageButton
+        android:id="@+id/shopButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="184dp"
+        android:onClick="startShop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/btn_default_small"
+        tools:ignore="SpeakableTextPresentCheck" /> -->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

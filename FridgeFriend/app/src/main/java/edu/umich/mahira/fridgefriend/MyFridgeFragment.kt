@@ -24,7 +24,6 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import android.view.inputmethod.InputMethodManager
 import kotlinx.android.synthetic.main.fragment_my_fridge.*
-import kotlinx.android.synthetic.main.fragment_savings.view.*
 
 
 val items = arrayListOf<Item?>() //use this for the items
