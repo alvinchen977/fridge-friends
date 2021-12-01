@@ -22,8 +22,8 @@ import android.graphics.pdf.PdfDocument.PageInfo
 import android.util.Base64
 import com.android.volley.RequestQueue
 
-import edu.umich.mahira.fridgefriend.GroceryItemStore.postGrocery
-import edu.umich.mahira.fridgefriend.GroceryItemStore.postReceipt
+//import edu.umich.mahira.fridgefriend.GroceryItemStore.postGrocery
+//import edu.umich.mahira.fridgefriend.GroceryItemStore.postReceipt
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream
@@ -183,8 +183,8 @@ class PostActivity : AppCompatActivity() {
                     val bOut = ByteArrayOutputStream()
                     bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
                     val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
-                    val image = GroceryItem(image = base64Image)
-                    postGrocery(applicationContext, image)
+                    //val image = GroceryItem(image = base64Image)
+                    //postGrocery(applicationContext, image)
                 }
             } else {
                 Log.d("TakePicture", "failed")
@@ -217,7 +217,7 @@ class PostActivity : AppCompatActivity() {
                     bm.compress(Bitmap.CompressFormat.JPEG, 100, bOut)
                     val base64Image = Base64.encodeToString(bOut.toByteArray(), Base64.DEFAULT)
                     val image = ReceiptItem(pdf = base64Image)
-                    postReceipt(applicationContext, image)
+                    //postReceipt(applicationContext, image)
                 }
 
             } else {

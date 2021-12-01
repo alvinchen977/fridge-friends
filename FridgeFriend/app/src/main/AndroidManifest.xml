@@ -44,10 +44,10 @@
         </activity>
         <activity
             android:name=".NewItemActivity"
-            android:label="@string/add_to_list"></activity>
+            android:label="@string/add_to_list"/>
         <activity
             android:name=".EditItemActivity"
-            android:label="@string/update_item"></activity> <!-- OTHER -->
+            android:label="@string/update_item"/> <!-- OTHER -->
         <!--
  version 1
         <activity
