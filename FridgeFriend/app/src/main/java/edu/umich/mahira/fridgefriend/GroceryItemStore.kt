@@ -43,7 +43,7 @@ object GroceryItemStore {
 
     fun postReceipt(context: Context, item: ReceiptItem) {
         val jsonObj = mapOf(
-            "image" to item.pdf,
+            "image" to item.image,
         )
         val postRequest = JsonObjectRequest(
             Request.Method.POST,

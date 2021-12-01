@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditItemActivity">
+
+    <!--androidx.widget.AppCompatTextView-->
+    <!-- com.google.android.material.textview.MaterialTextView-->
+    <!--<TextView
+        android:id="@+id/change_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:minHeight="@dimen/min_height"
+        android:text="temp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp" />-->
+
+    <EditText
+        android:id="@+id/changed_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="Amount   Type   Name"
+        android:inputType="textAutoComplete"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp"
+        />
+    <!--android:text="temp"
+    android:text="@string/update_item"
+    android:hint="@+id/current",
+    "@java/edu.umich.mahira.fridgefriend/EditItemActivity.current",
+    "@string/hint_changed",
+    @Intent().getStringExtra("itemToChange"),
+    "@android/content/SharedPreferences"
+    -->
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/button_save"
+        android:layout_margin="@dimen/big_padding"
+        android:textColor="@color/buttonLabel" />
+</LinearLayout>

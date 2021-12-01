@@ -6,34 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/spendButton"
-        android:layout_width="50dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="viewGraph"
-        android:text="Button"
-        app:icon="@drawable/ic_baseline_trending_up_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <!--android:onClick="startPost"-->
-
-    <ImageButton
-        android:id="@+id/receiptButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="@color/white"
-        android:contentDescription="@string/camera"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/savingsFragment"
-        app:srcCompat="@android:drawable/ic_menu_camera"
-        app:tint="@color/button"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/savingsFragment"
@@ -48,5 +21,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/receiptButton"
+        android:layout_width="59dp"
+        android:layout_height="54dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/savingsFragment"
+        app:srcCompat="@drawable/ic_camera_foreground"
+        app:tint="@color/button"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/idGraphView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/receiptButton"
+        tools:ignore="MissingClass,MissingConstraints" />
+
+    <ListView
+        android:id="@+id/SpendingListView"
+        android:layout_width="383dp"
+        android:layout_height="193dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idGraphView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
