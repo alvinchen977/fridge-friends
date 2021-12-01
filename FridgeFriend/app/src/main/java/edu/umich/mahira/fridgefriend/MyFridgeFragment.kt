@@ -13,6 +13,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
+import android.os.Looper
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
@@ -23,9 +24,7 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import android.view.inputmethod.InputMethodManager
 import kotlinx.android.synthetic.main.fragment_my_fridge.*
-
-
-
+import kotlinx.android.synthetic.main.fragment_savings.view.*
 
 
 val items = arrayListOf<Item?>() //use this for the items
@@ -98,9 +97,13 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
                     }
                 }
 //                update list view after call to api
-                Handler().postDelayed({
-                    updateList()
-                }, 5000)
+                val mainHandler = Handler(Looper.getMainLooper())
+                mainHandler.post(object : Runnable {
+                    override fun run() {
+                        updateList()
+                        mainHandler.postDelayed(this, 5000)
+                    }
+                })
             } else {
                 Log.d("TakePicture", "failed")
             }

@@ -8,12 +8,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
+import android.os.Looper
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import edu.umich.mahira.fridgefriend.*
 import edu.umich.mahira.fridgefriend.GroceryItemStore.postReceipt
 import kotlinx.android.synthetic.main.fragment_savings.view.*
@@ -120,6 +122,14 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
                     intent.putExtra("imagePath", filePath)
                     startActivity( intent, null)
                 }
+                // update list view after call to api
+                val mainHandler = Handler(Looper.getMainLooper())
+                mainHandler.post(object : Runnable {
+                    override fun run() {
+                        updateList()
+                        mainHandler.postDelayed(this, 5000)
+                    }
+                })
             } else {
                 Log.d("TakePicture", "failed")
             }
@@ -131,11 +141,10 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
         }
 
 
-    }
 
+    }
     private fun updateList() {
         itemListAdapter.notifyDataSetChanged()
         Log.d("UpdateList", "yes")
     }
-
 }

@@ -8,6 +8,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.Toast
 
 class ReminderActivity : AppCompatActivity() {
@@ -17,6 +18,11 @@ class ReminderActivity : AppCompatActivity() {
         createNotificationChannel()
 
         val reminderButton: Button = findViewById(R.id.setReminderButton)
+        val oneDay: CheckBox = findViewById(R.id.checkBox1)
+        val threeDays: CheckBox = findViewById(R.id.checkBox2)
+        val fiveDays: CheckBox = findViewById(R.id.checkBox3)
+        val oneWeek: CheckBox = findViewById(R.id.checkBox4)
+        val threeSeconds: CheckBox = findViewById(R.id.checkBox5)
 
         reminderButton.setOnClickListener {
             Toast.makeText(this, "Reminder Set!", Toast.LENGTH_SHORT).show()
@@ -28,9 +34,26 @@ class ReminderActivity : AppCompatActivity() {
 
             val currentTime: Long = System.currentTimeMillis()
 
-            val tenSeconds = 1000 * 10
-
-            alarmManager.set(AlarmManager.RTC_WAKEUP, currentTime+tenSeconds, pendingIntent)
+            if (oneDay.isChecked) {
+                val oneday = 1000 * 10 * 60 * 60 * 24
+                alarmManager.set(AlarmManager.RTC_WAKEUP, currentTime+oneday, pendingIntent)
+            }
+            if (threeDays.isChecked) {
+                val threedays = 1000 * 10 * 60 * 60 * 24 * 3
+                alarmManager.set(AlarmManager.RTC_WAKEUP, currentTime+threedays, pendingIntent)
+            }
+            if (fiveDays.isChecked) {
+                val fivedays = 1000 * 10 * 60 * 60 * 24 * 5
+                alarmManager.set(AlarmManager.RTC_WAKEUP, currentTime+fivedays, pendingIntent)
+            }
+            if (oneWeek.isChecked) {
+                val oneweek = 1000 * 10 * 60 * 60 * 24 * 7
+                alarmManager.set(AlarmManager.RTC_WAKEUP, currentTime+oneweek, pendingIntent)
+            }
+            if (threeSeconds.isChecked) {
+                val threeseconds = 1000 * 3
+                alarmManager.set(AlarmManager.RTC_WAKEUP, currentTime+threeseconds, pendingIntent)
+            }
 
             startActivity(Intent(this, MainActivity::class.java))
         }

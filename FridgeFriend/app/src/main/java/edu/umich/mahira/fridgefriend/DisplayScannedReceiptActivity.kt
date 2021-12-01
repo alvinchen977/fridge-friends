@@ -51,7 +51,6 @@ class DisplayScannedReceiptActivity : AppCompatActivity() {
         val buttonAdd = findViewById<ImageButton>(R.id.button2)
         buttonAdd.setOnClickListener(View.OnClickListener {
             receipts.add(textView.text.toString().toInt())
-
             finish()
         })
     }
