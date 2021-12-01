@@ -57,6 +57,8 @@ class DisplayScannedItemActivity : AppCompatActivity() {
                 for (i in SingleItems){
                     var key = i.substringAfter("\"").substringBefore("\"")
                     var value1 = i.substringAfter(":").substringBefore("}")
+                    key = key.replace(" ", "")
+                    value1 = value1.replace(" ", "")
                     val value = value1.toInt()
                     var exist = false
                     for(i in items){
