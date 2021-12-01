@@ -60,24 +60,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipeDetailIngredients" />
 
-    <ScrollView
-        android:layout_width="397dp"
-        android:layout_height="519dp"
-        android:layout_marginStart="12dp"
+    <TextView
+        android:id="@+id/recipeDetailInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:scrollbars = "vertical"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Instructions">
-
-        <TextView
-            android:id="@+id/recipeDetailInstructions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Instructions" />
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/Instructions" />
 
     <Button
         android:id="@+id/likeRecipe"

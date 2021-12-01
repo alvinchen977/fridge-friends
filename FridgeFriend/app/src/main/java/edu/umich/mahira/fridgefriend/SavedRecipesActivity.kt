@@ -1,21 +1,13 @@
-import android.os.Bundle
-import android.view.View
-import android.widget.ListView
-import androidx.fragment.app.Fragment
-import android.app.ProgressDialog
+package edu.umich.mahira.fridgefriend
+
 import android.content.Context
 import android.content.Intent
-import android.widget.Button
-import android.widget.Toast
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import edu.umich.mahira.fridgefriend.*
-import edu.umich.mahira.fridgefriend.RecipeDetailActivity
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.ListView
 
-
-class RecipeFragment:Fragment(R.layout.fragment_recipe) {
+class SavedRecipesActivity : AppCompatActivity() {
     private lateinit var listView: ListView
-
 
     fun newIntent(context: Context, recipe: Recipe): Intent {
         val detailIntent = Intent(context, RecipeDetailActivity::class.java)
@@ -27,31 +19,18 @@ class RecipeFragment:Fragment(R.layout.fragment_recipe) {
 
         return detailIntent
     }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        val viewLikedButton: Button = view.findViewById(R.id.showLiked)
-        viewLikedButton.setOnClickListener {
-            val intent =
-            Intent(activity?.applicationContext!!, SavedRecipesActivity::class.java)
-            startActivity(intent)
-        }
-
-        val viewSearchButton: Button = view.findViewById(R.id.showSearch)
-        viewSearchButton.setOnClickListener {
-            val intent =
-                Intent(activity?.applicationContext!!, SearchRecipeActivity::class.java)
-            startActivity(intent)
-        }
-
-        Toast.makeText(activity?.applicationContext!!, "wait while recipes load", Toast.LENGTH_SHORT)
-        RecipeStore.getRecipes(activity?.applicationContext!!){ it ->
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_saved_recipes)
+        RecipeStore.getSavedRecipes(applicationContext){ it ->
 //            val arrayTutorialType = object : TypeToken<Array<Array<String>>>() {}.type
 //            var tutorials: Array<Any> = Gson().fromJson(it.toString(), arrayTutorialType)
 //            val temp = tutorials[0] as Array<String>
 //            val test = temp[1]
             val list: MutableList<Recipe> = arrayListOf()
-            it.forEachIndexed  { idx, tut ->
+            val temp: Array<Any> = it[0] as Array<Any>
+            temp.forEachIndexed  { idx, tut ->
                 val tempRecipe = Recipe(title = null, ingredients = null, instructions = null, img = null, recipeId = null)
                 val tutArray = tut as Array<String>
                 tutArray.forEachIndexed{ index, tut_actual ->
@@ -77,19 +56,19 @@ class RecipeFragment:Fragment(R.layout.fragment_recipe) {
                 }
                 list.add(tempRecipe)
             }
-            listView = view.findViewById<ListView>(R.id.recipe_list_view)
+            listView = findViewById<ListView>(R.id.saved_recipe_list_view)
             val listItems = arrayOfNulls<Recipe>(list.size)
             for (i in 0 until list.size) {
                 val recipe = list[i]
                 listItems[i] = recipe
             }
-            val adapter = RecipeAdapter(activity?.applicationContext!!, listItems)
+            val adapter = RecipeAdapter(applicationContext, listItems)
             listView.adapter = adapter
             listView.setOnItemClickListener { _, _, position, _ ->
                 // 1
                 val selectedRecipe = listItems[position]
                 // 2
-                val detailIntent = newIntent(activity?.applicationContext!!, selectedRecipe!!)
+                val detailIntent = newIntent(applicationContext, selectedRecipe!!)
 
                 // 3
                 startActivity(detailIntent)
@@ -97,4 +76,3 @@ class RecipeFragment:Fragment(R.layout.fragment_recipe) {
         }
     }
 }
-
