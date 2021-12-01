@@ -23,4 +23,16 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('postReceipt/', views.postReceipt, name='postReceipt'),
-    ]
+    path('postGrocery/', views.postGrocery, name='postGrocery'),
+    path('findRecipeByIngredients/', views.findRecipeByIngredients, name='findRecipeByIngredients'),
+    path('findRecipeByTitle/', views.findRecipeByTitle, name='findRecipeByTitle'),
+    path('findRecipeByKeyword/', views.findRecipeByKeyword, name='findRecipeByKeyword'),	
+    path('findRecipeByLikeStatus/', views.findRecipeByLikeStatus, name='findRecipeByLikeStatus'),
+    path('findRecipeByDefault/', views.findRecipeByDefault, name='findRecipeByDefault'),
+    path('likeRecipe/',views.likeRecipe, name='likeRecipe'),
+    path('unlikeRecipe/', views.unlikeRecipe, name='unlikeRecipe'),
+    path('userCreate/', views.userCreate, name='userCreate'),
+    path('userLogin/', views.userLogin, name='userLogin'),
+    path('userLogout/', views.userLogout, name='userLogout'),
+    #path('createUserFridge/', views.createUserFridge, name="createUserFridge"),
+]
