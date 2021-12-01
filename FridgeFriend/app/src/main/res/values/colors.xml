@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <!-- these
+    <!-- these three -->
     <color name="colorPrimary">#1e53e6</color>
     <color name="colorPrimaryDark">#2c3465</color>
-    <color name="colorAccent">#FF03DAC5</color> -->
+    <color name="colorAccent">#FF03DAC5</color>
 
     <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#6200ed</color>
+    <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
@@ -15,13 +15,4 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="buttonLabel">#e2e9e5</color> <!-- light blue -->
-
-    <color name="colorPrimary">@color/blue_1</color>
-    <color name="colorPrimaryDark">@color/blue_1</color>
-    <color name="colorAccent">@color/blue_5</color>
-    <color name="blue_1">#00101f</color>
-    <color name="blue_5">#0078ff</color>
-    <color name="button">#32384A</color>
-    <color name="list_item">#F1FEFF</color>
-
 </resources>

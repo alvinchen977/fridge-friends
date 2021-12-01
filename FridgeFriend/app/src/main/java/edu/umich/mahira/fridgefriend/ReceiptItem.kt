@@ -1,3 +1,3 @@
 package edu.umich.mahira.fridgefriend
 
-class ReceiptItem(var image: String? = null)
+class ReceiptItem(var pdf: String? = null)
