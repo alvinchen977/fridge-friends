@@ -23,8 +23,8 @@ import java.io.File
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
+import edu.umich.mahira.fridgefriend.ReceiptItemStore.receipts
 
-val receipts = arrayListOf<Int?>() //use this to the items
 class SavingsFragment:Fragment(R.layout.fragment_savings) {
     private lateinit var itemListAdapter: SpendingListAdapter
     var graphView: GraphView? = null
@@ -104,14 +104,6 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
                     intent.putExtra("imagePath", filePath)
                     startActivity( intent, null)
                 }
-                // update list view after call to api
-                val mainHandler = Handler(Looper.getMainLooper())
-                mainHandler.post(object : Runnable {
-                    override fun run() {
-                        updateList()
-                        mainHandler.postDelayed(this, 5000)
-                    }
-                })
             } else {
                 Log.d("TakePicture", "failed")
             }
@@ -121,7 +113,16 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
             imageUri = mediaStoreAlloc("image/jpeg")
             forReceiptTakePicture.launch(imageUri)
         }
-
+        // update list view after call to api
+        val mainHandler = Handler(Looper.getMainLooper())
+        mainHandler.post(object : Runnable {
+            override fun run() {
+                ReceiptItemStore.getReceipts(activity?.applicationContext!!){
+                    updateList()
+                    mainHandler.postDelayed(this, 5000)
+                }
+            }
+        })
     }
 
 

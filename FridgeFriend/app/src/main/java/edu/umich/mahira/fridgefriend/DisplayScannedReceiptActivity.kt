@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import receipts
 
 class DisplayScannedReceiptActivity : AppCompatActivity() {
     @SuppressLint("WrongViewCast")
@@ -50,8 +49,9 @@ class DisplayScannedReceiptActivity : AppCompatActivity() {
 
         val buttonAdd = findViewById<ImageButton>(R.id.button2)
         buttonAdd.setOnClickListener(View.OnClickListener {
-            receipts.add(textView.text.toString().toInt())
-            finish()
+            ReceiptItemStore.postTotalReceipt(this.applicationContext!!,textView.text.toString().toInt()){
+                finish()
+            }
         })
     }
 }
