@@ -55,6 +55,8 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        FridgeItemStore.getItems(activity?.applicationContext!!){
+        }
 
         itemListAdapter = GroceryListAdapter(requireActivity(), items)
         view.GroceryListView.adapter = itemListAdapter

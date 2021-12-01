@@ -10,7 +10,6 @@ import okhttp3.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import java.io.IOException
 import kotlin.reflect.full.declaredMemberProperties
 
 
@@ -28,6 +27,7 @@ object FridgeItemStore {
             "itemName" to item.name,
             "quantity" to item.quantity
         )
+        Log.d("json",jsonObj.toString())
         val postRequest = JsonObjectRequest(
             Request.Method.POST,
             serverUrl + "postToFridge/", JSONObject(jsonObj),
@@ -55,7 +55,7 @@ object FridgeItemStore {
             "itemName" to name,
         )
         val postRequest = JsonObjectRequest(
-            Request.Method.DELETE,
+            Request.Method.POST,
             FridgeItemStore.serverUrl + "deleteFromFridge/", JSONObject(jsonObj),
             { response ->
                 Log.d("deleteFromFridge", response.toString())
@@ -82,7 +82,7 @@ object FridgeItemStore {
             "nameAfter" to itemAfter
         )
         val postRequest = JsonObjectRequest(
-            Request.Method.PATCH, // maybe change this
+            Request.Method.POST, // maybe change this
             FridgeItemStore.serverUrl + "updateFridgeItem/", JSONObject(jsonObj),
             { response ->
                 Log.d("updateFridgeItem", response.toString())
@@ -103,35 +103,41 @@ object FridgeItemStore {
     }
 
     fun getItems(context: Context, completion: () -> Unit) {
-        val request = okhttp3.Request.Builder()
-            .url(serverUrl+"getFridgeItem/")
-            .build()
+        val jsonObj = mapOf(
+            "username" to "test", //change
+        )
+        val request = JsonObjectRequest(
+        Request.Method.POST, // maybe change this
+        FridgeItemStore.serverUrl + "getUserFridge/", JSONObject(jsonObj),
+        { response ->
 
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                Log.e("getItems", "Failed GET request")
-                completion()
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val itemsReceived = try { JSONObject(response.body?.string() ?: "").getJSONArray("items") } catch (e: JSONException) { JSONArray() }
-
-                    items.clear()
-                    for (i in 0 until itemsReceived.length()) {
-                        val chattEntry = itemsReceived[i] as JSONArray
-                        if (chattEntry.length() == nFields) {
-                            items.add(Item(name = chattEntry[0].toString(),
-                                quantity = chattEntry[1] as Int?,
-                            ))
-                        } else {
-                            Log.e("getItems", "Received unexpected number of fields " + chattEntry.length().toString() + " instead of " + nFields.toString())
-                        }
-                    }
-                    completion()
+            Log.d("getUserFridge", response.toString())
+            val itemsReceived = try { response.getJSONArray("items") } catch (e: JSONException) { JSONArray() }
+            items.clear()
+            for (i in 0 until itemsReceived.length()) {
+                Log.d("itemsReceived", itemsReceived[i].toString())
+                val chattEntry = itemsReceived[i] as JSONObject
+                for(key in chattEntry.keys() ){
+                    val quantity: Int = chattEntry[key] as Int
+                    items.add(Item(name = key,
+                        quantity = quantity as Int?,
+                    ))
                 }
+
             }
-        })
+            completion()
+        },
+        { error ->
+            Log.e(
+                "updateFridgeItem",
+                error.localizedMessage ?: "JsonObjectRequest error"
+            )
+        }
+        )
+        if (!this::queue.isInitialized) {
+            FridgeItemStore.queue = Volley.newRequestQueue(context)
+        }
+        FridgeItemStore.queue.add(request)
     }
 
 }
