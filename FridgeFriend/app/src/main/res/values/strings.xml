@@ -32,7 +32,6 @@
     <string name="grocery_list_button">Grocery List</string>
     <string name="my_fridge_button">My Fridge</string>
     <string name="spending_button">Spending</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="clientID">972770391719-gd9th9vmsselqk33012h8rv9uqslrf4v.apps.googleusercontent.com</string>
 
 </resources>

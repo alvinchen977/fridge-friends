@@ -29,6 +29,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/Theme.FridgeFriend"
         android:usesCleartextTraffic="true">
         <activity
@@ -79,19 +80,30 @@
             android:name=".PostActivity"
             android:label="@string/post"
             android:parentActivityName=".MainActivity" />-->
-        
+
+        <activity
+            android:name=".SearchRecipeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SavedRecipesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CreateAccountActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SignInActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RecipeDetailActivity"
+            android:exported="true" />
         <activity
             android:name=".ReminderActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SpendingListAdapter"
             android:exported="true"
             tools:ignore="Instantiatable" />
-        <activity
-            android:name=".SpendingGraphActivity"
-            android:exported="true"
-            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DisplayScannedReceiptActivity"
             android:exported="true" />
@@ -99,7 +111,6 @@
             android:name=".DisplayScannedItemActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">

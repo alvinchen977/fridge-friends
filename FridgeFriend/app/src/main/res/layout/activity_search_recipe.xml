@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchRecipeActivity">
+
+    <Button
+        android:id="@+id/startSearch"
+        android:layout_width="114dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="Search"
+        app:layout_constraintStart_toEndOf="@+id/searchWords"
+        app:layout_constraintTop_toBottomOf="@+id/Search" />
+
+    <TextView
+        android:id="@+id/Search"
+        android:layout_width="420dp"
+        android:layout_height="37dp"
+        android:text="SearchRecipes"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/searchWords"
+        android:layout_width="288dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:editable="true"
+        android:text="apple, pear, etc."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Search" />
+
+    <ListView
+        android:id="@+id/search_recipe_list_view"
+        android:layout_width="406dp"
+        android:layout_height="582dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchWords"
+        app:layout_constraintVertical_bias="1.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
