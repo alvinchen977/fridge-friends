@@ -15,7 +15,6 @@ import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import edu.umich.mahira.fridgefriend.*
 import edu.umich.mahira.fridgefriend.GroceryItemStore.postReceipt
 import kotlinx.android.synthetic.main.fragment_savings.view.*
@@ -24,11 +23,6 @@ import java.io.File
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import okhttp3.internal.wait
 
 val receipts = arrayListOf<Int?>() //use this to the items
 class SavingsFragment:Fragment(R.layout.fragment_savings) {
@@ -127,14 +121,10 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
             imageUri = mediaStoreAlloc("image/jpeg")
             forReceiptTakePicture.launch(imageUri)
         }
-<<<<<<< HEAD
-
-
-=======
-    }
->>>>>>> 7f8cbd87edde4e9eee8b55b57121f9189bda2e84
 
     }
+
+
     private fun updateList() {
         itemListAdapter.notifyDataSetChanged()
         Log.d("UpdateList", "yes")
