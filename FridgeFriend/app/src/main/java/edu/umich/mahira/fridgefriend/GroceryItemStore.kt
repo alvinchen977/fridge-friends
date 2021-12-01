@@ -47,13 +47,13 @@ object GroceryItemStore {
         )
         val postRequest = JsonObjectRequest(
             Request.Method.POST,
-            serverUrl + "postReceipt/", JSONObject(jsonObj),
-            Response.Listener { response ->
-                Log.d("postReceipt", response.toString());
+            serverUrl + "handleReceipt/", JSONObject(jsonObj),
+            { response ->
+                Log.d("handleReceipt/", response.toString());
             },
-            Response.ErrorListener { error ->
+            { error ->
                 Log.e(
-                    "postReceipt",
+                    "handleReceipt/",
                     error.localizedMessage ?: "JsonObjectRequest error"
                 )
             }
