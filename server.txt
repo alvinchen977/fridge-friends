@@ -3,5 +3,5 @@ DNS: ec2-18-118-131-242.us-east-2.compute.amazonaws.com
 IP: 18.118.131.242
 
 V2:
-DNS: ubuntu@ec2-54-174-234-61.compute-1.amazonaws.com
+DNS: ec2-54-174-234-61.compute-1.amazonaws.com
 IP: 54.174.234.61
