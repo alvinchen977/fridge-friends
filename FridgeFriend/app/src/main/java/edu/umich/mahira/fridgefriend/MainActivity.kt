@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.* //??
 
+//var initialItems = 0
 
 class MainActivity : AppCompatActivity() {
     /* previously

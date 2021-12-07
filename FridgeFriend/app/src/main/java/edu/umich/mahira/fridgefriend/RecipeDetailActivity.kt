@@ -10,6 +10,7 @@ import android.util.Base64
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.viewModels
 
 class RecipeDetailActivity : AppCompatActivity() {
     var image: String = "";
@@ -21,6 +22,7 @@ class RecipeDetailActivity : AppCompatActivity() {
         val Ingredients: TextView = findViewById(R.id.recipeDetailIngredients)
         val Instructios: TextView = findViewById(R.id.recipeDetailInstructions)
         val likeButton: Button = findViewById(R.id.likeRecipe)
+        val addIngredButton: Button = findViewById(R.id.addIngred) //connect to shopList
         Title.text = intent.getStringExtra("title")
         Ingredients.text = intent.getStringExtra("ingredients")
         Instructios.text = intent.getStringExtra("instructions")
@@ -53,6 +55,15 @@ class RecipeDetailActivity : AppCompatActivity() {
                     finish()
                 }
             }
+        }
+
+        addIngredButton.setOnClickListener {
+            val shopViewModel: ShopView by viewModels { //?activity?
+                ShopViewFactory((application as ItemsApplication).repository)
+            }
+            /*while (recipe.cursor != null) {
+                shopViewModel.insert(recipe.getIngredient().toString)
+            }*/
         }
 
     }

@@ -1,5 +1,7 @@
 package edu.umich.mahira.fridgefriend
 
+import RecipeFragment
+import SavingsFragment
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
@@ -14,11 +16,13 @@ import androidx.activity.viewModels
 // bc shopactivity is no longer an activity it cannot use things from androidx.activity
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.recyclerview.widget.ItemTouchHelper
+import kotlinx.android.synthetic.main.activity_main.*
 
 //import androidx.fragment.app.Fragment
 //import kotlinx.android.synthetic.main.activity_shop.*
@@ -53,6 +57,17 @@ class ShopActivity : AppCompatActivity() { // ?activity?
         recyclerView.layoutManager = LinearLayoutManager(this) //?activity?
         //recyclerview.adapter = adapter //?frag?
         //recyclerview.layoutManager = LinearLayoutManager(requireActivity()) //?frag?
+
+
+        //Log.d("observe", shopViewModel.allItems.hasObservers().toString())
+        //Log.d("active", shopViewModel.allItems.hasActiveObservers().toString())
+        //Log.d("empty", shopViewModel.isEmpty().toString())
+//        if (initialItems == 0) {
+//            shopViewModel.insert(Shop("12 eggs"))
+//            shopViewModel.insert(Shop("1 gallon milk"))
+//            shopViewModel.insert(Shop("5 green apples"))
+//        }
+//        initialItems = 1
 
         //recyclerView.setOnDragListener(l: View.OnDragListener!)
         //recyclerView.setOnDragListener(l: ((View!, DragEvent!) -> Boolean)!)
@@ -168,7 +183,24 @@ class ShopActivity : AppCompatActivity() { // ?activity?
             items/*?*/.let { adapter.submitList(it) }
         }
         Log.d("shopacti", "post update")
+
+        // so that we can "stay in main activity while shifting to this activity
+//        val recipeFragment=RecipeFragment()
+//        val myFridgeFragment=MyFridgeFragment()
+//        val savingsFragment=SavingsFragment()
+
+//        bottomNavigationView.setOnClickListener {
+//            intent = Intent(this@ShopActivity, MainActivity::class.java)
+//            //startActivityForResult(intent, setCatActivityRequestCode)
+//        }
     }
+
+//    private fun setCurrentFragment(fragment: Fragment, tag: String)=
+//        supportFragmentManager.beginTransaction().apply {
+//            replace(R.id.flFragment,fragment, tag)
+//            commit()
+//        }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
 //        if (resultCode != RESULT_CANCELED /*&& intentData != null*/) {
