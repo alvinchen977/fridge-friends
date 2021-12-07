@@ -29,46 +29,26 @@ class GroceryListAdapter(context: Context, users: ArrayList<Item?>) :
 
             listItemView.MinusButton.setOnClickListener { v: View ->
                 if (v.id == R.id.MinusButton) {
-                    val i = items[position]
-                    if (i != null) {
-                        if (i.name == name) {
-                            i.quantity = i.quantity?.minus(1)
-                            quantity = i.quantity
-                            listItemView.numbersItemTextView.text = quantity.toString()
-                            if(i.quantity == 0){
-                                items.remove(i)
-                                // Refresh fragment view
-                                notifyDataSetChanged()
-                            }
-                        }
+                    FridgeItemStore.deleteItem(context.applicationContext!!, name!!) {
+                        notifyDataSetChanged()
                     }
                 }
             }
 
             listItemView.itemTextView.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
                 listItemView.EditButton.visibility = View.VISIBLE
+                MyFridgeFragment().onPause()
             }
 
             listItemView.EditButton.setOnClickListener { v: View ->
                 if (v.id == R.id.EditButton) {
-                    val i = items[position]
-                    if (i != null) {
-                        if (i.name == name && i.name != listItemView.itemTextView.text.toString()) {
-                            //Check when you edit an item it is not in de list already
-                            for(item in items){
-                                if(listItemView.itemTextView.text.toString() == item?.name) {
-                                    items[position]?.quantity = items[position]?.quantity?.plus(item.quantity!!)
-                                    items.remove(item)
-                                    break
-                                }
-                            }
-                            i.name = listItemView.itemTextView.text.toString()
-                            notifyDataSetChanged()
-                        }
+                    FridgeItemStore.updateItem(context.applicationContext!!, name!!, listItemView.itemTextView.text.toString()) {
+                        notifyDataSetChanged()
+                        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(listItemView.EditButton.windowToken, 0)
+                        listItemView.EditButton.visibility = View.INVISIBLE
+                        MyFridgeFragment().onResume()
                     }
-                    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(listItemView.EditButton.windowToken, 0)
-                    listItemView.EditButton.visibility = View.INVISIBLE
                 }
             }
         }

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import kotlinx.android.synthetic.main.fragment_my_fridge.view.*
 
 
 class DisplayScannedItemActivity : AppCompatActivity() {
@@ -57,41 +58,17 @@ class DisplayScannedItemActivity : AppCompatActivity() {
                 for (i in SingleItems){
                     var key = i.substringAfter("\"").substringBefore("\"")
                     var value1 = i.substringAfter(":").substringBefore("}")
-                    key = key.replace(" ", "")
-                    value1 = value1.replace(" ", "")
                     val value = value1.toInt()
-                    var exist = false
-                    for(i in items){
-                        if (i != null) {
-                            if(i.name == key ){
-                                exist = true
-                                i.quantity = i.quantity?.plus(value)
-                                break
-                            }
-                        }
-                    }
-                    if(!exist){
-                        items.add((Item(key,value)))
+                    val image = Item(name = key, quantity = value)
+                    FridgeItemStore.postItem(this.applicationContext!!, image) {
                     }
                 }
             }
             else{
-                var exist = false
-                for(i in items){
-                    if (i != null) {
-                        if(i.name == textView.text ){
-                            exist = true
-                            i.quantity = i.quantity?.plus(1)
-                            break
-                        }
-                    }
-                }
-                if(!exist){
-                    items.add((Item(textView.text.toString(),1)))
-
+                val image = Item(name = textView.text.toString(), quantity = 1)
+                FridgeItemStore.postItem(this.applicationContext!!, image) {
                 }
             }
-
             finish()
         })
 

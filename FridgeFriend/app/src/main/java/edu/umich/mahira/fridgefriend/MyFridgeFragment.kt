@@ -23,16 +23,14 @@ import kotlinx.android.synthetic.main.fragment_my_fridge.view.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 import android.view.inputmethod.InputMethodManager
+import edu.umich.mahira.fridgefriend.FridgeItemStore.items
 import kotlinx.android.synthetic.main.fragment_my_fridge.*
 
-
-val items = arrayListOf<Item?>() //use this for the items
 
 class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
 
     private lateinit var itemListAdapter: GroceryListAdapter
     private var imageUri: Uri? = null
-
     fun convertToBase64(filePath : String): String? {
         val imageFile = File(filePath!!)
         val bm = BitmapFactory.decodeFile(imageFile.toString())
@@ -53,9 +51,21 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
             values)
     }
-
+    //                update list view after call to api
+    var mainHandler = Handler(Looper.getMainLooper())
+    private var updateTextTask = object : Runnable {
+        override fun run() {
+            FridgeItemStore.getItems(activity?.applicationContext!!){
+                updateList()
+                mainHandler.postDelayed(this, 5000)
+            }
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        FridgeItemStore.getItems(activity?.applicationContext!!){
+        }
 
         itemListAdapter = GroceryListAdapter(requireActivity(), items)
         view.GroceryListView.adapter = itemListAdapter
@@ -95,14 +105,6 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
                         Log.d("returned", it)
                     }
                 }
-//                update list view after call to api
-                val mainHandler = Handler(Looper.getMainLooper())
-                mainHandler.post(object : Runnable {
-                    override fun run() {
-                        updateList()
-                        mainHandler.postDelayed(this, 5000)
-                    }
-                })
             } else {
                 Log.d("TakePicture", "failed")
             }
@@ -141,27 +143,29 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
 
         view.add.setOnClickListener(View.OnClickListener {
             if(view.input.text.toString() != ""){
-                var exist = false
-                for(i in items){
-                    if (i != null) {
-                        if(i.name == view.input.text.toString()){
-                            exist = true
-                            i.quantity = i.quantity?.plus(1)
-                            break
-                        }
-                    }
+                val image = Item(name = view.input.text.toString(), quantity = 1)
+                FridgeItemStore.postItem(activity?.applicationContext!!, image) {
+                    updateList()
+                    view.input.text.clear()
+                    // We also want to disable editing when the user exits the field.
+                    // This will make the button the only non-programmatic way of editing it.
+                    val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(view.add.windowToken, 0)
                 }
-                if(!exist){
-                    items.add((Item(view.input.text.toString(),1)))
-                }
-                updateList()
-                view.input.text.clear()
-                // We also want to disable editing when the user exits the field.
-                // This will make the button the only non-programmatic way of editing it.
-                val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(view.add.windowToken, 0)
             }
         })
+
+        mainHandler = Handler(Looper.getMainLooper())
+
+    }
+    override fun onPause() {
+        super.onPause()
+        mainHandler.removeCallbacks(updateTextTask)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainHandler.post(updateTextTask)
     }
 
     private fun updateList() {
