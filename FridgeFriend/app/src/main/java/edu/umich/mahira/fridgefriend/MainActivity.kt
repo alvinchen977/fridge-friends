@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.recipes->setCurrentFragment(recipeFragment, "recipeFragment")
-                R.id.grocery_list->setCurrentFragment(groceryListFragment, "recyclerview") //groceryListFragment
+                R.id.grocery_list->setCurrentFragment(groceryListFragment, "groceryListFragment") //recyclerview
                 R.id.my_fridge->setCurrentFragment(myFridgeFragment, "myFridgeFragment")
                 R.id.savings->setCurrentFragment(savingsFragment, "savingsFragment")
             }
