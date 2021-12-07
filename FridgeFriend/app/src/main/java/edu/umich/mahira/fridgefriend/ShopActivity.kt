@@ -1,5 +1,6 @@
 package edu.umich.mahira.fridgefriend
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -19,38 +20,44 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.recyclerview.widget.ItemTouchHelper
 
-import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_shop.*
+//import androidx.fragment.app.Fragment
+//import kotlinx.android.synthetic.main.activity_shop.*
 
 //val itemCollection = arrayListOf<Item?>() // use this to the items
 //val LENGTH_MAX: Int = 10
 
-//class ShopActivity : AppCompatActivity() {
-class ShopActivity : Fragment(R.layout.activity_shop) {
+class ShopActivity : AppCompatActivity() { // ?activity?
+//@SuppressLint("UseRequireInsteadOfGet") // added to make viewModels work
+//class ShopActivity : Fragment(R.layout.activity_shop) { ?frag?
+
     //public var itemText = String
     private val newItemActivityRequestCode = 1
     //private val editItemActivityRequestCode = 2
     private val setCatActivityRequestCode = 3
-    /*private val shopViewModel: ShopView by viewModels { ?activity?
+    private val shopViewModel: ShopView by viewModels { //?activity?
         ShopViewFactory((application as ItemsApplication).repository)
-    }*/
-    private val shopViewModel: ShopView by requireApplication().viewModels {
-        ShopViewFactory((activity?.application as ItemsApplication).repository)
     }
-    //override fun onCreate(savedInstanceState: Bundle?) { ?activity?
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    /*private val shopViewModel: ShopView by requireActivity().viewModels { // activity!!. // ?frag?
+        ShopViewFactory((activity?.application as ItemsApplication).repository)
+    }*/
+    override fun onCreate(savedInstanceState: Bundle?) { //?activity?
+    //override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //?frag?
         //shopViewModel.deleteAll()
-        //super.onCreate(savedInstanceState) ?activity?
-        super.onViewCreated(view, savedInstanceState)
-        //val recyclerView = findViewById<RecyclerView>(R.id.recyclerview) ?activity?
+        super.onCreate(savedInstanceState) //?activity?
+        //super.onViewCreated(view, savedInstanceState) // ?frag?
+        setContentView(R.layout.activity_shop) //?activity? wasnt in frag at all
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview) //?activity?
         val adapter = ShopListAdapter()
-        //recyclerView.adapter = adapter ?activity?
-        //recyclerView.layoutManager = LinearLayoutManager(this) ?activity?
-        recyclerview.adapter = adapter
-        recyclerview.layoutManager = LinearLayoutManager(requireActivity())
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this) //?activity?
+        //recyclerview.adapter = adapter //?frag?
+        //recyclerview.layoutManager = LinearLayoutManager(requireActivity()) //?frag?
+
         //recyclerView.setOnDragListener(l: View.OnDragListener!)
         //recyclerView.setOnDragListener(l: ((View!, DragEvent!) -> Boolean)!)
         //recyclerView.setOnDragListener {v, event ->  ... } (l: ((View!, DragEvent!) -> Boolean)!)
+
         // to allow swipe right to delete or swipe left to edit
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT) { //ItemTouchHelper.ACTION_STATE_SWIPE // ==
             /*override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
@@ -59,6 +66,7 @@ class ShopActivity : Fragment(R.layout.activity_shop) {
                 //EditItemActivity.item(adapter.getItemAt(viewHolder.adapterPosition))
                 Toast.makeText(this@ShopActivity, "Item has been changed", Toast.LENGTH_SHORT).show()
             }*/
+
             override fun onMove(
                 rcyclrView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -66,17 +74,19 @@ class ShopActivity : Fragment(R.layout.activity_shop) {
             ): Boolean {
                 return false
             }
+
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, i: Int) {
                 if (i == ItemTouchHelper.RIGHT) {
                     shopViewModel.delete(adapter.getItemAt(viewHolder.adapterPosition))
-                    //Toast.makeText(this@ShopActivity, "Item Deleted", Toast.LENGTH_SHORT).show() ?activity?
-                    Toast.makeText(requireActivity(), "Item Deleted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ShopActivity, "Item Deleted", Toast.LENGTH_SHORT).show() //?activity?
+                    //Toast.makeText(requireActivity(), "Item Deleted", Toast.LENGTH_SHORT).show() //?frag?
                 }
                 else {
 //                    shopViewModel.changingItem.observe(owner = this) { hasItem -> // problem area
 //                        // Update the cached copy of the items in the adapter.
 //                        hasItem/*?*/.let { (adapter.getItemAt(viewHolder.adapterPosition)).item  }
 //                    }
+
                     //val itemText: CharSequence = (adapter.getItemAt(viewHolder.adapterPosition)).item
                     val temporary = adapter.getItemAt(viewHolder.adapterPosition)
                     //val itemText = temporary.iAmount.toString() + " " + temporary.iType + " " + temporary.iName  ?split?
@@ -86,8 +96,8 @@ class ShopActivity : Fragment(R.layout.activity_shop) {
                     /*val intentForEdit = Intent(this@ShopActivity, EditItemActivity::class.java) for editItemActivity************************
                     intentForEdit.putExtra("itemToChange", itemText)
                     startActivityForResult(intentForEdit,editItemActivityRequestCode)*/
-                    //startActivityForResult(Intent(this@ShopActivity, NewItemActivity::class.java), newItemActivityRequestCode) ?activity?
-                    startActivityForResult(Intent(requireActivity(), NewItemActivity::class.java), newItemActivityRequestCode)
+                    startActivityForResult(Intent(this@ShopActivity, NewItemActivity::class.java), newItemActivityRequestCode) //?activity?
+                    //startActivityForResult(Intent(requireActivity(), NewItemActivity::class.java), newItemActivityRequestCode) //?frag?
                     /*recyclerView.setOnClickListener {
                         val intent = Intent(this@ShopActivity, NewItemActivity::class.java)
                         startActivityForResult(intent, newItemActivityRequestCode)
@@ -100,18 +110,16 @@ class ShopActivity : Fragment(R.layout.activity_shop) {
                     Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show()
                     Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show()
                     Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).show() ?split?*/
-                    //Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show() ?activity?
-                    Toast.makeText(requireActivity(), temporary.item.toString(), Toast.LENGTH_LONG).show()
-                    Toast.makeText(requireActivity(), temporary.item.toString(), Toast.LENGTH_LONG).show()
-                    Toast.makeText(requireActivity(), temporary.item.toString(), Toast.LENGTH_LONG).show()
-                    Toast.makeText(requireActivity(), temporary.item.toString(), Toast.LENGTH_LONG).show()
-                    Toast.makeText(requireActivity(), temporary.item.toString(), Toast.LENGTH_LONG).show()
-                    Toast.makeText(requireActivity(), temporary.item.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show() //?activity?
+                    Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ShopActivity, temporary.item.toString(), Toast.LENGTH_LONG).show()
+                    // Toast.makeText(requireActivity(), temporary.item.toString(), Toast.LENGTH_LONG).show() //?frag?
                     //Toast.makeText(this@ShopActivity, itemText, Toast.LENGTH_LONG).setText(findViewById<EditText>(R.id.changed_item).text)
                 }
             }
-        }).attachToRecyclerView(recyclerview)
-        //}).attachToRecyclerView(recyclerView)
+        }).attachToRecyclerView(recyclerView) /*?frag? recyclerview*/
         //recyclerView.onNestedPrePerformAccessibilityAction(target: View!, action: Int, args: Bundle!)
         //recyclerView.onProvideAutofillStructure(structure: ViewStructure!, flags: Int)
         //recyclerView.onScreenStateChanged(screenState: Int) //--- might use for edit categories
@@ -127,24 +135,24 @@ class ShopActivity : Fragment(R.layout.activity_shop) {
 //            val intent = Intent(this@ShopActivity, NewItemActivity::class.java)
 //            startActivityForResult(intent, newItemActivityRequestCode)
 //        }
-        //val add = findViewById<FloatingActionButton>(R.id.fab3) ?activity?
-        //add.setOnClickListener { ?activity?
-        fab3.setOnClickListener {
-            //val intent = Intent(this@ShopActivity, NewItemActivity::class.java) ?activity?
-            val intent = Intent(requireActivity(), NewItemActivity::class.java)
+        val add = findViewById<FloatingActionButton>(R.id.fab3) //?activity?
+        add.setOnClickListener { //?activity?
+        //fab3.setOnClickListener { //?frag?
+            val intent = Intent(this@ShopActivity, NewItemActivity::class.java) //?activity?
+            //val intent = Intent(requireActivity(), NewItemActivity::class.java) //?frag?
             Log.d("shopactivity", "before startActivity")
             startActivityForResult(intent, newItemActivityRequestCode)
         }
-        //val delete = findViewById<FloatingActionButton>(R.id.fab2) ?activity?
-        //delete.setOnClickListener { ?activity?
-        fab2.setOnClickListener {
+        val delete = findViewById<FloatingActionButton>(R.id.fab2) //?activity?
+        delete.setOnClickListener { //?activity?
+        //fab2.setOnClickListener { //?frag?
             shopViewModel.deleteAll()
         }
-        //val settings = findViewById<FloatingActionButton>(R.id.fab) ?activity?
-        //settings.setOnClickListener { ?activity?
-        fab.setOnClickListener {
-            //val intent = Intent(this@ShopActivity, SetCatActivity::class.java) ?activity?
-            val intent = Intent(requireActivity(), SetCatActivity::class.java)
+        val settings = findViewById<FloatingActionButton>(R.id.fab) //?activity?
+        settings.setOnClickListener { //?activity?
+        //fab.setOnClickListener { //?frag?
+            val intent = Intent(this@ShopActivity, SetCatActivity::class.java) //?activity?
+            //val intent = Intent(requireActivity(), SetCatActivity::class.java) //?frag?
             startActivityForResult(intent, setCatActivityRequestCode)
         }
         Log.d("shopact", "before all items update")
@@ -152,8 +160,10 @@ class ShopActivity : Fragment(R.layout.activity_shop) {
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
         // val x = shopViewModel.temp
-        // shopViewModel.allItems.observe(owner = this) { items ->
-        shopViewModel.allItems.observe(owner = requireActivity()) { items -> // problem area
+
+        // problem area
+        shopViewModel.allItems.observe(owner = this) { items -> //?activity?
+        //shopViewModel.allItems.observe(owner = requireActivity()) { items -> //?frag?
             // Update the cached copy of the items in the adapter.
             items/*?*/.let { adapter.submitList(it) }
         }
@@ -213,8 +223,8 @@ class ShopActivity : Fragment(R.layout.activity_shop) {
             shopViewModel.insert(Shop(Integer.parseInt(reply1.toString()),reply2.toString().toLowerCase(),reply3.toString().toLowerCase()))
         }*/ else {
             Toast.makeText(
-                /*applicationContext,*/
-                activity?.applicationContext!!,
+                applicationContext,
+                /*activity?.applicationContext!!, ?frag?*/
                 R.string.empty_not_saved,
                 Toast.LENGTH_LONG
             ).show()

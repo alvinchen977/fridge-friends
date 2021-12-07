@@ -35,8 +35,8 @@
         <activity
             android:name=".SetCatActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
-        <!--<activity
+            android:parentActivityName=".ShopActivity"/> <!-- .MainActivity ?frag? -->
+        <activity
             android:name=".ShopActivity"
             android:exported="true"
             android:label="@string/shop">
@@ -45,15 +45,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
+        </activity>
         <activity
             android:name=".NewItemActivity"
             android:label="@string/add_to_list"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".ShopActivity"/> <!-- .MainActivity ?frag? -->
         <activity
             android:name=".EditItemActivity"
             android:label="@string/update_item"
-            android:parentActivityName=".MainActivity"/> <!-- OTHER -->
+            android:parentActivityName=".ShopActivity"/> <!-- .MainActivity ?frag? -->
         <!--
  version 1
         <activity
@@ -119,7 +119,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.SHOP" />
+                <!--<action android:name="android.intent.action.SHOP" /> ?frag? -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
