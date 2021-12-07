@@ -6,6 +6,8 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
@@ -26,13 +28,13 @@ object ReceiptItemStore {
     fun postTotalReceipt(context: Context, total: Int, completion: (String) -> Unit) {
         val jsonObj = mapOf(
             "username" to "test", //change
-            "totalReceipt" to total
+            "total" to total
         )
         val postRequest = JsonObjectRequest(
             Request.Method.POST,
-            serverUrl + "postToReceipt/", JSONObject(jsonObj),
+            serverUrl + "postReceipt/", JSONObject(jsonObj),
             { response ->
-                Log.d("postToReceipt/", response.toString())
+                Log.d("postReceipt/", response.toString())
                 completion(response.toString())
             },
             { error ->
@@ -49,34 +51,70 @@ object ReceiptItemStore {
         queue.add(postRequest)
     }
 
+//    fun getReceipts(context: Context, completion: () -> Unit) {
+//        val request = okhttp3.Request.Builder()
+//            .url(serverUrl +"getReceiptsItem/")
+//            .build()
+//
+//        client.newCall(request).enqueue(object : Callback {
+//            override fun onFailure(call: Call, e: IOException) {
+//                Log.e("getReceipts", "Failed GET request")
+//                completion()
+//            }
+//
+//            override fun onResponse(call: Call, response: Response) {
+//                if (response.isSuccessful) {
+//                    val itemsReceived = try { JSONObject(response.body?.string() ?: "").getJSONArray("items") } catch (e: JSONException) { JSONArray() }
+//
+//                    receipts.clear()
+//                    for (i in 0 until itemsReceived.length()) {
+//                        val chattEntry = itemsReceived[i] as JSONArray
+//                        if (chattEntry.length() == nFields) {
+//                            receipts.add(chattEntry[0] as Int?)
+//                        } else {
+//                            Log.e("getReceipts", "Received unexpected number of fields " + chattEntry.length().toString() + " instead of " + nFields.toString())
+//                        }
+//                    }
+//                    completion()
+//                }
+//            }
+//        })
+//    }
+
     fun getReceipts(context: Context, completion: () -> Unit) {
-        val request = okhttp3.Request.Builder()
-            .url(serverUrl +"getReceiptsItem/")
-            .build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                Log.e("getReceipts", "Failed GET request")
-                completion()
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val itemsReceived = try { JSONObject(response.body?.string() ?: "").getJSONArray("items") } catch (e: JSONException) { JSONArray() }
-
-                    receipts.clear()
-                    for (i in 0 until itemsReceived.length()) {
-                        val chattEntry = itemsReceived[i] as JSONArray
-                        if (chattEntry.length() == nFields) {
-                            receipts.add(chattEntry[0] as Int?)
-                        } else {
-                            Log.e("getReceipts", "Received unexpected number of fields " + chattEntry.length().toString() + " instead of " + nFields.toString())
+        val jsonObj = mapOf(
+            "username" to "test", //change
+        )
+        val request = JsonObjectRequest(
+            Request.Method.POST, // maybe change this
+            serverUrl + "getReceipts/", JSONObject(jsonObj),
+            { response ->
+                Log.d("getReceipts", response.toString())
+                receipts.clear()
+                val arrayTutorialType = object : TypeToken<Array<Array<String>>>() {}.type
+                var itemsReceived: Array<Any> =
+                    Gson().fromJson(response["receipts"].toString(), arrayTutorialType)
+                itemsReceived.forEachIndexed { idx, tut ->
+                    val tutArray = tut as Array<String>
+                    tutArray.forEachIndexed { index, tut_actual ->
+                        if (index.toInt() == 1) {
+                            receipts.add(tut_actual.toDouble().toInt())
                         }
                     }
-                    completion()
                 }
+                completion()
+            },
+            { error ->
+                Log.e(
+                    "updateFridgeItem",
+                    error.localizedMessage ?: "JsonObjectRequest error"
+                )
             }
-        })
+        )
+        if (!this::queue.isInitialized) {
+            queue = Volley.newRequestQueue(context)
+        }
+        queue.add(request)
     }
 
 }
