@@ -7,6 +7,6 @@
 ![Elevator Pitch](/assets/title.png)
 ![Team](/assets/team.png)
 
-[demo_page]: https://youtu.be/sample
-[wiki_page]: https://github.com/member/team/wiki
-[process_page]: https://trello.com/b/sample/general
+[demo_page]: https://www.youtube.com/watch?v=sOzi8MyuhXQ
+[wiki_page]: https://github.com/alvinchen977/fridge-friends/wiki
+[process_page]: https://trello.com/b/xRnm31KI/fridgefriend
