@@ -7,10 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Base64
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
+import kotlinx.android.synthetic.main.activity_recipe_detail.*
 
 class RecipeDetailActivity : AppCompatActivity() {
     var image: String = "";
@@ -61,9 +63,15 @@ class RecipeDetailActivity : AppCompatActivity() {
             val shopViewModel: ShopView by viewModels { //?activity?
                 ShopViewFactory((application as ItemsApplication).repository)
             }
-            /*while (recipe.cursor != null) {
-                shopViewModel.insert(recipe.getIngredient().toString)
-            }*/
+            var trimmed: String = recipeDetailIngredients.text.toString().replace("{", "")
+            trimmed = trimmed.replace("}", "")
+            Log.d("detail", trimmed)
+            val stripped = trimmed.split(",").toTypedArray()
+            for (values in stripped){
+                var temp = values.drop(1)
+                temp = temp.dropLast(1)
+                shopViewModel.insert(Shop(temp))
+            }
         }
 
     }
