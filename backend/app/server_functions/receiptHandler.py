@@ -41,14 +41,15 @@ def handleReceipt(request):
             wordList = []
             for obj in responseObjectList:
                 wordList.append(obj['description'])
-                returnWordList = []
+            returnWordList = {}
+            counter = 0 
             for word in wordList:
                 if (re.match("^\d*\.\d*", word)):
-                    returnWordList.append(word)
-            json_data = json.dumps(returnWordList)
-            return JsonResponse(json_data, status=200)		
+                    returnWordList[counter] = word
+                    counter += 1
+            return JsonResponse(returnWordList, status=200)		
         except Exception as e:
-            return JsonResponse({"msg": e}, status = 500) 
+            return JsonResponse({"msg": "Unable to identify Image"}, status = 200) 
     else:
         response['message'] = "Malformed Request, Request must contain base64 encoded Image"
         return JsonResponse(response, status=422) #malformed request 
