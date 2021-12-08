@@ -55,9 +55,11 @@ class MyFridgeFragment:Fragment(R.layout.fragment_my_fridge) {
     var mainHandler = Handler(Looper.getMainLooper())
     private var updateTextTask = object : Runnable {
         override fun run() {
-            FridgeItemStore.getItems(activity?.applicationContext!!){
-                updateList()
-                mainHandler.postDelayed(this, 5000)
+            if (activity?.applicationContext != null) {
+                FridgeItemStore.getItems(activity?.applicationContext!!) {
+                    updateList()
+                    mainHandler.postDelayed(this, 5000)
+                }
             }
         }
     }

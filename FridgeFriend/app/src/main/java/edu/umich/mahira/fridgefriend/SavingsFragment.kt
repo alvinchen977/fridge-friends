@@ -137,9 +137,11 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
             val mainHandler = Handler(Looper.getMainLooper())
             mainHandler.post(object : Runnable {
                 override fun run() {
-                    ReceiptItemStore.getReceipts(activity?.applicationContext!!) {
-                        updateList()
-                        mainHandler.postDelayed(this, 5000)
+                    if (activity?.applicationContext != null) {
+                        ReceiptItemStore.getReceipts(activity?.applicationContext!!) {
+                            updateList()
+                            mainHandler.postDelayed(this, 5000)
+                        }
                     }
                 }
             })
