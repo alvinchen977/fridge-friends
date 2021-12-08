@@ -57,8 +57,13 @@ object GroceryItemStore {
                 }
                 else{
                     for (key in temp.keys()){
-                        if (temp[key].toString().toDouble().toInt() > highest){
-                            highest = temp[key].toString().toDouble().toInt()
+//                        if (temp[key].toString().toDouble().toInt() > highest){
+//                            highest = temp[key].toString().toDouble().toInt()
+//                        }
+                        if (temp[key].toString().toDoubleOrNull() != null){
+                            if (temp[key].toString().toDouble().toInt() > highest){
+                                highest = temp[key].toString().toDouble().toInt()
+                            }
                         }
                     }
                     completion(highest.toString())
