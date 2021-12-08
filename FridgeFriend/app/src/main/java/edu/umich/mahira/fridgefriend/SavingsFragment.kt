@@ -24,6 +24,7 @@ import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import edu.umich.mahira.fridgefriend.ReceiptItemStore.receipts
+import kotlinx.coroutines.delay
 
 class SavingsFragment:Fragment(R.layout.fragment_savings) {
     private lateinit var itemListAdapter: SpendingListAdapter
@@ -51,78 +52,98 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
             values)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        itemListAdapter = SpendingListAdapter(requireActivity(), receipts)
-        view.SpendingListView.adapter = itemListAdapter
-
-        // on below line we are initializing our graph view.
-        graphView = view.idGraphView
-
-
-        // on below line we are adding data to our graph view.
-        var counter = 0.0
-        val dataArray = arrayListOf<DataPoint>()
-        for (i in receipts){
-            dataArray.add(DataPoint(counter, i?.toDouble()!!))
-            counter += 1.0
+        if (FridgeID.id == null){
+            val intent =
+                Intent(activity?.applicationContext!!, SignInActivity::class.java)
+            startActivity(intent)
         }
-        // on below line we are adding data to our graph view.
-        val series: LineGraphSeries<DataPoint> = LineGraphSeries(
-            dataArray.toTypedArray()
-        )
 
-        // on below line we are adding
-        // data series to our graph view.
-        graphView!!.addSeries(series);
+        else {
 
-        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
-            results.forEach {
-                if (!it.value) {
-                    activity?.toast("${it.key} access denied")
-                    activity?.finish()
-                }
+            itemListAdapter = SpendingListAdapter(requireActivity(), receipts)
+            view.SpendingListView.adapter = itemListAdapter
+
+            // on below line we are initializing our graph view.
+            graphView = view.idGraphView
+
+
+            // on below line we are adding data to our graph view.
+            var counter = 0.0
+            val dataArray = arrayListOf<DataPoint>()
+            for (i in receipts) {
+                dataArray.add(DataPoint(counter, i?.toDouble()!!))
+                counter += 1.0
             }
-        }.launch(arrayOf(
-            Manifest.permission.CAMERA,
-            Manifest.permission.READ_EXTERNAL_STORAGE))
+            // on below line we are adding data to our graph view.
+            val series: LineGraphSeries<DataPoint> = LineGraphSeries(
+                dataArray.toTypedArray()
+            )
 
-        if (!activity?.packageManager!!.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
-            activity?.toast("Device has no camera!")
-            return
-        }
-        val forReceiptTakePicture = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
-            if (success) {
-                if (imageUri != null) {
-                    val uriPathHelper = URIPathHelper()
-                    val filePath = imageUri?.let { uriPathHelper.getPath(requireActivity(), it) }
-                    val base64Image = filePath?.let { convertToBase64(it) }
-                    val image = ReceiptItem(image = base64Image)
-                    postReceipt(activity?.applicationContext!!, image)
-                    val intent = Intent(activity?.applicationContext!!, DisplayScannedReceiptActivity::class.java)
-                    intent.putExtra("imagePath", filePath)
-                    startActivity( intent, null)
-                }
-            } else {
-                Log.d("TakePicture", "failed")
-            }
-        }
+            // on below line we are adding
+            // data series to our graph view.
+            graphView!!.addSeries(series);
 
-        view.receiptButton.setOnClickListener {
-            imageUri = mediaStoreAlloc("image/jpeg")
-            forReceiptTakePicture.launch(imageUri)
-        }
-        // update list view after call to api
-        val mainHandler = Handler(Looper.getMainLooper())
-        mainHandler.post(object : Runnable {
-            override fun run() {
-                ReceiptItemStore.getReceipts(activity?.applicationContext!!){
-                    updateList()
-                    mainHandler.postDelayed(this, 5000)
+            registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
+                results.forEach {
+                    if (!it.value) {
+                        activity?.toast("${it.key} access denied")
+                        activity?.finish()
+                    }
                 }
+            }.launch(
+                arrayOf(
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                )
+            )
+
+            if (!activity?.packageManager!!.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
+                activity?.toast("Device has no camera!")
+                return
             }
-        })
+            val forReceiptTakePicture =
+                registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+                    if (success) {
+                        if (imageUri != null) {
+                            val uriPathHelper = URIPathHelper()
+                            val filePath =
+                                imageUri?.let { uriPathHelper.getPath(requireActivity(), it) }
+                            val base64Image = filePath?.let { convertToBase64(it) }
+                            val image = ReceiptItem(image = base64Image)
+                            postReceipt(activity?.applicationContext!!, image) {
+                                val intent = Intent(
+                                    activity?.applicationContext!!,
+                                    DisplayScannedReceiptActivity::class.java
+                                )
+                                intent.putExtra("imagePath", filePath)
+                                intent.putExtra("total", it)
+                                startActivity(intent, null)
+                            }
+                        }
+                    } else {
+                        Log.d("TakePicture", "failed")
+                    }
+                }
+
+            view.receiptButton.setOnClickListener {
+                imageUri = mediaStoreAlloc("image/jpeg")
+                forReceiptTakePicture.launch(imageUri)
+            }
+            // update list view after call to api
+            val mainHandler = Handler(Looper.getMainLooper())
+            mainHandler.post(object : Runnable {
+                override fun run() {
+                    ReceiptItemStore.getReceipts(activity?.applicationContext!!) {
+                        updateList()
+                        mainHandler.postDelayed(this, 5000)
+                    }
+                }
+            })
+        }
     }
 
 
@@ -131,3 +152,4 @@ class SavingsFragment:Fragment(R.layout.fragment_savings) {
         Log.d("UpdateList", "yes")
     }
 }
+

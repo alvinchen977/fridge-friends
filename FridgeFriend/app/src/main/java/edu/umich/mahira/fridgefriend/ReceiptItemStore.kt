@@ -27,7 +27,7 @@ object ReceiptItemStore {
 
     fun postTotalReceipt(context: Context, total: Int, completion: (String) -> Unit) {
         val jsonObj = mapOf(
-            "username" to "test", //change
+            "username" to FridgeID.id.toString(), //change
             "total" to total
         )
         val postRequest = JsonObjectRequest(
@@ -51,39 +51,9 @@ object ReceiptItemStore {
         queue.add(postRequest)
     }
 
-//    fun getReceipts(context: Context, completion: () -> Unit) {
-//        val request = okhttp3.Request.Builder()
-//            .url(serverUrl +"getReceiptsItem/")
-//            .build()
-//
-//        client.newCall(request).enqueue(object : Callback {
-//            override fun onFailure(call: Call, e: IOException) {
-//                Log.e("getReceipts", "Failed GET request")
-//                completion()
-//            }
-//
-//            override fun onResponse(call: Call, response: Response) {
-//                if (response.isSuccessful) {
-//                    val itemsReceived = try { JSONObject(response.body?.string() ?: "").getJSONArray("items") } catch (e: JSONException) { JSONArray() }
-//
-//                    receipts.clear()
-//                    for (i in 0 until itemsReceived.length()) {
-//                        val chattEntry = itemsReceived[i] as JSONArray
-//                        if (chattEntry.length() == nFields) {
-//                            receipts.add(chattEntry[0] as Int?)
-//                        } else {
-//                            Log.e("getReceipts", "Received unexpected number of fields " + chattEntry.length().toString() + " instead of " + nFields.toString())
-//                        }
-//                    }
-//                    completion()
-//                }
-//            }
-//        })
-//    }
-
     fun getReceipts(context: Context, completion: () -> Unit) {
         val jsonObj = mapOf(
-            "username" to "test", //change
+            "username" to FridgeID.id.toString(), //change
         )
         val request = JsonObjectRequest(
             Request.Method.POST, // maybe change this

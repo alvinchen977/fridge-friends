@@ -17,7 +17,9 @@ class DisplayScannedReceiptActivity : AppCompatActivity() {
         val imageView: ImageView = findViewById<ImageView>(R.id.imageView)
         val bumming = BitmapFactory.decodeFile(imagePath)
         imageView.setImageBitmap(bumming)
+        val total = intent.getStringExtra("total")
         val textView: TextView = findViewById<EditText>(R.id.textView)
+        textView.text = total
 
         // Find the button which will start editing process.
         val originalKeyListener = textView.keyListener;

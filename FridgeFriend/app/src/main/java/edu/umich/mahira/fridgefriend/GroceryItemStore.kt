@@ -41,15 +41,28 @@ object GroceryItemStore {
         return "temporaryString"
     }
 
-    fun postReceipt(context: Context, item: ReceiptItem) {
+    fun postReceipt(context: Context, item: ReceiptItem, completion: (String) -> Unit) {
         val jsonObj = mapOf(
             "image" to item.image,
         )
         val postRequest = JsonObjectRequest(
             Request.Method.POST,
-            serverUrl + "postReceipt/", JSONObject(jsonObj),
+            serverUrl + "handleReceipt/", JSONObject(jsonObj),
             { response ->
-                Log.d("postReceipt", response.toString());
+                Log.d("handleReceipt", response.toString());
+                val temp = response as JSONObject
+                var highest = 0
+                if (temp.has("msg")){
+                    completion("0")
+                }
+                else{
+                    for (key in temp.keys()){
+                        if (temp[key].toString().toDouble().toInt() > highest){
+                            highest = temp[key].toString().toDouble().toInt()
+                        }
+                    }
+                    completion(highest.toString())
+                }
 
             },
             { error ->
