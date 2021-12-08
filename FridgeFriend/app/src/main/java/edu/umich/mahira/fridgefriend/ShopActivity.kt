@@ -62,12 +62,12 @@ class ShopActivity : AppCompatActivity() { // ?activity?
         //Log.d("observe", shopViewModel.allItems.hasObservers().toString())
         //Log.d("active", shopViewModel.allItems.hasActiveObservers().toString())
         //Log.d("empty", shopViewModel.isEmpty().toString())
-//        if (initialItems == 0) {
-//            shopViewModel.insert(Shop("12 eggs"))
-//            shopViewModel.insert(Shop("1 gallon milk"))
-//            shopViewModel.insert(Shop("5 green apples"))
-//        }
-//        initialItems = 1
+        if (GroceryItemStore.firstTime!!) {
+            shopViewModel.insert(Shop("12 eggs"))
+            shopViewModel.insert(Shop("1 gallon milk"))
+            shopViewModel.insert(Shop("5 green apples"))
+            GroceryItemStore.firstTime = false
+        }
 
         //recyclerView.setOnDragListener(l: View.OnDragListener!)
         //recyclerView.setOnDragListener(l: ((View!, DragEvent!) -> Boolean)!)
