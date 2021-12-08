@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.DragEvent
+import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -22,7 +23,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.recyclerview.widget.ItemTouchHelper
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_shop.*
 
 //import androidx.fragment.app.Fragment
 //import kotlinx.android.synthetic.main.activity_shop.*
@@ -30,7 +32,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 //val itemCollection = arrayListOf<Item?>() // use this to the items
 //val LENGTH_MAX: Int = 10
 
-class ShopActivity : AppCompatActivity() { // ?activity?
+class ShopActivity : AppCompatActivity() { // ?activity? // extends ?menu?
 //@SuppressLint("UseRequireInsteadOfGet") // added to make viewModels work
 //class ShopActivity : Fragment(R.layout.activity_shop) { ?frag?
 
@@ -184,22 +186,34 @@ class ShopActivity : AppCompatActivity() { // ?activity?
         }
         Log.d("shopacti", "post update")
 
-        // so that we can "stay in main activity while shifting to this activity
-//        val recipeFragment=RecipeFragment()
-//        val myFridgeFragment=MyFridgeFragment()
-//        val savingsFragment=SavingsFragment()
 
-//        bottomNavigationView.setOnClickListener {
-//            intent = Intent(this@ShopActivity, MainActivity::class.java)
-//            //startActivityForResult(intent, setCatActivityRequestCode)
-//        }
+        // so that we can "stay in main activity while shifting to this activity
+        bottomNavigationView.setOnNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.recipes -> startActivity(Intent(this@ShopActivity, MainActivity::class.java)) // maybe the packageContext as Main?
+                R.id.my_fridge -> startActivity(Intent(this@ShopActivity, MainActivity::class.java))
+                R.id.savings -> startActivity(Intent(this@ShopActivity, MainActivity::class.java))
+            }
+            true
+        }
+
+        /*val recipeFragment=RecipeFragment()
+        val myFridgeFragment=MyFridgeFragment()
+        val savingsFragment=SavingsFragment()
+        //
+        setCurrentFragment(recipeFragment, "recipeFragment")
+        //
+        bottomNavigationView.setOnClickListener {
+            intent = Intent(this@ShopActivity, MainActivity::class.java)
+            //startActivityForResult(intent, setCatActivityRequestCode)
+        }*/
     }
 
-//    private fun setCurrentFragment(fragment: Fragment, tag: String)=
-//        supportFragmentManager.beginTransaction().apply {
-//            replace(R.id.flFragment,fragment, tag)
-//            commit()
-//        }
+    /*private fun setCurrentFragment(fragment: Fragment, tag: String)=
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment,fragment, tag)
+            commit()
+        }*/
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
