@@ -22,7 +22,7 @@ from app import views
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    path('postReceipt/', views.postReceipt, name='postReceipt'),
+    path('handleReceipt/', views.handleReceipt, name='handleReceipt'),
     path('postGrocery/', views.postGrocery, name='postGrocery'),
     path('findRecipeByIngredients/', views.findRecipeByIngredients, name='findRecipeByIngredients'),
     path('findRecipeByTitle/', views.findRecipeByTitle, name='findRecipeByTitle'),
@@ -34,5 +34,11 @@ urlpatterns = [
     path('userCreate/', views.userCreate, name='userCreate'),
     path('userLogin/', views.userLogin, name='userLogin'),
     path('userLogout/', views.userLogout, name='userLogout'),
-    #path('createUserFridge/', views.createUserFridge, name="createUserFridge"),
-]
+    path('createUserFridge/', views.createUserFridge, name="createUserFridge"),
+    path('getUserFridge/', views.getUserFridge, name="getUserFridge"),
+    path('deleteFromFridge/', views.deleteFromFridge, name = 'deleteFromFridge'),
+    path('updateFridgeItem/', views.updateFridgeItem, name = 'updateFridgeItem'),
+    path('postToFridge/', views.postToFridge, name = 'postToFridge'),
+    path('postReceipt/', views.postReceipt, name = 'postReceipt'),
+    path('getReceipts/', views.getReceipts, name = 'getReceipts')
+    ]

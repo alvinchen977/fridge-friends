@@ -9,29 +9,34 @@ from django.db import connection
 #returns a list of recipes containing all of the keywords listed  
 def likeRecipe(request): 
     json_data = json.loads(request.body)
-    if "recipeid" in json_data:
-        username = "test"
+    response = {}
+    if "username" in json_data and "recipeid" in json_data:
+        username = json_data["username"]
         recipeid = json_data["recipeid"]
         cursor = connection.cursor()
         cursor.execute("INSERT INTO liked_recipes VALUES "
                 "(%s,%s);",(username,recipeid,))
-        return HttpResponse("Recipe Liked", status=200)
+        response['message'] = "Recipe successfully liked"
+        return JsonResponse(response, status=200)
     else:
-        ErrorMessage = "Malformed request, request must contain recipeid and username"
-        return HttpResponse(ErrorMessage, status=422)
+        response['message'] = "Malformed request, request must contain recipeid and username"
+        return JsonResponse(response, status=422)
 
 
 
 def unlikeRecipe(request): 
     json_data = json.loads(request.body)
+    response = {}
     if "username" in json_data and "recipeid" in json_data:
         username = json_data["username"]
         recipeid = json_data["recipeid"]
         cursor = connection.cursor()
         cursor.execute("DELETE FROM liked_recipes WHERE username = %s AND recipeid = %s", (username,recipeid))
-        return HttpResponse("Recipe unliked", status = 200)
+        response['message'] = "Reciple successfully unliked"
+        return JsonResponse(response, status = 200)
     else: 
-        return HttpResponse("Malformed request, must have username and recipeid", status=422)
+        response['message'] = "Malformed request, must have username and recipeid"
+        return JsonResponse(response, status=422)
 
 
 def findRecipeByIngredients(request):
@@ -49,8 +54,8 @@ def findRecipeByIngredients(request):
             response['recipes'].append(rows)
         return JsonResponse(response)
     else:
-        ErrorMessage = "Malformed Request, Request must contain array of ingredients to search"
-        return HttpResponse(ErrorMessage, status=422)
+        response['message'] = "Malformed Request, Request must contain array of ingredients to search"
+        return JsonResponse(response, status=422)
 #receives a post request with {"Title": someVal } in the body
 #returns a recipe if found in the DB iwth matching title
 def findRecipeByTitle(request):
@@ -75,7 +80,8 @@ def findRecipeByLikeStatus(request):
         response['recipes'].append(rows)
         return JsonResponse(response)
     else:
-        return HttpResponse("Malformed Request, request must contain username", status=422)
+        response['message'] = "Malformed request, request must contain username"
+        return JsonResponse(response, status=422)
 
 def findRecipeByDefault(request):
     cursor = connection.cursor()
