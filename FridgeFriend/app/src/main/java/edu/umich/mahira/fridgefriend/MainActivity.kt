@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.* //??
 
+//var initialItems = 0
 
 class MainActivity : AppCompatActivity() {
     /* previously
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val recipeFragment=RecipeFragment()
-        val groceryListFragment=ShopActivity()
+        //val groceryListFragment=ShopActivity() //?frag?
         val myFridgeFragment=MyFridgeFragment()
         val savingsFragment=SavingsFragment()
 
@@ -45,12 +46,16 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.recipes->setCurrentFragment(recipeFragment, "recipeFragment")
-                R.id.grocery_list->setCurrentFragment(groceryListFragment, "recyclerview") //groceryListFragment
+                //R.id.grocery_list->setCurrentFragment(groceryListFragment, "groceryListFragment") //?frag?
+                R.id.grocery_list-> startActivity(Intent(this,ShopActivity::class.java)) // ?activity?
                 R.id.my_fridge->setCurrentFragment(myFridgeFragment, "myFridgeFragment")
                 R.id.savings->setCurrentFragment(savingsFragment, "savingsFragment")
             }
             true
         }
+
+        /*Log.d("hi there", "HI PEOPLE OF FRIDGE FRIENDS LET ME HERE YA SAY HEYYYYYY")
+        Log.d("hello", myFridgeFragment.getActivity().toString())*/
 
     }
 

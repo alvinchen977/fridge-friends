@@ -34,7 +34,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".SetCatActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ShopActivity"/> <!-- .MainActivity ?frag? -->
         <activity
             android:name=".ShopActivity"
             android:exported="true"
@@ -47,10 +48,12 @@
         </activity>
         <activity
             android:name=".NewItemActivity"
-            android:label="@string/add_to_list"></activity>
+            android:label="@string/add_to_list"
+            android:parentActivityName=".ShopActivity"/> <!-- .MainActivity ?frag? -->
         <activity
             android:name=".EditItemActivity"
-            android:label="@string/update_item"></activity> <!-- OTHER -->
+            android:label="@string/update_item"
+            android:parentActivityName=".ShopActivity"/> <!-- .MainActivity ?frag? -->
         <!--
  version 1
         <activity
@@ -116,7 +119,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <!--<action android:name="android.intent.action.SHOP" /> ?frag? -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -18,6 +18,8 @@ class ShopView(private val repository: ShopRepository) : ViewModel() {
     val allItems: LiveData<List<Shop>> = repository.allItems.asLiveData()
     //val changingItem: LiveData<String>.asLiveData()
 
+    //val isEmpty: Boolean = (allItems.value == null)
+
     // Launching a new coroutine to insert the data in a non-blocking way
     fun insert(shop: Shop) = viewModelScope.launch {
         repository.insert(shop)
@@ -33,6 +35,10 @@ class ShopView(private val repository: ShopRepository) : ViewModel() {
     fun deleteAll() = viewModelScope.launch {
         repository.deleteAll()
     }
+
+//    fun isEmpty(): Boolean {
+//        return (allItems.value == null)
+//    }
 
     // fix to update with list of user categories set to asLiveData
     /*fun determineCategory(category: String) : Int {
